@@ -1,0 +1,86 @@
+.site-title {
+    display: inline-block;
+    margin-left: 15px;
+    font-size: 22px;
+}
+
+.heading-panel {
+    padding: 5px;
+    min-height: 200px;
+
+    background: url('/images/phish-cool.jpg');
+    background-size: cover;
+    background-position: center;
+
+    color: material-color('grey', '50');
+
+    h1 {
+        font-size: 3em;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #fff;
+    }
+
+    button.btn {
+        border: 5px solid #fff;
+        color: #fff;
+        font-size: 25px;
+        border-radius: 5px;
+        padding: 20px 40px;
+        background: transparent;
+        margin: 118px auto;
+        display: block;
+
+        &:hover {
+            color: material-color('blue', '900');
+            background: #fff;
+            transition: color .3s ease-in-out, background .3s ease-in-out;
+            cursor: pointer;
+        }
+    }
+}
+
+.content {
+    max-width: 1200px;
+    min-height: 400px;
+    margin: 0 auto;
+}
+
+.shadow {
+    -webkit-box-shadow: 0px 0px 4px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 4px -2px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 4px -2px rgba(0,0,0,0.75);
+}
+
+// Box layouts
+$box-margin-side: 10px;
+$box-padding-side: 20px;
+
+.box {
+    margin: 10px $box-margin-side;
+    padding: 20px $box-padding-side;
+    min-height: 350px;
+
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+.box50 {
+    @extend .box;
+
+    $box-margin: $box-margin-side * 2;
+    $box-padding: $box-padding-side * 2;
+
+    width: calc(50% - (#{$box-margin} + #{$box-padding}));
+    float: left;
+
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}

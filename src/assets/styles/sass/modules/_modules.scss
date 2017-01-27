@@ -1,0 +1,42 @@
+@import 'colors';
+
+#search-box {
+
+    i {
+        font-size: 1.2em;
+    }
+
+    float: right;
+    margin: 10px 20px;
+}
+
+#shows-table, #songs-table {
+
+    td:nth-child(2) {
+        font-weight: bold;
+        font-size: 1.1em;
+        min-width: 100px;
+    }
+
+    td:nth-child(3) {
+        font-size: .9em;
+    }
+
+    td:nth-child(4) {
+        color: material-color('green', 'a700');
+        font-weight: bold;
+        font-size: 1.1em;
+    }
+
+    tr {
+
+        &:hover {
+            cursor: pointer;
+            color: material-color('grey', '900');
+
+            td {
+                border-bottom: 1px solid material-color('grey', '400');
+            }
+        }
+    }
+}
