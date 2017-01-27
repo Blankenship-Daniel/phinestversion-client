@@ -58,12 +58,12 @@ nav {
 input {
   padding: 10px 15px 5px 5px;
   border: none;
-  border-bottom: 2px solid #eeeeee;
+  border-bottom: 1px solid #eeeeee;
   background: transparent;
   color: #424242; }
   input:focus {
     outline: none;
-    border-bottom: 2px solid #bdbdbd;
+    border-bottom: 1px solid #bdbdbd;
     transition: border-bottom .2s ease-in-out; }
 
 hr {
@@ -94,7 +94,7 @@ table {
 .heading-panel {
   padding: 5px;
   min-height: 200px;
-  background: url("/images/phish-cool.jpg");
+  background: url("/assets/images/phish-cool.jpg");
   background-size: cover;
   background-position: center;
   color: #fafafa; }
@@ -179,12 +179,6 @@ table {
 
 .grey900-bg {
   background: #212121; }
-
-#search-box {
-  float: right;
-  margin: 10px 20px; }
-  #search-box i {
-    font-size: 1.2em; }
 
 #shows-table td:nth-child(2), #songs-table td:nth-child(2) {
   font-weight: bold;

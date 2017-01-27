@@ -9,13 +9,15 @@ import { routes } from './app.routes';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HeadingPanelComponent } from './heading-panel/heading-panel.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    HeadingPanelComponent
   ],
   imports: [
     BrowserModule,
