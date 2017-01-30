@@ -72,6 +72,8 @@ $box-padding-side: 20px;
 .box50 {
     @extend .box;
 
+    min-height: initial;
+
     $box-margin: $box-margin-side * 2;
     $box-padding: $box-padding-side * 2;
 
@@ -83,4 +85,23 @@ $box-padding-side: 20px;
         display: table;
         clear: both;
     }
+}
+
+.box100 {
+    @extend .box;
+
+    min-height: 50px;
+}
+
+.year {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.year-score {
+  margin-top: 25px;
+  font-size: 2em;
+  text-align: right;
+  color: material-color('green', 'a700');
+  font-weight: bold;
 }

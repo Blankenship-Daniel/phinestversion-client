@@ -10,6 +10,9 @@ import { AppComponent } from './Components/app.component';
 import { HomeComponent } from './Components/home/home.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { HeadingPanelComponent } from './Components/heading-panel/heading-panel.component';
+import { YearsComponent } from './Components/years/years.component';
+
+import { YearService } from './Services/year.service';
 
 
 @NgModule({
@@ -17,7 +20,8 @@ import { HeadingPanelComponent } from './Components/heading-panel/heading-panel.
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    HeadingPanelComponent
+    HeadingPanelComponent,
+    YearsComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,9 @@ import { HeadingPanelComponent } from './Components/heading-panel/heading-panel.
         useHash: true,
     })
   ],
-  providers: [],
+  providers: [
+    YearService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
