@@ -94,7 +94,7 @@ table {
 .heading-panel {
   padding: 5px;
   min-height: 200px;
-  background: url("/assets/images/phish-cool.jpg");
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=), url("/assets/images/phish-cool.jpg");
   background-size: cover;
   background-position: center;
   color: #fafafa; }
@@ -165,6 +165,42 @@ table {
  * Modules are the reusable, modular parts of our design. They are the
  *  callouts, the sidebar sections, the products lists and so on.
  *****************************************************************************/
+/**
+ * BLUE
+ */
+.blue50-bg {
+  background: #e3f2fd; }
+
+.blue100-bg {
+  background: #bbdefb; }
+
+.blue200-bg {
+  background: #90caf9; }
+
+.blue300-bg {
+  background: #64b5f6; }
+
+.blue400-bg {
+  background: #42a5f5; }
+
+.blue500-bg {
+  background: #2196f3; }
+
+.blue600-bg {
+  background: #1e88e5; }
+
+.blue700-bg {
+  background: #1976d2; }
+
+.blue800-bg {
+  background: #1565c0; }
+
+.blue900-bg {
+  background: #0d47a1; }
+
+/**
+ * GREY
+ */
 .grey50-bg {
   background: #fafafa; }
 
@@ -194,6 +230,39 @@ table {
 
 .grey900-bg {
   background: #212121; }
+
+/**
+ * PURPLE
+ */
+.purp50-bg {
+  background: #f3e5f5; }
+
+.purp100-bg {
+  background: #e1bee7; }
+
+.purp200-bg {
+  background: #ce93d8; }
+
+.purp300-bg {
+  background: #ba68c8; }
+
+.purp400-bg {
+  background: #ab47bc; }
+
+.purp500-bg {
+  background: #9c27b0; }
+
+.purp600-bg {
+  background: #8e24aa; }
+
+.purp700-bg {
+  background: #7b1fa2; }
+
+.purp800-bg {
+  background: #6a1b9a; }
+
+.purp900-bg {
+  background: #4a148c; }
 
 #shows-table td:nth-child(2), #songs-table td:nth-child(2) {
   font-weight: bold;
