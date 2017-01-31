@@ -46,12 +46,16 @@ html {
   color: #424242;
   box-sizing: border-box; }
 
+body {
+  margin-top: 65px; }
+
 h1, h2, h3, h4, h5, h6 {
   padding: 0 10px;
   font-weight: bold;
   color: #212121; }
 
 nav {
+  background: #fff;
   border-bottom: 1px solid #eeeeee;
   padding: 5px; }
 
@@ -146,7 +150,10 @@ table {
     clear: both; }
 
 .box100 {
-  min-height: 50px; }
+  min-height: initial; }
+
+.min-height350 {
+  min-height: 350px; }
 
 .year {
   font-size: 3em;
@@ -156,7 +163,7 @@ table {
   margin-top: 25px;
   font-size: 2em;
   text-align: right;
-  color: #00c853;
+  color: #00e676;
   font-weight: bold; }
 
 /******************************************************************************
@@ -187,15 +194,19 @@ table {
   background: #2196f3; }
 
 .blue600-bg {
+  color: #fff;
   background: #1e88e5; }
 
 .blue700-bg {
+  color: #fff;
   background: #1976d2; }
 
 .blue800-bg {
+  color: #fff;
   background: #1565c0; }
 
 .blue900-bg {
+  color: #fff;
   background: #0d47a1; }
 
 /**
@@ -220,15 +231,19 @@ table {
   background: #9e9e9e; }
 
 .grey600-bg {
+  color: #fff;
   background: #757575; }
 
 .grey700-bg {
+  color: #fff;
   background: #616161; }
 
 .grey800-bg {
+  color: #fff;
   background: #424242; }
 
 .grey900-bg {
+  color: #fff;
   background: #212121; }
 
 /**
@@ -244,24 +259,31 @@ table {
   background: #ce93d8; }
 
 .purp300-bg {
+  color: #fff;
   background: #ba68c8; }
 
 .purp400-bg {
+  color: #fff;
   background: #ab47bc; }
 
 .purp500-bg {
+  color: #fff;
   background: #9c27b0; }
 
 .purp600-bg {
+  color: #fff;
   background: #8e24aa; }
 
 .purp700-bg {
+  color: #fff;
   background: #7b1fa2; }
 
 .purp800-bg {
+  color: #fff;
   background: #6a1b9a; }
 
 .purp900-bg {
+  color: #fff;
   background: #4a148c; }
 
 #shows-table td:nth-child(2), #songs-table td:nth-child(2) {
@@ -273,7 +295,7 @@ table {
   font-size: .9em; }
 
 #shows-table td:nth-child(4), #songs-table td:nth-child(4) {
-  color: #00c853;
+  color: #00e676;
   font-weight: bold;
   font-size: 1.1em; }
 

@@ -11,6 +11,7 @@ import { HomeComponent } from './Components/home/home.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { HeadingPanelComponent } from './Components/heading-panel/heading-panel.component';
 import { YearsComponent } from './Components/years/years.component';
+import { YearBoxComponent } from './Components/year-box/year-box.component';
 
 import { YearService } from './Services/year.service';
 
@@ -21,7 +22,8 @@ import { YearService } from './Services/year.service';
     HomeComponent,
     NavbarComponent,
     HeadingPanelComponent,
-    YearsComponent
+    YearsComponent,
+    YearBoxComponent
   ],
   imports: [
     BrowserModule,

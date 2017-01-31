@@ -90,7 +90,11 @@ $box-padding-side: 20px;
 .box100 {
     @extend .box;
 
-    min-height: 50px;
+    min-height: initial;
+}
+
+.min-height350 {
+  min-height: 350px;
 }
 
 .year {
@@ -102,6 +106,6 @@ $box-padding-side: 20px;
   margin-top: 25px;
   font-size: 2em;
   text-align: right;
-  color: material-color('green', 'a700');
+  color: material-color('green', 'a400');
   font-weight: bold;
 }

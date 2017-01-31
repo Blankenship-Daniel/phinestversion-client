@@ -1,3 +1,10 @@
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
 nav h1 {
   display: inline-block;
   margin-left: 15px;
