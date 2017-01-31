@@ -1,15 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { YearRank } from '../../Models/yearRank.model';
+import { ShowRank } from '../../Models/showRank.model';
 import { Shader } from '../../Services/shader';
 
 @Component({
-  selector: 'app-year-box',
-  templateUrl: './year-box.component.html',
-  styleUrls: ['./year-box.component.css']
+  selector: 'app-show-box',
+  templateUrl: './show-box.component.html',
+  styleUrls: ['./show-box.component.css']
 })
-export class YearBoxComponent implements OnInit {
+export class ShowBoxComponent implements OnInit {
 
-  @Input() year: YearRank;
+  @Input() show: ShowRank;
   @Input() index: number;
 
   constructor(
@@ -17,10 +17,6 @@ export class YearBoxComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-  }
-
-  clicked() {
-    console.log('clicked');
   }
 
   getShade(): number {

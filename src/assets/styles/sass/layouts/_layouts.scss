@@ -69,6 +69,24 @@ $box-padding-side: 20px;
     }
 }
 
+.box33 {
+    @extend .box;
+
+    min-height: initial;
+
+    $box-margin: $box-margin-side * 2;
+    $box-padding: $box-padding-side * 2;
+
+    width: calc(33.3333% - (#{$box-margin} + #{$box-padding}));
+    float: left;
+
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
 .box50 {
     @extend .box;
 

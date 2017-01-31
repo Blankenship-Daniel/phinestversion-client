@@ -1,5 +1,8 @@
 <div class="content">
   <div class="box">
-    <h1>Shows</h1>
+    <app-show-box *ngFor="let show of shows; let i = index"
+      [show]="show"
+      [index]="i">
+    </app-show-box>
   </div>
 </div>
