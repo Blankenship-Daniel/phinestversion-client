@@ -17,8 +17,10 @@ export class ShowService {
     private http: Http
   ) { }
 
-  getShowRankings() : Observable<ShowRank[]> {
-    return this.http.get(this.apiEndpoint + '/shows/rankings')
+  getShowRankings(limit: number, offset: number) : Observable<ShowRank[]> {
+    let request: string = this.apiEndpoint + '/shows/rankings?limit=' +
+                          limit + '&start=' + offset;
+    return this.http.get(request)
               .map((res:Response) => res.json())
               .catch((error:any) => Observable.throw(
                 error.json().error || 'Server error'
