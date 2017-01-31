@@ -24,6 +24,10 @@ export class YearBoxComponent implements OnInit {
   ngOnInit() {
   }
 
+  clicked() {
+    console.log('clicked');
+  }
+
   getShade(): number {
     return this.shades.hasOwnProperty(this.index) ?
            this.shades[this.index] : 100;

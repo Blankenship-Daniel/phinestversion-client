@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-// Services
 import { YearService } from '../../Services/year.service';
-
-// Models
 import { YearRank } from '../../Models/yearRank.model';
 
 @Component({
@@ -13,7 +9,7 @@ import { YearRank } from '../../Models/yearRank.model';
 })
 export class YearsComponent implements OnInit {
 
-  years: YearRank[];
+  private years: YearRank[];
 
   constructor(
     private yearService: YearService

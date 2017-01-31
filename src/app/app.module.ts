@@ -12,8 +12,10 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import { HeadingPanelComponent } from './Components/heading-panel/heading-panel.component';
 import { YearsComponent } from './Components/years/years.component';
 import { YearBoxComponent } from './Components/year-box/year-box.component';
+import { ShowsComponent } from './Components/shows/shows.component';
 
 import { YearService } from './Services/year.service';
+import { ShowService } from './Services/show.service';
 
 
 @NgModule({
@@ -23,7 +25,8 @@ import { YearService } from './Services/year.service';
     NavbarComponent,
     HeadingPanelComponent,
     YearsComponent,
-    YearBoxComponent
+    YearBoxComponent,
+    ShowsComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { YearService } from './Services/year.service';
     })
   ],
   providers: [
-    YearService
+    YearService,
+    ShowService
   ],
   bootstrap: [AppComponent]
 })
