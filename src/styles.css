@@ -164,12 +164,17 @@ table {
 .min-height350 {
   min-height: 350px; }
 
-.year {
+.year, .show-date {
   font-size: 3em;
   font-weight: bold; }
 
-.year-score {
-  margin-top: 25px;
+.show-location {
+  margin-top: 20px;
+  font-size: 2em;
+  font-weight: bold; }
+
+.year-score, .show-score {
+  margin-top: 22px;
   font-size: 2em;
   text-align: right;
   color: #00e676;
