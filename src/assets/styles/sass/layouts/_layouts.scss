@@ -43,7 +43,6 @@
 
 .content {
     max-width: 1200px;
-    min-height: 400px;
     margin: 0 auto;
 }
 
@@ -111,8 +110,12 @@ $box-padding-side: 20px;
     min-height: initial;
 }
 
+.no-margin {
+    margin: 0;
+}
+
 .min-height350 {
-  min-height: 350px;
+    min-height: 350px;
 }
 
 .year, .show-date {

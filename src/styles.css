@@ -123,7 +123,6 @@ table {
 
 .content {
   max-width: 1200px;
-  min-height: 400px;
   margin: 0 auto; }
 
 .shadow {
@@ -160,6 +159,9 @@ table {
 
 .box100 {
   min-height: initial; }
+
+.no-margin {
+  margin: 0; }
 
 .min-height350 {
   min-height: 350px; }
