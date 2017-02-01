@@ -9,8 +9,9 @@ import { routes } from './Components/app.routes';
 import { AppComponent } from './Components/app.component';
 
 import { HomeComponent } from './Components/home/home.component';
-import { NavbarComponent } from './Components/navbar/navbar.component';
-import { HeadingPanelComponent } from './Components/heading-panel/heading-panel.component';
+
+import { HeadingPanelComponent } from './Components/global_components/heading-panel/heading-panel.component';
+import { NavbarComponent } from './Components/global_components/navbar/navbar.component';
 
 import { YearsComponent } from './Components/years/years.component';
 import { YearBoxComponent } from './Components/years/year-box/year-box.component';
@@ -30,13 +31,13 @@ import { Shader } from './Services/shader';
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    HeadingPanelComponent,
     YearsComponent,
     YearBoxComponent,
     ShowsComponent,
     ShowBoxComponent,
     ShowComponent,
-    YearComponent
+    YearComponent,
+    HeadingPanelComponent
   ],
   imports: [
     BrowserModule,
