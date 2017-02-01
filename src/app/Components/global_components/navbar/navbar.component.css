@@ -1,0 +1,21 @@
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+nav h1 {
+  display: inline-block;
+  margin-left: 15px;
+  font-size: 22px;
+}
+
+#search-box {
+  float: right;
+  margin: 10px 20px;
+}
+
+#search-box i {
+  font-size: 1.2em;
+}
