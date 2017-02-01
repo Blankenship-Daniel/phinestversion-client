@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { YearRank } from '../../Models/yearRank.model';
-import { Shader } from '../../Services/shader';
+import { YearRank } from '../../../Models/yearRank.model';
+import { Shader } from '../../../Services/shader';
 
 @Component({
   selector: 'app-year-box',

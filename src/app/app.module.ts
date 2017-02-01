@@ -7,15 +7,18 @@ import { RouterModule } from '@angular/router';
 import { routes } from './Components/app.routes';
 
 import { AppComponent } from './Components/app.component';
+
 import { HomeComponent } from './Components/home/home.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { HeadingPanelComponent } from './Components/heading-panel/heading-panel.component';
+
 import { YearsComponent } from './Components/years/years.component';
-import { YearBoxComponent } from './Components/year-box/year-box.component';
+import { YearBoxComponent } from './Components/years/year-box/year-box.component';
+import { YearComponent } from './Components/years/year/year.component';
+
 import { ShowsComponent } from './Components/shows/shows.component';
-import { ShowBoxComponent } from './Components/show-box/show-box.component';
-import { ShowComponent } from './Components/show/show.component';
-import { YearComponent } from './Components/year/year.component';
+import { ShowBoxComponent } from './Components/shows/show-box/show-box.component';
+import { ShowComponent } from './Components/shows/show/show.component';
 
 import { YearService } from './Services/year.service';
 import { ShowService } from './Services/show.service';

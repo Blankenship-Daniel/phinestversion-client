@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ShowRank } from '../../Models/showRank.model';
-import { Shader } from '../../Services/shader';
+import { ShowRank } from '../../../Models/showRank.model';
+import { Shader } from '../../../Services/shader';
 
 @Component({
   selector: 'app-show-box',
