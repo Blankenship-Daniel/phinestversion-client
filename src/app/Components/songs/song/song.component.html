@@ -1,3 +1,20 @@
-<p>
-  song works!
-</p>
+<app-heading-panel>
+  <div
+    *ngFor="let song of songs"
+    class="box100 blue700-bg no-margin shadow">
+    <div class="box50 song-name">
+      {{ song.title }}
+    </div>
+    <div class="box50 song-score">
+      +{{ song.score }}
+    </div>
+  </div>
+</app-heading-panel>
+<div class="content">
+  <div class="box">
+    <app-submission-box *ngFor="let submission of submissions; let i = index"
+      [submission]="submission"
+      [index]="i">
+    </app-submission-box>
+  </div>
+</div>

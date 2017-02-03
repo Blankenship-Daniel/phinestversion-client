@@ -118,21 +118,31 @@ $box-padding-side: 20px;
     min-height: 350px;
 }
 
-.year, .show-date, .song-name {
-  font-size: 3em;
-  font-weight: bold;
+.year, .show-date, .song-name, .submission-date {
+    font-size: 3em;
+    font-weight: bold;
 }
 
 .show-location {
-  margin-top: 20px;
-  font-size: 2em;
-  font-weight: bold;
+    margin-top: 20px;
+    font-size: 2em;
+    font-weight: bold;
 }
 
-.year-score, .show-score, .song-score {
-  margin-top: 22px;
-  font-size: 2em;
-  text-align: right;
-  color: material-color('green', 'a400');
-  font-weight: bold;
+.year-score, .show-score, .song-score, .submission-score {
+    margin-top: 22px;
+    font-size: 2em;
+    text-align: right;
+    color: material-color('green', 'a400');
+    font-weight: bold;
+}
+
+.venue-description {
+  font-weight: lighter;
+  font-size: 14px;
+}
+
+.username {
+  margin-top: 10px;
+  font-style: italic;
 }

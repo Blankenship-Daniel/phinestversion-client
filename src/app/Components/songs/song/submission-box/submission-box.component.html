@@ -1,3 +1,18 @@
-<p>
-  submission-box works!
-</p>
+<div class="box100 grey{{ getShade() }}-bg shadow">
+  <div class="box33 submission-date">
+    {{ submission.show_date }}
+    <div class="venue-description">
+      {{ submission.venue_name }}<br>
+      {{ submission.venue_location }}
+    </div>
+  </div>
+  <div class="box33">
+    {{ submission.description }}
+    <div class="username">
+      -{{ submission.username }}
+    </div>
+  </div>
+  <div class="box33 submission-score">
+    +{{ submission.submission_score }}
+  </div>
+</div>

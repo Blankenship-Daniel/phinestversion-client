@@ -30,6 +30,7 @@ import { SubmissionBoxComponent } from './Components/songs/song/submission-box/s
 import { YearService } from './Services/year.service';
 import { ShowService } from './Services/show.service';
 import { SongService } from './Services/song.service';
+import { SubmissionService } from './Services/submission.service';
 import { Shader } from './Services/shader';
 
 
@@ -64,6 +65,7 @@ import { Shader } from './Services/shader';
     YearService,
     ShowService,
     SongService,
+    SubmissionService,
     Shader
   ],
   bootstrap: [AppComponent]

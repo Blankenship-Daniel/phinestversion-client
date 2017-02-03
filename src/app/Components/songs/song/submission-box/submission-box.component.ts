@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Submission } from '../../../../Models/submission.model';
+import { Shader } from '../../../../Services/shader';
 
 @Component({
   selector: 'app-submission-box',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubmissionBoxComponent implements OnInit {
 
-  constructor() { }
+    @Input() submission: Submission;
+    @Input() index: number;
 
-  ngOnInit() {
-  }
+    constructor(
+      private shader: Shader
+    ) { }
 
+    ngOnInit() {
+    }
+
+    getShade(): number {
+      return this.shader.getShade(this.index);
+    }
 }

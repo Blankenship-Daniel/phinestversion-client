@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
-import { SongRank } from '../Models/songRank.model';
+import { Submission } from '../Models/submission.model';
 
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
-export class SongService {
+export class SubmissionService {
 
   private apiEndpoint = 'http://localhost:8000';
 
@@ -17,8 +17,8 @@ export class SongService {
     private http: Http
   ) { }
 
-  getSongRankings(limit: number, offset: number) : Observable<SongRank[]> {
-    let request: string = this.apiEndpoint + '/songs/rankings?limit=' +
+  getSubmissionsBySongSlug(slug: string, limit: number, offset: number) : Observable<Submission[]> {
+    let request: string = this.apiEndpoint + '/submissions/slug/' + slug + '?limit=' +
                           limit + '&start=' + offset;
     return this.http.get(request)
               .map((res:Response) => res.json())
@@ -26,11 +26,4 @@ export class SongService {
                 error.json().error || 'Server error'
               ));
   }
-
-  getSongRanking(slug: string) : Observable<SongRank[]> {
-    return this.http.get(this.apiEndpoint + '/songs/rankings/' + slug)
-              .map((res:Response) => res.json())
-              .catch((error:any) => Observable.throw(
-                error.json().error || 'Server error'
-              ));
-  }}
+}
