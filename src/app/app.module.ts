@@ -23,12 +23,15 @@ import { ShowComponent } from './Components/shows/show/show.component';
 
 import { SongsComponent } from './Components/songs/songs.component';
 import { SongBoxComponent } from './Components/songs/song-box/song-box.component';
+import { SongComponent } from './Components/songs/song/song.component';
+
+import { SubmissionBoxComponent } from './Components/songs/song/submission-box/submission-box.component';
 
 import { YearService } from './Services/year.service';
 import { ShowService } from './Services/show.service';
 import { SongService } from './Services/song.service';
 import { Shader } from './Services/shader';
-import { SubmissionBoxComponent } from './submission-box/submission-box.component';
+
 
 
 
@@ -46,7 +49,8 @@ import { SubmissionBoxComponent } from './submission-box/submission-box.componen
     HeadingPanelComponent,
     SongsComponent,
     SongBoxComponent,
-    SubmissionBoxComponent
+    SubmissionBoxComponent,
+    SongComponent
   ],
   imports: [
     BrowserModule,

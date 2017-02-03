@@ -9,12 +9,14 @@ import { ShowsComponent } from './shows/shows.component';
 import { ShowComponent  } from './shows/show/show.component';
 
 import { SongsComponent } from './songs/songs.component';
+import { SongComponent  } from './songs/song/song.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'years', component: YearsComponent },
-  { path: 'years/:date', component: YearComponent },
-  { path: 'shows', component: ShowsComponent },
-  { path: 'shows/:date', component: ShowComponent },
-  { path: 'songs', component: SongsComponent }
+  { path: '',             component: HomeComponent  },
+  { path: 'years',        component: YearsComponent },
+  { path: 'years/:date',  component: YearComponent  },
+  { path: 'shows',        component: ShowsComponent },
+  { path: 'shows/:date',  component: ShowComponent  },
+  { path: 'songs',        component: SongsComponent },
+  { path: 'songs/:slug',  component: SongComponent  }
 ];
