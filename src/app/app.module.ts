@@ -21,9 +21,14 @@ import { ShowsComponent } from './Components/shows/shows.component';
 import { ShowBoxComponent } from './Components/shows/show-box/show-box.component';
 import { ShowComponent } from './Components/shows/show/show.component';
 
+import { SongsComponent } from './Components/songs/songs.component';
+import { SongBoxComponent } from './Components/songs/song-box/song-box.component';
+
 import { YearService } from './Services/year.service';
 import { ShowService } from './Services/show.service';
+import { SongService } from './Services/song.service';
 import { Shader } from './Services/shader';
+
 
 
 @NgModule({
@@ -37,7 +42,9 @@ import { Shader } from './Services/shader';
     ShowBoxComponent,
     ShowComponent,
     YearComponent,
-    HeadingPanelComponent
+    HeadingPanelComponent,
+    SongsComponent,
+    SongBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +57,7 @@ import { Shader } from './Services/shader';
   providers: [
     YearService,
     ShowService,
+    SongService,
     Shader
   ],
   bootstrap: [AppComponent]
