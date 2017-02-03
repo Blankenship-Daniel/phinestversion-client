@@ -1,3 +1,8 @@
-<p>
-  songs works!
-</p>
+<div class="content">
+  <div class="box">
+    <app-song-box *ngFor="let song of songs; let i = index"
+      [song]="song"
+      [index]="i">
+    </app-song-box>
+  </div>
+</div>

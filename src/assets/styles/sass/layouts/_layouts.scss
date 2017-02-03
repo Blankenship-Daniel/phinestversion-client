@@ -118,7 +118,7 @@ $box-padding-side: 20px;
     min-height: 350px;
 }
 
-.year, .show-date {
+.year, .show-date, .song-name {
   font-size: 3em;
   font-weight: bold;
 }
@@ -129,7 +129,7 @@ $box-padding-side: 20px;
   font-weight: bold;
 }
 
-.year-score, .show-score {
+.year-score, .show-score, .song-score {
   margin-top: 22px;
   font-size: 2em;
   text-align: right;

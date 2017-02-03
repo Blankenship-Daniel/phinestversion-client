@@ -28,6 +28,7 @@ import { YearService } from './Services/year.service';
 import { ShowService } from './Services/show.service';
 import { SongService } from './Services/song.service';
 import { Shader } from './Services/shader';
+import { SubmissionBoxComponent } from './submission-box/submission-box.component';
 
 
 
@@ -44,7 +45,8 @@ import { Shader } from './Services/shader';
     YearComponent,
     HeadingPanelComponent,
     SongsComponent,
-    SongBoxComponent
+    SongBoxComponent,
+    SubmissionBoxComponent
   ],
   imports: [
     BrowserModule,

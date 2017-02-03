@@ -15,7 +15,7 @@ export class SongsComponent implements OnInit {
 
     if (scrollPos === pageHeight) {
       this.offset += 20;
-      this.loadShows();
+      this.loadSongs();
     }
   }
 
@@ -27,7 +27,7 @@ export class SongsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loadShows();
+    this.loadSongs();
   }
 
   addSongs(songs: SongRank[]) {
@@ -38,7 +38,7 @@ export class SongsComponent implements OnInit {
     this.songs.push.apply(this.songs, songs);
   }
 
-  loadShows() {
+  loadSongs() {
     this.songService.getSongRankings(20, this.offset).subscribe(
       songs => this.addSongs(songs),
       err   => {

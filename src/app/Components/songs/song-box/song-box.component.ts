@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { SongRank } from '../../../Models/songRank.model';
+import { Shader } from '../../../Services/shader';
 
 @Component({
   selector: 'app-song-box',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SongBoxComponent implements OnInit {
 
-  constructor() { }
+  @Input() song: SongRank;
+  @Input() index: number;
+
+  constructor(
+    private shader: Shader
+  ) { }
 
   ngOnInit() {
   }
 
+  getShade(): number {
+    return this.shader.getShade(this.index);
+  }
 }

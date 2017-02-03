@@ -1,3 +1,8 @@
-<p>
-  song-box works!
-</p>
+<div class="box100 grey{{ getShade() }}-bg shadow">
+  <div class="box50 song-name">
+    {{ song.title }}
+  </div>
+  <div class="box50 song-score">
+    +{{ song.score }}
+  </div>
+</div>
