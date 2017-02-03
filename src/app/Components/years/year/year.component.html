@@ -1,14 +1,20 @@
 <app-heading-panel>
-  <div class="box100 blue700-bg no-margin shadow">
+  <div
+    *ngFor="let year of years"
+    class="box100 blue700-bg no-margin shadow">
     <div class="box50 year">
-      1997
+      {{ year.year }}
     </div>
     <div class="box50 year-score">
-      +908
+      +{{ year.year_score }}
     </div>
   </div>
 </app-heading-panel>
 <div class="content">
   <div class="box">
+    <app-show-box *ngFor="let show of shows; let i = index"
+      [show]="show"
+      [index]="i">
+    </app-show-box>
   </div>
 </div>
