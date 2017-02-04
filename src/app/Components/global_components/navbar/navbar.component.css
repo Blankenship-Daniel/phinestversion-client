@@ -11,6 +11,25 @@ nav h1 {
   font-size: 22px;
 }
 
+nav h1:hover {
+  cursor: pointer;
+}
+
+nav ul, nav ul li {
+  display: inline-block;
+}
+
+nav ul li {
+  padding: 0 20px;
+}
+
+nav ul li:hover {
+  cursor: pointer;
+  font-weight: bold;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
 #search-box {
   float: right;
   margin: 10px 20px;

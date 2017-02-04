@@ -1,9 +1,14 @@
 <div class="box100 grey{{ getShade() }}-bg shadow">
   <div class="box33 submission-date">
-    {{ submission.show_date }}
-    <div class="venue-description">
-      {{ submission.venue_name }}<br>
-      {{ submission.venue_location }}
+    <div *ngIf="showTitle">
+      {{ submission.show_date }}
+      <div class="venue-description">
+        {{ submission.venue_name }}<br>
+        {{ submission.venue_location }}
+      </div>
+    </div>
+    <div *ngIf="songTitle">
+      {{ submission.song_title }}
     </div>
   </div>
   <div class="box33">

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Submission } from '../../../../Models/submission.model';
-import { Shader } from '../../../../Services/shader';
+import { ShaderService } from '../../../../Services/shader.service';
 
 @Component({
   selector: 'app-submission-box',
@@ -11,9 +11,11 @@ export class SubmissionBoxComponent implements OnInit {
 
     @Input() submission: Submission;
     @Input() index: number;
+    @Input() songTitle: boolean = false;
+    @Input() showTitle: boolean = false;
 
     constructor(
-      private shader: Shader
+      private shader: ShaderService
     ) { }
 
     ngOnInit() {

@@ -31,8 +31,7 @@ import { YearService } from './Services/year.service';
 import { ShowService } from './Services/show.service';
 import { SongService } from './Services/song.service';
 import { SubmissionService } from './Services/submission.service';
-import { Shader } from './Services/shader';
-
+import { ShaderService } from './Services/shader.service';
 
 
 
@@ -66,7 +65,7 @@ import { Shader } from './Services/shader';
     ShowService,
     SongService,
     SubmissionService,
-    Shader
+    ShaderService
   ],
   bootstrap: [AppComponent]
 })

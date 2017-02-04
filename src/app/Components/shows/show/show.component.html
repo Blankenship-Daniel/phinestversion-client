@@ -1,5 +1,24 @@
+<app-heading-panel>
+  <div
+    *ngFor="let show of shows"
+    class="box100 blue700-bg no-margin shadow">
+    <div class="box50 song-name">
+      {{ show.date }}
+      <div class="venue-description">
+        {{ show.name }}<br>
+        {{ show.location }}
+      </div>
+    </div>
+    <div class="box50 song-score">
+      +{{ show.score }}
+    </div>
+  </div>
+</app-heading-panel>
 <div class="content">
   <div class="box">
-    <h1>Show</h1>
+    <app-submission-box [songTitle]="true" *ngFor="let submission of submissions; let i = index"
+      [submission]="submission"
+      [index]="i">
+    </app-submission-box>
   </div>
 </div>

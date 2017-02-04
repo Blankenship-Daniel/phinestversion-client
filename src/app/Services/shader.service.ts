@@ -1,4 +1,4 @@
-export class Shader {
+export class ShaderService {
 
   private shades: Object = {
     0: 700,

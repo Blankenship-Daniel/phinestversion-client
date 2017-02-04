@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ShowRank } from '../../../Models/showRank.model';
-import { Shader } from '../../../Services/shader';
+import { ShaderService } from '../../../Services/shader.service';
 
 @Component({
   selector: 'app-show-box',
@@ -13,7 +13,7 @@ export class ShowBoxComponent implements OnInit {
   @Input() index: number;
 
   constructor(
-    private shader: Shader
+    private shader: ShaderService
   ) { }
 
   ngOnInit() {

@@ -26,4 +26,13 @@ export class SubmissionService {
                 error.json().error || 'Server error'
               ));
   }
+
+  getSubmissionsByShowDate(date: string) : Observable<Submission[]> {
+    let request: string = this.apiEndpoint + '/submissions/rankings/' + date;
+    return this.http.get(request)
+              .map((res:Response) => res.json())
+              .catch((error:any) => Observable.throw(
+                error.json().error || 'Server error'
+              ));
+  }
 }

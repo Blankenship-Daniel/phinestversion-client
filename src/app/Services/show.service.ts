@@ -35,4 +35,13 @@ export class ShowService {
                 error.json().error || 'Server error'
               ));
   }
+
+  getShowRankingByDate(date: string) : Observable<ShowRank[]> {
+    let request: string = this.apiEndpoint + '/shows/rankings/' + date;
+    return this.http.get(request)
+              .map((res:Response) => res.json())
+              .catch((error:any) => Observable.throw(
+                error.json().error || 'Server error'
+              ));
+  }
 }

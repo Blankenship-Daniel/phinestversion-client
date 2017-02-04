@@ -1,5 +1,6 @@
 export class Submission {
   constructor(
+    public song_title         : string,
     public submission_id      : number,
     public description        : string,
     public show_date          : string,
