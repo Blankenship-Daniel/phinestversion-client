@@ -27,13 +27,17 @@ import { SongComponent } from './Components/songs/song/song.component';
 
 import { SubmissionBoxComponent } from './Components/songs/song/submission-box/submission-box.component';
 
-import { BackToTopComponent } from './Components/back-to-top/back-to-top.component';
+import { BackToTopComponent } from './Components/global_components/back-to-top/back-to-top.component';
+
+import { CommentListComponent } from './Components/songs/song/submission-box/comment-list/comment-list.component';
+import { CommentBoxComponent } from './Components/songs/song/submission-box/comment-list/comment-box/comment-box.component';
 
 import { YearService } from './Services/year.service';
 import { ShowService } from './Services/show.service';
 import { SongService } from './Services/song.service';
 import { SubmissionService } from './Services/submission.service';
 import { ShaderService } from './Services/shader.service';
+
 
 
 
@@ -53,7 +57,9 @@ import { ShaderService } from './Services/shader.service';
     SongBoxComponent,
     SubmissionBoxComponent,
     SongComponent,
-    BackToTopComponent
+    BackToTopComponent,
+    CommentListComponent,
+    CommentBoxComponent
   ],
   imports: [
     BrowserModule,
