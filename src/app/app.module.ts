@@ -27,6 +27,8 @@ import { SongComponent } from './Components/songs/song/song.component';
 
 import { SubmissionBoxComponent } from './Components/songs/song/submission-box/submission-box.component';
 
+import { BackToTopComponent } from './Components/back-to-top/back-to-top.component';
+
 import { YearService } from './Services/year.service';
 import { ShowService } from './Services/show.service';
 import { SongService } from './Services/song.service';
@@ -50,7 +52,8 @@ import { ShaderService } from './Services/shader.service';
     SongsComponent,
     SongBoxComponent,
     SubmissionBoxComponent,
-    SongComponent
+    SongComponent,
+    BackToTopComponent
   ],
   imports: [
     BrowserModule,
