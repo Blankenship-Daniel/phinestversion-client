@@ -14,6 +14,8 @@ export class SubmissionBoxComponent implements OnInit {
     @Input() songTitle: boolean = false;
     @Input() showTitle: boolean = false;
 
+    private showComments: boolean = false;
+
     constructor(
       private shader: ShaderService
     ) { }

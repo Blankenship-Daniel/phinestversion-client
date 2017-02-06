@@ -1,4 +1,11 @@
 /**
+ * WHITE
+ */
+.white-bg {
+    background: #fff;
+}
+
+/**
  * BLUE
  */
 .blue50-bg {
@@ -49,32 +56,32 @@
  * GREY
  */
 .grey50-bg {
-    color: material-color('grey', '900');
+    color: material-color('grey', '800');
     background: material-color('grey', '50');
 }
 
 .grey100-bg {
-    color: material-color('grey', '900');
+    color: material-color('grey', '800');
     background: material-color('grey', '100');
 }
 
 .grey200-bg {
-    color: material-color('grey', '900');
+    color: material-color('grey', '800');
     background: material-color('grey', '200');
 }
 
 .grey300-bg {
-    color: material-color('grey', '900');
+    color: material-color('grey', '800');
     background: material-color('grey', '300');
 }
 
 .grey400-bg {
-    color: material-color('grey', '900');
+    color: material-color('grey', '800');
     background: material-color('grey', '400');
 }
 
 .grey500-bg {
-    color: material-color('grey', '900');
+    color: material-color('grey', '800');
     background: material-color('grey', '500');
 }
 

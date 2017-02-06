@@ -21,3 +21,6 @@
     +{{ submission.submission_score }}
   </div>
 </div>
+<div>
+  <app-comment-list [showComments]="showComments" [submissionId]="submission.submission_id"></app-comment-list>
+</div>

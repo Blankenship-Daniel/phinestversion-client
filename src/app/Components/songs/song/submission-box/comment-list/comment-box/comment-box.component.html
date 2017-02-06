@@ -1,3 +1,6 @@
-<p>
-  comment-box works!
-</p>
+<div class="white-bg shadow box100">
+  {{ comment.comment }}
+  <div class="username">
+    -{{ comment.username }} @{{ comment.created_at }}
+  </div>
+</div>
