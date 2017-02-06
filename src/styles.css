@@ -114,11 +114,12 @@ table {
     padding: 20px 40px;
     background: transparent;
     margin: 118px auto;
-    display: block; }
+    display: block;
+    -webkit-transition: color .3s ease-in-out, background .3s ease-in-out;
+    transition: color .3s ease-in-out, background .3s ease-in-out; }
     .heading-panel button.btn:hover {
       color: #0d47a1;
       background: #fff;
-      transition: color .3s ease-in-out, background .3s ease-in-out;
       cursor: pointer; }
 
 .content {

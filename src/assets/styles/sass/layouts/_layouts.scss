@@ -31,11 +31,12 @@
         background: transparent;
         margin: 118px auto;
         display: block;
+        -webkit-transition: color .3s ease-in-out, background .3s ease-in-out;
+        transition: color .3s ease-in-out, background .3s ease-in-out;
 
         &:hover {
             color: material-color('blue', '900');
             background: #fff;
-            transition: color .3s ease-in-out, background .3s ease-in-out;
             cursor: pointer;
         }
     }

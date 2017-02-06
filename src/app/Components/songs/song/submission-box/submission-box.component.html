@@ -10,6 +10,14 @@
     <div *ngIf="songTitle">
       {{ submission.song_title }}
     </div>
+    <hr>
+    <div class="submission-box-btns">
+      <a target="_blank" href="http://phish.in/{{ submission.show_date }}">
+        <i class="fa fa-headphones"></i>
+      </a>
+      <i (click)="toggleComments()" class="fa fa-comments"></i>
+      <span *ngIf="comments?.length">{{ comments.length }}</span>
+    </div>
   </div>
   <div class="box33">
     {{ submission.description }}
@@ -18,9 +26,17 @@
     </div>
   </div>
   <div class="box33 submission-score">
+    <div class="arrow-up grey{{ getShade() }}-bg">
+      <i class="fa fa-chevron-up"></i>
+    </div>
     +{{ submission.submission_score }}
+    <div class="arrow-down grey{{ getShade() }}-bg">
+      <i class="fa fa-chevron-down"></i>
+    </div>
+    <div class="see-comments-btn grey{{ getShade() }}-bg">
+    </div>
   </div>
 </div>
 <div>
-  <app-comment-list [showComments]="showComments" [submissionId]="submission.submission_id"></app-comment-list>
+  <app-comment-list [showComments]="showComments" [comments]="comments"></app-comment-list>
 </div>

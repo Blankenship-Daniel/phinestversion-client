@@ -11,25 +11,13 @@ export class CommentListComponent implements OnInit {
 
   @Input() submissionId: number;
   @Input() showComments: boolean;
-
-  private comments: Comment[];
+  @Input() comments: Comment[];
+  
   private offset: number = 0;
   private slug: string;
 
-  constructor(
-    private commentService: CommentService
-  ) { }
+  constructor() { }
 
   ngOnInit() {
-    this.loadComments();
-  }
-
-  loadComments() {
-    this.commentService.getCommentsBySubmissionId(this.submissionId, 0, 0).subscribe(
-      comments => this.comments = comments,
-      err   => {
-          console.log(err);
-      }
-    );
   }
 }
