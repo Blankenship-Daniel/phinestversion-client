@@ -1,22 +1,26 @@
 <div class="box100 grey{{ getShade() }}-bg shadow">
   <div class="box33 submission-date">
     <div *ngIf="showTitle">
-      {{ submission.show_date }}
-      <div class="venue-description">
-        {{ submission.venue_name }}<br>
-        {{ submission.venue_location }}
+      <div routerLink="/shows/{{ submission.show_date }}" class="link">
+        {{ submission.show_date }}
+        <div class="venue-description">
+          {{ submission.venue_name }}<br>
+          {{ submission.venue_location }}
+        </div>
       </div>
     </div>
     <div *ngIf="songTitle">
-      {{ submission.song_title }}
+      <div routerLink="/songs/{{ submission.song_slug }}" class="link">
+        {{ submission.song_title }}
+      </div>
     </div>
     <hr>
     <div class="submission-box-btns">
-      <a target="_blank" href="http://phish.in/{{ submission.show_date }}">
+      <a target="_blank" href="http://phish.in/{{ submission.show_date }}/{{ submission.song_slug }}">
         <i class="fa fa-headphones"></i>
       </a>
       <i (click)="toggleComments()" class="fa fa-comments"></i>
-      <span *ngIf="comments?.length">{{ comments.length }}</span>
+      <span *ngIf="comments?.length || comments?.length === 0">{{ comments.length }}</span>
     </div>
   </div>
   <div class="box33">

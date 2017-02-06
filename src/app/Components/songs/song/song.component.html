@@ -12,9 +12,11 @@
 </app-heading-panel>
 <div class="content">
   <div class="box">
-    <app-submission-box [showTitle]="true" *ngFor="let submission of submissions; let i = index"
+    <app-submission-box
+      [index]="i"
+      [showTitle]="true"
       [submission]="submission"
-      [index]="i">
+      *ngFor="let submission of submissions; let i = index">
     </app-submission-box>
   </div>
 </div>

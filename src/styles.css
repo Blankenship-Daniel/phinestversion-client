@@ -82,6 +82,10 @@ table {
   table td {
     padding: 5px; }
 
+a {
+  text-decoration: none;
+  color: inherit; }
+
 /******************************************************************************
  * Layout
  *
@@ -190,6 +194,9 @@ table {
 .username {
   margin-top: 10px;
   font-style: italic; }
+
+.link:hover {
+  cursor: pointer; }
 
 /******************************************************************************
  * Module
