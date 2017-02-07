@@ -20,6 +20,9 @@
         <i class="fa fa-headphones"></i>
       </a>
       <i (click)="toggleComments()" class="fa fa-comments"></i>
+      <span *ngIf="commentListSize === undefined">
+        <i class="fa fa-spinner fa-spin"></i>
+      </span>
       <span *ngFor="let size of commentListSize">
         {{ size.size }}
       </span>
