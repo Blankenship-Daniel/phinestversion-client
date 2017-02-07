@@ -20,7 +20,9 @@
         <i class="fa fa-headphones"></i>
       </a>
       <i (click)="toggleComments()" class="fa fa-comments"></i>
-      <span *ngIf="comments?.length || comments?.length === 0">{{ comments.length }}</span>
+      <span *ngFor="let size of commentListSize">
+        {{ size.size }}
+      </span>
     </div>
   </div>
   <div class="box33">
@@ -42,5 +44,9 @@
   </div>
 </div>
 <div>
-  <app-comment-list [showComments]="showComments" [comments]="comments"></app-comment-list>
+  <app-comment-list
+    [showComments]="showComments"
+    [commentsLength]="commentListSize"
+    [comments]="comments">
+  </app-comment-list>
 </div>

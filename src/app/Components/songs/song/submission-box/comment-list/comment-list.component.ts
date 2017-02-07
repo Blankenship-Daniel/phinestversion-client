@@ -11,8 +11,9 @@ export class CommentListComponent implements OnInit {
 
   @Input() submissionId: number;
   @Input() showComments: boolean;
+  @Input() commentsLength: number;
   @Input() comments: Comment[];
-  
+
   private offset: number = 0;
   private slug: string;
 

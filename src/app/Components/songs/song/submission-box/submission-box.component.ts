@@ -3,6 +3,7 @@ import { Submission } from '../../../../Models/submission.model';
 import { ShaderService } from '../../../../Services/shader.service';
 import { CommentService } from '../../../../Services/comment.service';
 import { Comment } from '../../../../Models/comment.model';
+import { CommentListSize } from '../../../../Models/commentListSize.model';
 
 @Component({
   selector: 'app-submission-box',
@@ -17,6 +18,7 @@ export class SubmissionBoxComponent implements OnInit {
   @Input() showTitle: boolean = false;
 
   private comments: Comment[];
+  private commentListSize: CommentListSize[];
   private showComments: boolean = false;
   private offset: number = 0;
 
@@ -26,6 +28,7 @@ export class SubmissionBoxComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loadCommentsLength();
     this.loadComments();
   }
 
@@ -45,11 +48,20 @@ export class SubmissionBoxComponent implements OnInit {
     this.comments.push.apply(this.comments, comments);
   }
 
+  loadCommentsLength() {
+    this.commentService.getCommentsBySubmissionIdCount(this.submission.submission_id).subscribe(
+      commentListSize => this.commentListSize = commentListSize,
+      err             => {
+        console.log(err);
+      }
+    );
+  }
+
   loadComments() {
     this.commentService.getCommentsBySubmissionId(this.submission.submission_id, 20, this.offset).subscribe(
       comments => this.addComments(comments),
       err      => {
-          console.log(err);
+        console.log(err);
       }
     );
   }
