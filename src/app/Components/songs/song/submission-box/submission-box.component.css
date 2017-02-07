@@ -24,3 +24,8 @@
 :host .arrow-down {
   padding-top: 5px;
 }
+
+:host .load-more-btn {
+  font-size: 30px;
+  text-align: center;
+}

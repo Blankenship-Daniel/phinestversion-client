@@ -41,6 +41,8 @@ export class SubmissionBoxComponent implements OnInit {
   }
 
   addComments(comments: Comment[]) {
+    this.offset += 5;
+    
     if (this.comments === undefined) {
       this.comments = comments;
       return;
@@ -58,7 +60,7 @@ export class SubmissionBoxComponent implements OnInit {
   }
 
   loadComments() {
-    this.commentService.getCommentsBySubmissionId(this.submission.submission_id, 20, this.offset).subscribe(
+    this.commentService.getCommentsBySubmissionId(this.submission.submission_id, 5, this.offset).subscribe(
       comments => this.addComments(comments),
       err      => {
         console.log(err);
