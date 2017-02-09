@@ -32,16 +32,18 @@ import { BackToTopComponent } from './Components/global_components/back-to-top/b
 import { CommentListComponent } from './Components/songs/song/submission-box/comment-list/comment-list.component';
 import { CommentBoxComponent } from './Components/songs/song/submission-box/comment-list/comment-box/comment-box.component';
 
+import { UsersComponent } from './Components/users/users.component';
+import { UserComponent } from './Components/users/user/user.component';
+import { UserBoxComponent } from './Components/users/user-box/user-box.component';
+
 import { YearService } from './Services/year.service';
 import { ShowService } from './Services/show.service';
 import { SongService } from './Services/song.service';
 import { SubmissionService } from './Services/submission.service';
 import { CommentService } from './Services/comment.service';
+import { UserService } from './Services/user.service';
+
 import { ShaderService } from './Services/shader.service';
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -61,7 +63,10 @@ import { ShaderService } from './Services/shader.service';
     SongComponent,
     BackToTopComponent,
     CommentListComponent,
-    CommentBoxComponent
+    CommentBoxComponent,
+    UsersComponent,
+    UserComponent,
+    UserBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +82,8 @@ import { ShaderService } from './Services/shader.service';
     SongService,
     SubmissionService,
     CommentService,
-    ShaderService
+    ShaderService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

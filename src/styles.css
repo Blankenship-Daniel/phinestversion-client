@@ -171,7 +171,11 @@ a {
 .min-height350 {
   min-height: 350px; }
 
-.year, .show-date, .song-name, .submission-date {
+.year,
+.show-date,
+.song-name,
+.submission-date,
+.user-name {
   font-size: 3em;
   font-weight: bold; }
 
@@ -180,7 +184,11 @@ a {
   font-size: 2em;
   font-weight: bold; }
 
-.year-score, .show-score, .song-score, .submission-score {
+.year-score,
+.show-score,
+.song-score,
+.submission-score,
+.user-score {
   margin-top: 22px;
   font-size: 2em;
   text-align: right;

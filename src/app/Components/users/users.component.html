@@ -1,0 +1,10 @@
+<div class="content">
+  <div class="box">
+      <app-user-box
+        *ngFor="let user of users; let i = index"
+        [index]="i"
+        [user]="user">
+      </app-user-box>
+  </div>
+</div>
+<app-back-to-top></app-back-to-top>
