@@ -1,5 +1,11 @@
 <div class="box100 grey{{ getShade() }}-bg shadow">
   <div class="box33 submission-date">
+    <div *ngIf="songTitle">
+      <div routerLink="/songs/{{ submission.song_slug }}" class="link">
+        {{ submission.song_title }}
+      </div>
+      <hr>
+    </div>
     <div *ngIf="showTitle">
       <div routerLink="/shows/{{ submission.show_date }}" class="link">
         {{ submission.show_date }}
@@ -8,13 +14,8 @@
           {{ submission.venue_location }}
         </div>
       </div>
+      <hr>
     </div>
-    <div *ngIf="songTitle">
-      <div routerLink="/songs/{{ submission.song_slug }}" class="link">
-        {{ submission.song_title }}
-      </div>
-    </div>
-    <hr>
     <div class="submission-box-btns">
       <a target="_blank" href="http://phish.in/{{ submission.show_date }}/{{ submission.song_slug }}">
         <i class="fa fa-headphones"></i>

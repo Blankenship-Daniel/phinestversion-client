@@ -12,14 +12,17 @@ import { SongsComponent } from './songs/songs.component';
 import { SongComponent  } from './songs/song/song.component';
 
 import { UsersComponent } from './users/users.component';
+import { UserComponent } from './users/user/user.component';
+
 
 export const routes: Routes = [
-  { path: '',               component: HomeComponent  },
-  { path: 'years',          component: YearsComponent },
-  { path: 'years/:date',    component: YearComponent  },
-  { path: 'shows',          component: ShowsComponent },
-  { path: 'shows/:date',    component: ShowComponent  },
-  { path: 'songs',          component: SongsComponent },
-  { path: 'songs/:slug',    component: SongComponent  },
-  { path: 'users',          component: UsersComponent }
+  { path: '',                 component: HomeComponent  },
+  { path: 'years',            component: YearsComponent },
+  { path: 'years/:date',      component: YearComponent  },
+  { path: 'shows',            component: ShowsComponent },
+  { path: 'shows/:date',      component: ShowComponent  },
+  { path: 'songs',            component: SongsComponent },
+  { path: 'songs/:slug',      component: SongComponent  },
+  { path: 'users',            component: UsersComponent },
+  { path: 'users/:username',  component: UserComponent  }
 ];

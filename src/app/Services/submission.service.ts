@@ -35,4 +35,14 @@ export class SubmissionService {
                 error.json().error || 'Server error'
               ));
   }
+
+  getSubmissionsByUserName(username: string, limit: number, offset: number) : Observable<Submission[]> {
+    let request: string = this.apiEndpoint + '/submissions/user/' + username +
+                          '?limit=' + limit + '&start=' + offset;
+    return this.http.get(request)
+              .map((res:Response) => res.json())
+              .catch((error:any) => Observable.throw(
+                error.json().error || 'Server error'
+              ));
+  }
 }

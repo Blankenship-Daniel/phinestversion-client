@@ -13,7 +13,6 @@
 }
 
 :host .arrow-up, :host .arrow-down {
-  padding-right: 8px;
   font-size: 25px;
 }
 

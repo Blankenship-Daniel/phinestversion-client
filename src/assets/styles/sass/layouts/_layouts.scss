@@ -124,13 +124,14 @@ $box-padding-side: 20px;
 .song-name,
 .submission-date,
 .user-name {
-    font-size: 3em;
+    margin-top: 20px;
+    font-size: 2em;
     font-weight: bold;
 }
 
 .show-location {
-    margin-top: 20px;
-    font-size: 2em;
+    margin-top: 25px;
+    font-size: 1.5em;
     font-weight: bold;
 }
 
@@ -139,8 +140,8 @@ $box-padding-side: 20px;
 .song-score,
 .submission-score,
 .user-score {
-    margin-top: 22px;
-    font-size: 2em;
+    margin-top: 25px;
+    font-size: 1.5em;
     text-align: right;
     color: material-color('green', 'a400');
     font-weight: bold;

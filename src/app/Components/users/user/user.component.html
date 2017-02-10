@@ -1,3 +1,24 @@
-<p>
-  user works!
-</p>
+<app-heading-panel>
+  <div
+    *ngFor="let user of users"
+    class="box100 blue700-bg no-margin shadow">
+    <div class="box50 user-name">
+      {{ user.username }}
+    </div>
+    <div class="box50 user-score">
+      +{{ user.score }}
+    </div>
+  </div>
+</app-heading-panel>
+<div class="content">
+  <div class="box">
+    <app-submission-box
+      [index]="i"
+      [showTitle]="true"
+      [songTitle]="true"
+      [submission]="submission"
+      *ngFor="let submission of submissions; let i = index">
+    </app-submission-box>
+  </div>
+</div>
+<app-back-to-top></app-back-to-top>

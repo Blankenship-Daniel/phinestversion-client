@@ -26,4 +26,13 @@ export class UserService {
                 error.json().error || 'Server error'
               ));
   }
+
+  getUserByUserName(username: string) : Observable<UserRank[]> {
+    let request: string = this.apiEndpoint + '/users/' + username;
+    return this.http.get(request)
+              .map((res:Response) => res.json())
+              .catch((error:any) => Observable.throw(
+                error.json().error || 'Server error'
+              ));
+  }
 }
