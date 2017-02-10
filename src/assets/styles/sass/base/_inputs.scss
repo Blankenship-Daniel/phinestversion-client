@@ -1,0 +1,13 @@
+input {
+  padding: 10px 15px 5px 5px;
+  border: none;
+  border-bottom: 1px solid material-color('grey', '200');
+  background: transparent;
+  color: material-color('grey', '800');
+
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid material-color('grey', '400');
+    transition: border-bottom .2s ease-in-out;
+  }
+}

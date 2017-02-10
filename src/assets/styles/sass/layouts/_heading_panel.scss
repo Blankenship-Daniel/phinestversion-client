@@ -1,0 +1,37 @@
+.heading-panel {
+    padding: 5px;
+    min-height: 200px;
+
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=), url('/assets/images/phish-cool.jpg');
+    background-size: cover;
+    background-position: center;
+
+    color: material-color('grey', '50');
+
+    h1 {
+        font-size: 3em;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #fff;
+    }
+
+    button.btn {
+        border: 5px solid #fff;
+        color: #fff;
+        font-size: 25px;
+        border-radius: 5px;
+        padding: 20px 40px;
+        background: transparent;
+        margin: 118px auto;
+        display: block;
+        -webkit-transition: color .3s ease-in-out, background .3s ease-in-out;
+        transition: color .3s ease-in-out, background .3s ease-in-out;
+
+        &:hover {
+            color: material-color('blue', '900');
+            background: #fff;
+            cursor: pointer;
+        }
+    }
+}

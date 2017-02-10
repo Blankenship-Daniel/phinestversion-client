@@ -36,6 +36,8 @@ import { UsersComponent } from './Components/users/users.component';
 import { UserComponent } from './Components/users/user/user.component';
 import { UserBoxComponent } from './Components/users/user-box/user-box.component';
 
+import { LoginComponent } from './Components/login/login.component';
+
 import { YearService } from './Services/year.service';
 import { ShowService } from './Services/show.service';
 import { SongService } from './Services/song.service';
@@ -66,7 +68,8 @@ import { ShaderService } from './Services/shader.service';
     CommentBoxComponent,
     UsersComponent,
     UserComponent,
-    UserBoxComponent
+    UserBoxComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

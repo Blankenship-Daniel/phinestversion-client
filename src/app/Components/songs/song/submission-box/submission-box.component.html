@@ -1,5 +1,5 @@
 <div class="box100 grey{{ getShade() }}-bg shadow">
-  <div class="box33 submission-date">
+  <div class="box33 title">
     <div *ngIf="songTitle">
       <div routerLink="/songs/{{ submission.song_slug }}" class="link">
         {{ submission.song_title }}
@@ -35,7 +35,7 @@
       -{{ submission.username }}
     </div>
   </div>
-  <div class="box33 submission-score">
+  <div class="box33 score">
     <div class="arrow-up grey{{ getShade() }}-bg">
       <i class="fa fa-chevron-up"></i>
     </div>

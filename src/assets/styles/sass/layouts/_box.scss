@@ -1,0 +1,57 @@
+// Box layouts
+$box-margin-side: 10px;
+$box-padding-side: 20px;
+
+.box {
+    margin: 10px $box-margin-side;
+    padding: 20px $box-padding-side;
+    min-height: 350px;
+
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+.box33 {
+    @extend .box;
+
+    min-height: initial;
+
+    $box-margin: $box-margin-side * 2;
+    $box-padding: $box-padding-side * 2;
+
+    width: calc(33.3333% - (#{$box-margin} + #{$box-padding}));
+    float: left;
+
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+.box50 {
+    @extend .box;
+
+    min-height: initial;
+
+    $box-margin: $box-margin-side * 2;
+    $box-padding: $box-padding-side * 2;
+
+    width: calc(50% - (#{$box-margin} + #{$box-padding}));
+    float: left;
+
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+.box100 {
+    @extend .box;
+
+    min-height: initial;
+}

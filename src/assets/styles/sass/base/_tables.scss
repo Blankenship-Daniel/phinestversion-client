@@ -1,0 +1,42 @@
+table {
+  th {
+    text-align: left;
+  }
+
+  td {
+    padding: 5px;
+  }
+
+  width: 100%;
+}
+
+#shows-table, #songs-table {
+
+    td:nth-child(2) {
+        font-weight: bold;
+        font-size: 1.1em;
+        min-width: 100px;
+    }
+
+    td:nth-child(3) {
+        font-size: .9em;
+    }
+
+    td:nth-child(4) {
+        color: material-color('green', 'a400');
+        font-weight: bold;
+        font-size: 1.1em;
+    }
+
+    tr {
+
+        &:hover {
+            cursor: pointer;
+            color: material-color('grey', '900');
+
+            td {
+                border-bottom: 1px solid material-color('grey', '400');
+            }
+        }
+    }
+}
