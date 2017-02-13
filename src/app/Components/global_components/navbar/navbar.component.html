@@ -7,7 +7,7 @@
       <li routerLink="/users">Leaderboard</li>
     </ul>
     <span id="search-box">
-        <i class="fa fa-search"></i>
-        <input type="text">
+        <i on-click="showSearch()" class="fa fa-search"></i>
+        <input class="{{ isVisible ? 'visible' : '' }}" type="text">
     </span>
 </nav>

@@ -38,192 +38,6 @@
  *  a { color: #039; }
  *  a:hover { color: #03C; }
  *****************************************************************************/
-html {
-  font-family: 'Inconsolata', monospace;
-  font-size: 1em;
-  min-height: 100%;
-  background: #fafafa;
-  color: #424242;
-  box-sizing: border-box; }
-
-body {
-  margin-top: 65px; }
-
-h1, h2, h3, h4, h5, h6 {
-  padding: 0 10px;
-  font-weight: bold;
-  color: #212121; }
-
-hr {
-  border: 0;
-  height: 1px;
-  background: #bdbdbd; }
-
-a {
-  text-decoration: none;
-  color: inherit; }
-
-.shadow {
-  -webkit-box-shadow: 0px 0px 4px -2px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 4px -2px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 4px -2px rgba(0, 0, 0, 0.75); }
-
-.no-margin {
-  margin: 0 !important; }
-
-.min-height350 {
-  min-height: 350px; }
-
-.link:hover {
-  cursor: pointer; }
-
-nav {
-  background: #fff;
-  border-bottom: 1px solid #eeeeee;
-  padding: 5px; }
-
-table {
-  width: 100%; }
-  table th {
-    text-align: left; }
-  table td {
-    padding: 5px; }
-
-#shows-table td:nth-child(2), #songs-table td:nth-child(2) {
-  font-weight: bold;
-  font-size: 1.1em;
-  min-width: 100px; }
-
-#shows-table td:nth-child(3), #songs-table td:nth-child(3) {
-  font-size: .9em; }
-
-#shows-table td:nth-child(4), #songs-table td:nth-child(4) {
-  color: #00e676;
-  font-weight: bold;
-  font-size: 1.1em; }
-
-#shows-table tr:hover, #songs-table tr:hover {
-  cursor: pointer;
-  color: #212121; }
-  #shows-table tr:hover td, #songs-table tr:hover td {
-    border-bottom: 1px solid #bdbdbd; }
-
-input {
-  padding: 10px 15px 5px 5px;
-  border: none;
-  border-bottom: 1px solid #eeeeee;
-  background: transparent;
-  color: #424242; }
-  input:focus {
-    outline: none;
-    border-bottom: 1px solid #bdbdbd;
-    transition: border-bottom .2s ease-in-out; }
-
-/******************************************************************************
- * Layout
- *
- * Layout rules divide the page into sections. Layouts hold one or more
- *  modules together.
- *
- * These rules are prefixed with lyt- for clarity.
- *****************************************************************************/
-.site-title {
-  display: inline-block;
-  margin-left: 15px;
-  font-size: 22px; }
-
-.content {
-  max-width: 1200px;
-  margin: 0 auto; }
-
-.heading-panel {
-  padding: 5px;
-  min-height: 200px;
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=), url("/assets/images/phish-cool.jpg");
-  background-size: cover;
-  background-position: center;
-  color: #fafafa; }
-  .heading-panel h1 {
-    font-size: 3em; }
-  .heading-panel h1, .heading-panel h2, .heading-panel h3, .heading-panel h4, .heading-panel h5, .heading-panel h6 {
-    color: #fff; }
-  .heading-panel button.btn {
-    border: 5px solid #fff;
-    color: #fff;
-    font-size: 25px;
-    border-radius: 5px;
-    padding: 20px 40px;
-    background: transparent;
-    margin: 118px auto;
-    display: block;
-    -webkit-transition: color .3s ease-in-out, background .3s ease-in-out;
-    transition: color .3s ease-in-out, background .3s ease-in-out; }
-    .heading-panel button.btn:hover {
-      color: #0d47a1;
-      background: #fff;
-      cursor: pointer; }
-
-.box, .box33, .box50, .box100 {
-  margin: 10px 10px;
-  padding: 20px 20px;
-  min-height: 350px; }
-  .box::after, .box33::after, .box50::after, .box100::after {
-    content: '';
-    display: table;
-    clear: both; }
-
-.box33 {
-  min-height: initial;
-  width: calc(33.3333% - (20px + 40px));
-  float: left; }
-  .box33::after {
-    content: '';
-    display: table;
-    clear: both; }
-
-.box50 {
-  min-height: initial;
-  width: calc(50% - (20px + 40px));
-  float: left; }
-  .box50::after {
-    content: '';
-    display: table;
-    clear: both; }
-
-.box100 {
-  min-height: initial; }
-
-.title {
-  margin-top: 20px;
-  font-size: 2em;
-  font-weight: bold; }
-
-.show-location {
-  margin-top: 25px;
-  font-size: 1.5em;
-  font-weight: bold; }
-
-.score {
-  margin-top: 25px;
-  font-size: 1.5em;
-  text-align: right;
-  color: #00e676;
-  font-weight: bold; }
-
-.venue-description {
-  font-weight: lighter;
-  font-size: 14px; }
-
-.username {
-  margin-top: 10px;
-  font-style: italic; }
-
-/******************************************************************************
- * Module
- *
- * Modules are the reusable, modular parts of our design. They are the
- *  callouts, the sidebar sections, the products lists and so on.
- *****************************************************************************/
 /**
  * WHITE
  */
@@ -350,5 +164,318 @@ input {
   color: #fff;
   background: #4a148c; }
 
+html {
+  font-family: 'Inconsolata', monospace;
+  font-size: 1em;
+  min-height: 100%;
+  background: #fafafa;
+  color: #424242;
+  box-sizing: border-box; }
+
+body {
+  margin-top: 65px; }
+
+h1, h2, h3, h4, h5, h6 {
+  padding: 0 10px;
+  font-weight: bold;
+  color: #212121; }
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #bdbdbd; }
+
+a {
+  text-decoration: none;
+  color: inherit; }
+
+.shadow, input.btn:hover {
+  -webkit-box-shadow: 0px 0px 4px -2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 4px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 4px -2px rgba(0, 0, 0, 0.75); }
+
+.no-margin {
+  margin: 0 !important; }
+
+.margin-top100px {
+  margin-top: 100px !important; }
+
+.min-height350 {
+  min-height: 350px; }
+
+.link:hover {
+  cursor: pointer; }
+
+.right {
+  float: right; }
+
+.left {
+  float: left; }
+
+table {
+  width: 100%; }
+  table th {
+    text-align: left; }
+  table td {
+    padding: 5px; }
+
+#shows-table td:nth-child(2), #songs-table td:nth-child(2) {
+  font-weight: bold;
+  font-size: 1.1em;
+  min-width: 100px; }
+
+#shows-table td:nth-child(3), #songs-table td:nth-child(3) {
+  font-size: .9em; }
+
+#shows-table td:nth-child(4), #songs-table td:nth-child(4) {
+  color: #00e676;
+  font-weight: bold;
+  font-size: 1.1em; }
+
+#shows-table tr:hover, #songs-table tr:hover {
+  cursor: pointer;
+  color: #212121; }
+  #shows-table tr:hover td, #songs-table tr:hover td {
+    border-bottom: 1px solid #bdbdbd; }
+
+input {
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 0.5px solid #eeeeee;
+  background: transparent;
+  color: #9e9e9e;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  font-weight: lighter; }
+  input::-webkit-input-placeholder {
+    font-style: italic;
+    font-weight: lighter; }
+  input:focus {
+    outline: none;
+    color: #424242;
+    border-bottom: 1px solid #2196f3; }
+
+.input-large {
+  margin: 0 2em; }
+  .input-large input {
+    font-size: 1.5em;
+    margin: 2em 0;
+    height: 50px;
+    width: 100%; }
+
+/******************************************************************************
+ * Layout
+ *
+ * Layout rules divide the page into sections. Layouts hold one or more
+ *  modules together.
+ *
+ * These rules are prefixed with lyt- for clarity.
+ *****************************************************************************/
+.site-title {
+  display: inline-block;
+  margin-left: 15px;
+  font-size: 22px; }
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto; }
+
+.heading-panel {
+  padding: 5px;
+  min-height: 200px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=), url("/assets/images/phish-cool.jpg");
+  background-size: cover;
+  background-position: center;
+  color: #fafafa; }
+  .heading-panel h1 {
+    font-size: 3em; }
+  .heading-panel h1, .heading-panel h2, .heading-panel h3, .heading-panel h4, .heading-panel h5, .heading-panel h6 {
+    color: #fff; }
+  .heading-panel button.btn {
+    border: 5px solid #fff;
+    color: #fff;
+    font-size: 25px;
+    border-radius: 5px;
+    padding: 20px 40px;
+    background: transparent;
+    margin: 118px auto;
+    display: block;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out; }
+    .heading-panel button.btn:hover {
+      color: #0d47a1;
+      background: #fff;
+      cursor: pointer; }
+
+.box, .box33, .box50, .box100 {
+  margin: 10px 10px;
+  padding: 20px 20px;
+  min-height: 350px; }
+  .box::after, .box33::after, .box50::after, .box100::after {
+    content: '';
+    display: table;
+    clear: both; }
+
+.box33 {
+  min-height: initial;
+  width: calc(33.3333% - (20px + 40px));
+  float: left; }
+  .box33::after {
+    content: '';
+    display: table;
+    clear: both; }
+
+.box50 {
+  min-height: initial;
+  width: calc(50% - (20px + 40px));
+  float: left; }
+  .box50::after {
+    content: '';
+    display: table;
+    clear: both; }
+
+.box100 {
+  min-height: initial; }
+
+.submission-box .submission-box-btns {
+  font-size: 15px;
+  margin-top: 1em; }
+
+.submission-box .submission-box-btns a {
+  color: inherit;
+  text-decoration: none; }
+
+.submission-box .submission-box-btns i.fa:hover {
+  cursor: pointer; }
+
+.submission-box .arrow-up, .submission-box .arrow-down {
+  font-size: 25px; }
+
+.submission-box .arrow-up {
+  padding-bottom: 5px; }
+
+.submission-box .arrow-down {
+  padding-top: 5px; }
+
+.submission-box .load-more-btn {
+  font-size: 30px;
+  text-align: center; }
+
+.title {
+  margin-top: 20px;
+  font-size: 2em;
+  font-weight: bold; }
+
+.show-location {
+  margin-top: 25px;
+  font-size: 1.5em;
+  font-weight: bold; }
+
+.score {
+  margin-top: 25px;
+  font-size: 1.5em;
+  text-align: right;
+  color: #00e676;
+  font-weight: bold; }
+
+.venue-description {
+  font-weight: lighter;
+  font-size: 14px; }
+
+.username {
+  margin-top: 10px;
+  font-style: italic; }
+
+/******************************************************************************
+ * Module
+ *
+ * Modules are the reusable, modular parts of our design. They are the
+ *  callouts, the sidebar sections, the products lists and so on.
+ *****************************************************************************/
+.page-title {
+  margin: 3em .5em 1em .5em;
+  font-size: 3em;
+  font-weight: lighter;
+  color: #212121; }
+  .page-title hr {
+    background: #e0e0e0; }
+
+nav {
+  background: #fff;
+  border-bottom: 1px solid #eeeeee;
+  padding: 5px;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: 65px; }
+  nav h1 {
+    display: inline-block;
+    margin-left: 15px;
+    font-size: 22px; }
+    nav h1:hover {
+      cursor: pointer; }
+  nav ul {
+    display: inline-block; }
+    nav ul li {
+      display: inline-block;
+      padding: 0 20px; }
+      nav ul li:hover {
+        cursor: pointer;
+        font-weight: bold;
+        -webkit-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out; }
+  nav #search-box {
+    float: right;
+    margin: 10px 20px; }
+    nav #search-box input {
+      display: none;
+      -webkit-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out; }
+      nav #search-box input.visible {
+        display: inline-block; }
+    nav #search-box i {
+      margin-right: 10px;
+      margin-top: 10px;
+      font-size: 1.2em; }
+      nav #search-box i:hover {
+        cursor: pointer; }
+
+input.btn {
+  font-size: 1.5em;
+  text-align: center;
+  padding: .6em 2em;
+  border-bottom: none;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75); }
+  input.btn:focus {
+    color: #fff; }
+
 #back-to-top-widget {
   background: #1976d2; }
+
+#back-to-top-widget {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 2em; }
+
+#back-to-top-widget:hover {
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out; }
+
+#back-to-top-widget i {
+  margin-top: 9px;
+  margin-left: 10px; }
+
+#back-to-top-widget:hover {
+  cursor: pointer; }

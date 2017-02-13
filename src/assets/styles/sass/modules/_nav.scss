@@ -1,0 +1,60 @@
+nav {
+  background: #fff;
+  border-bottom: 1px solid $border-color;
+  padding: 5px;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: 65px;
+
+  h1 {
+    display: inline-block;
+    margin-left: 15px;
+    font-size: 22px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  ul {
+    display: inline-block;
+
+    li {
+      display: inline-block;
+      padding: 0 20px;
+
+      &:hover {
+        cursor: pointer;
+        font-weight: bold;
+        @include transition(all .2s ease-in-out);
+      }
+    }
+  }
+
+  #search-box {
+    float: right;
+    margin: 10px 20px;
+
+    input {
+      display: none;
+      @include transition(all .2s ease-in-out);
+
+      &.visible {
+        display: inline-block;
+      }
+    }
+
+    i {
+      margin-right: 10px;
+      margin-top: 10px;
+      font-size: 1.2em;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

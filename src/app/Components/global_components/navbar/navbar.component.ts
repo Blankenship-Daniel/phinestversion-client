@@ -9,7 +9,12 @@ export class NavbarComponent implements OnInit {
 
   constructor() { }
 
+  private isVisible: boolean = false;
+
   ngOnInit() {
   }
 
+  showSearch() {
+    this.isVisible = !this.isVisible;
+  }
 }

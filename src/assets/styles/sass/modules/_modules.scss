@@ -1,5 +1,10 @@
-@import 'colors';
+.page-title {
+  margin: 3em .5em 1em .5em;
+  font-size: 3em;
+  font-weight: lighter;
+  color: material-color('grey', '900');
 
-#back-to-top-widget {
-  background: material-color('blue', '700');
+  hr {
+    background: material-color('grey', '300');
+  }
 }
