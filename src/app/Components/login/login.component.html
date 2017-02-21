@@ -3,17 +3,42 @@
     Login
   </div>
 
-  <div class="box100 grey100-bg shadow">
-    <div class="input-large">
-      <input type="text" name="email" placeholder="Email">
+  <form [formGroup]="form" novalidate (ngSubmit)="authUser(form.value, form.valid)">
+    <div class="box100 grey100-bg shadow">
+      <div class="input-large">
+        <input
+          [formControl]="form.controls['email']"
+          type="text"
+          name="email"
+          placeholder="Email"
+          formControlName="email"
+          pattern='(.+)@(.+){2,}\.(.+){2,}'
+          required>
+          <div class="error"
+            *ngIf="!form.controls['email'].valid && form.controls['email'].touched">
+              Please enter a valid email address
+          </div>
+      </div>
+      <div class="input-large">
+        <input
+          [formControl]="form.controls['password']"
+          type="password"
+          name="password"
+          placeholder="Password"
+          formControlName="password"
+          required>
+          <div
+            class="error"
+            *ngIf="!form.controls['password'].valid && form.controls['password'].touched">
+              Please enter a valid password
+          </div>
+      </div>
+      <div class="box33"></div>
+      <div class="box33"></div>
+      <div class="box33">
+        <input type="submit" value="Submit" class="btn blue800-bg right link">
+      </div>
     </div>
-    <div class="input-large">
-      <input type="password" name="password" placeholder="Password">
-    </div>
-    <div class="box33"></div>
-    <div class="box33"></div>
-    <div class="box33">
-      <input type="submit" value="Submit" class="btn blue800-bg right link">
-    </div>
-  </div>
+  </form>
+
 </div>

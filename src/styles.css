@@ -400,6 +400,9 @@ input {
   .page-title hr {
     background: #e0e0e0; }
 
+.error {
+  color: #ff1744; }
+
 nav {
   background: #fff;
   border-bottom: 1px solid #eeeeee;
