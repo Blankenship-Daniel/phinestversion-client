@@ -189,7 +189,7 @@ a {
   text-decoration: none;
   color: inherit; }
 
-.shadow, input.btn:hover {
+.shadow {
   -webkit-box-shadow: 0px 0px 4px -2px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 4px -2px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 4px -2px rgba(0, 0, 0, 0.75); }
@@ -254,6 +254,8 @@ input {
     outline: none;
     color: #424242;
     border-bottom: 1px solid #2196f3; }
+  input.error {
+    border-bottom: 1px solid #ff1744; }
 
 .input-large {
   margin: 0 2em; }
@@ -446,13 +448,14 @@ nav {
         cursor: pointer; }
 
 input.btn {
-  font-size: 1.5em;
+  font-size: .9em;
+  text-transform: uppercase;
   text-align: center;
-  padding: .6em 2em;
+  padding: .9em 2em;
   border-bottom: none;
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75); }
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24);
+  -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24); }
   input.btn:focus {
     color: #fff; }
 

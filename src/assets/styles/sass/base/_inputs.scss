@@ -17,6 +17,10 @@ input {
     color: material-color('grey', '800');
     border-bottom: 1px solid material-color('blue', '500');
   }
+
+  &.error {
+    border-bottom: 1px solid material-color('red', 'a400');
+  }
 }
 
 .input-large {

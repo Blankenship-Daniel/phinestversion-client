@@ -16,11 +16,13 @@ export class LoginComponent implements OnInit {
   private form      : FormGroup;
   private email     : string;
   private password  : string;
+  private formSubmitted: boolean;
 
   constructor(
     private router: Router,
     private userService: UserService
   ) {
+    this.formSubmitted = false;
     this.form = new FormGroup({
       email: new FormControl('', [
         Validators.required,
@@ -35,11 +37,12 @@ export class LoginComponent implements OnInit {
   }
 
   handleAuth(users: User[]) {
-    alert('users: ' + JSON.stringify(users));
-    // this.router.navigateByUrl('/');
+      localStorage.setItem('user', JSON.stringify(users));
+      this.router.navigateByUrl('/');
   }
 
   authUser(form, valid) {
+    this.formSubmitted = true;
     if (valid) {
       this.userService.authUser(form.email, form.password).subscribe(
         users => this.handleAuth(users),
@@ -47,9 +50,6 @@ export class LoginComponent implements OnInit {
           console.log(err);
         }
       );
-    } else {
-      console.log('form: ' + JSON.stringify(form));
-      console.log('valid: ' + valid);
     }
   }
 }

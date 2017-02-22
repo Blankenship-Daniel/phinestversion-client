@@ -3,10 +3,19 @@
     Login
   </div>
 
-  <form [formGroup]="form" novalidate (ngSubmit)="authUser(form.value, form.valid)">
+  <form
+    novalidate
+    [formGroup]="form"
+    (ngModel)="form"
+    (ngSubmit)="authUser(form.value, form.valid)">
     <div class="box100 grey100-bg shadow">
       <div class="input-large">
         <input
+          [ngClass]="{
+              'error': !form.controls['email'].valid &&
+                        form.controls['email'].touched ||
+                        !form.valid && formSubmitted && !form.controls['email'].valid
+          }"
           [formControl]="form.controls['email']"
           type="text"
           name="email"
@@ -15,12 +24,19 @@
           pattern='(.+)@(.+){2,}\.(.+){2,}'
           required>
           <div class="error"
-            *ngIf="!form.controls['email'].valid && form.controls['email'].touched">
+            *ngIf="!form.controls['email'].valid &&
+                    form.controls['email'].touched ||
+                    !form.valid && formSubmitted && !form.controls['email'].valid">
               Please enter a valid email address
           </div>
       </div>
       <div class="input-large">
         <input
+          [ngClass]="{
+              'error':!form.controls['password'].valid &&
+              form.controls['password'].touched ||
+              !form.valid && formSubmitted && !form.controls['password'].valid
+          }"
           [formControl]="form.controls['password']"
           type="password"
           name="password"
@@ -29,14 +45,19 @@
           required>
           <div
             class="error"
-            *ngIf="!form.controls['password'].valid && form.controls['password'].touched">
+            *ngIf="!form.controls['password'].valid &&
+                    form.controls['password'].touched ||
+                    !form.valid && formSubmitted && !form.controls['password'].valid">
               Please enter a valid password
           </div>
       </div>
       <div class="box33"></div>
       <div class="box33"></div>
       <div class="box33">
-        <input type="submit" value="Submit" class="btn blue800-bg right link">
+        <input
+          type="submit"
+          value="Submit"
+          class="btn blue800-bg right link">
       </div>
     </div>
   </form>
