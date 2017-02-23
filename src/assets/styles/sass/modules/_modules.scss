@@ -12,3 +12,45 @@
 .error {
     color: material-color('red', 'a400');
 }
+
+.user-container {
+    position: relative;
+    margin-left: 40px;
+    font-size: .9em;
+    height: 100%;
+
+    .profile-pic {
+        top: -4px;
+        left: -30px;
+        position: absolute;
+        width: 20px;
+        border-radius: 50%;
+    }
+}
+
+.profile-pic {
+    border-radius: 50%;
+    width: 30px;
+}
+
+.submit-a-version-dropdown {
+    position: relative;
+    display: block;
+    background: #fff;
+    border-top: 1px solid material-color('grey', '300');
+    border-bottom: 1px solid material-color('grey', '300');
+    display: none;
+    margin-top: 21px;
+}
+
+.visible {
+    display: block;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}

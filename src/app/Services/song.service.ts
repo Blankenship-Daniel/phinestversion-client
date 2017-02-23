@@ -3,6 +3,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
 import { SongRank } from '../Models/songRank.model';
+import { Song } from '../Models/song.model';
 
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
@@ -33,4 +34,13 @@ export class SongService {
               .catch((error:any) => Observable.throw(
                 error.json().error || 'Server error'
               ));
-  }}
+  }
+
+  getAllSongs() : Observable<Song[]> {
+    return this.http.get(this.apiEndpoint + '/songs')
+            .map((res:Response) => res.json())
+            .catch((error:any) => Observable.throw(
+              error.json().error || 'Server error'
+            ));
+  }
+}

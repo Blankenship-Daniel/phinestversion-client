@@ -37,8 +37,9 @@ export class LoginComponent implements OnInit {
   }
 
   handleAuth(users: User[]) {
-      localStorage.setItem('user', JSON.stringify(users));
-      this.router.navigateByUrl('/');
+    localStorage.setItem('user', JSON.stringify(users));
+    // this.router.navigateByUrl('/');
+    location.pathname = '/';
   }
 
   authUser(form, valid) {

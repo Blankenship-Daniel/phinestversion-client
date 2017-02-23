@@ -1,5 +1,8 @@
 <div class="content">
   <div class="box">
+      <img
+        *ngIf="users === undefined" 
+        class="centered" src="/assets/images/loading.gif" alt="Loading">
       <app-user-box
         *ngFor="let user of users; let i = index"
         [index]="i"

@@ -12,6 +12,9 @@
 </app-heading-panel>
 <div class="content">
   <div class="box">
+    <img
+      *ngIf="submissions === undefined" 
+      class="centered" src="/assets/images/loading.gif" alt="Loading">
     <app-submission-box
       [index]="i"
       [showTitle]="true"

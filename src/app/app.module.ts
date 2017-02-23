@@ -77,7 +77,7 @@ import { ShaderService } from './Services/shader.service';
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(routes, {
-        useHash: true,
+        useHash: false,
     })
   ],
   providers: [

@@ -1,13 +1,45 @@
 <nav>
     <h1 routerLink="/">Phinest Version.</h1>
     <ul>
+      <li *ngIf="user !== null"><button (click)="showSubmitAVersion()" class="submit-version-btn link">Submit a version.</button></li>
       <li routerLink="/songs">Songs</li>
       <li routerLink="/shows">Shows</li>
       <li routerLink="/years">Years</li>
       <li routerLink="/users">Leaderboard</li>
     </ul>
-    <span id="search-box">
-        <i on-click="showSearch()" class="fa fa-search"></i>
-        <input class="{{ isVisible ? 'visible' : '' }}" type="text">
+    <span (click)="navigateToUser(user.username)" routerLink="/users/{{ user.username }}" class="user-container link" *ngIf="user !== null">
+        <img class="profile-pic" src="/assets/images/users{{ user.image }}" alt="{{ user.username }}'s profile picture'">
+        {{ user.username }}
     </span>
+    <span routerLink="/login" class="link" *ngIf="user === null">
+        Login
+    </span>
+    <span id="search-box">
+        <i (click)="showSearch()" class="fa fa-search"></i>
+        <input class="{{ searchIsVisible ? 'visible' : '' }}" type="text">
+    </span>
+    <div class="submit-a-version-dropdown {{ submitIsVisible ? 'visible' : '' }}">
+        <div class="box100">
+          <div class="box33">
+              <h1>Song</h1>
+              <select class="" name="songsDropdown">
+                  <option *ngFor="let song of songs" value="{{ song.slug }}">{{ song.title }}</option>
+              </select>
+          </div>
+          <div class="box33">
+              <h1>Show Date</h1>
+              <select class="" name="showsDropdown">
+                  <option *ngFor="let show of shows" value="{{ show.date }}">{{ show.date }}</option>
+              </select>
+          </div>
+          <div class="box33">
+              <h1>Description</h1>
+              <textarea name="description"></textarea>
+          </div>
+          <input
+            type="submit"
+            value="Submit"
+            class="btn blue800-bg right link">
+        </div>
+    </div>
 </nav>

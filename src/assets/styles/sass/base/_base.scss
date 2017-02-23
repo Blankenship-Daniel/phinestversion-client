@@ -27,3 +27,42 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+ul {
+  margin: 0;
+}
+
+select {
+  -webkit-appearance: none;
+  border: none;
+  border-bottom: 1px solid material-color('grey', '300');
+  border-radius: 0;
+  background: none;
+  padding: 1em;
+  margin: 1em;
+  display: block;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+button:focus {
+  outline: none;
+}
+
+textarea {
+  padding: 1em;
+  border: none;
+  border: 1px solid material-color('grey', '100');
+  display: block;
+  width: 100%;
+  @include transition(all .2s ease-in-out);
+
+  &:focus {
+    outline: none;
+    color: material-color('grey', '800');
+    border: 1px solid material-color('blue', '500');
+  }
+}

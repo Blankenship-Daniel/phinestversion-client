@@ -1,13 +1,29 @@
 nav {
   background: #fff;
   border-bottom: 1px solid $border-color;
-  padding: 5px;
+  padding: 10px 0px;
   z-index: 1;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   max-height: 65px;
+
+  .submit-version-btn {
+      border: 2px solid material-color('grey', '800');
+      color: material-color('grey', '800');
+      border-radius: 5px;
+      padding: 10px 20px;
+      background: transparent;
+      display: block;
+      -webkit-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        background: material-color('grey', '800');
+        color: #fff;
+      }
+  }
 
   h1 {
     display: inline-block;

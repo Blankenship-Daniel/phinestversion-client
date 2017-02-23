@@ -14,97 +14,78 @@
 <div class="content">
   <div class="box">
       <div class="box50 grey100-bg min-height350 shadow">
-          <h1>Shows</h1>
+          <h1>
+              Shows
+              <span *ngIf="shows === undefined">
+                <i class="fa fa-spinner fa-spin"></i>
+              </span>
+          </h1>
           <hr>
-          <table id="shows-table">
+          <table class="top-rankings-table">
               <tr>
                   <th></th>
                   <th>Date</th>
                   <th>Venue</th>
-                  <th>Score</th>
+                  <th class="right">Score</th>
               </tr>
-              <tr>
-                  <td>1.</td>
-                  <td class="focus">2015-08-22</td>
-                  <td>Watkings Glen International Watkins Glen, NY</td>
-                  <td class="score">+113</td>
-              </tr>
-              <tr>
-                  <td>2.</td>
-                  <td class="focus">1997-11-17</td>
-                  <td>McNichols Arena Denver, CO</td>
-                  <td class="score">+97</td>
-              </tr>
-              <tr>
-                  <td>3.</td>
-                  <td class="focus">1997-08-17</td>
-                  <td>Loring Commerce Center at Loring Air Force Base Limestone, ME</td>
-                  <td class="score">+97</td>
-              </tr>
-              <tr>
-                  <td>4.</td>
-                  <td class="focus">1995-12-31</td>
-                  <td>Madison Square Garden New York, NY</td>
-                  <td class="score">+86</td>
-              </tr>
-              <tr>
-                  <td>5.</td>
-                  <td class="focus">1997-11-22</td>
-                  <td>Hampton Coliseum Hampton, VA</td>
-                  <td class="score">+83</td>
+
+              <tr routerLink="/shows/{{ show.date }}" class="link" *ngFor="let show of shows; let i = index">
+                  <td>{{ i + 1 }}.</td>
+                  <td class="focus">{{ show.date }}</td>
+                  <td>{{ show.location }}</td>
+                  <td class="score">+{{ show.score }}</td>
               </tr>
           </table>
       </div>
       <div class="box50 grey100-bg min-height350 shadow">
-          <h1>Songs</h1>
+          <h1>
+              Songs
+              <span *ngIf="songs === undefined">
+                <i class="fa fa-spinner fa-spin"></i>
+              </span>
+          </h1>
           <hr>
-          <table id="songs-table">
+          <table class="top-rankings-table">
               <tr>
                   <th></th>
                   <th>Song</th>
                   <th>Times Played</th>
-                  <th>Score</th>
+                  <th class="right">Score</th>
               </tr>
-              <tr>
-                  <td>1.</td>
-                  <td class="focus">Rift</td>
-                  <td>270</td>
-                  <td class="score">+790</td>
-              </tr>
-              <tr>
-                  <td>2.</td>
-                  <td class="focus">Tweezer</td>
-                  <td>359</td>
-                  <td class="score">+484</td>
-              </tr>
-              <tr>
-                  <td>3.</td>
-                  <td class="focus">Ghost</td>
-                  <td>157</td>
-                  <td class="score">+295</td>
-              </tr>
-              <tr>
-                  <td>4.</td>
-                  <td class="focus">Bathtub Gin</td>
-                  <td>245</td>
-                  <td class="score">+290</td>
-              </tr>
-              <tr>
-                  <td>5.</td>
-                  <td class="focus">Reba</td>
-                  <td>350</td>
-                  <td class="score">+227</td>
+
+              <tr routerLink="/songs/{{ song.slug }}" class="link" *ngFor="let song of songs; let i = index">
+                  <td>{{ i + 1 }}.</td>
+                  <td class="focus">{{ song.title }}</td>
+                  <td>{{ song.tracks_count }}</td>
+                  <td class="score">+{{ song.score }}</td>
               </tr>
           </table>
       </div>
   </div>
   <div class="box">
       <div class="box50 grey100-bg min-height350 shadow">
-          <h1>Recent Submissions</h1>
+          <h1>
+              Leaderboard
+              <span *ngIf="users === undefined">
+                <i class="fa fa-spinner fa-spin"></i>
+              </span>
+          </h1>
           <hr>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deserunt maiores qui dolorem sit earum rerum animi recusandae beatae, eum porro consectetur id unde, facilis sequi nemo alias, voluptatibus debitis.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum nihil atque ipsam, animi a, aliquid qui odit sunt et vel nulla illum, omnis nesciunt sequi aperiam soluta asperiores dolorem nostrum.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quam voluptates earum temporibus distinctio saepe necessitatibus, mollitia, fugit expedita beatae porro autem illum. Placeat fugit, quo quasi. Accusantium, asperiores nostrum.</p>
+          <table class="top-rankings-table">
+              <tr>
+                  <th></th>
+                  <th>Username</th>
+                  <th></th>
+                  <th class="right">Score</th>
+              </tr>
+
+              <tr routerLink="/users/{{ user.username }}" class="link" *ngFor="let user of users; let i = index">
+                  <td>{{ i + 1 }}.</td>
+                  <td class="focus">{{ user.username }}</td>
+                  <td>&nbsp;</td>
+                  <td class="score">+{{ user.score }}</td>
+              </tr>
+          </table>
       </div>
   </div>
 </div>

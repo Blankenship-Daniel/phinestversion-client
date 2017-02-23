@@ -3,6 +3,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
 import { ShowRank } from '../Models/showRank.model';
+import { Show } from '../Models/show.model';
 
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
@@ -38,6 +39,15 @@ export class ShowService {
 
   getShowRankingByDate(date: string) : Observable<ShowRank[]> {
     let request: string = this.apiEndpoint + '/shows/rankings/' + date;
+    return this.http.get(request)
+              .map((res:Response) => res.json())
+              .catch((error:any) => Observable.throw(
+                error.json().error || 'Server error'
+              ));
+  }
+
+  getAllShows() : Observable<Show[]> {
+    let request: string = this.apiEndpoint + '/shows';
     return this.http.get(request)
               .map((res:Response) => res.json())
               .catch((error:any) => Observable.throw(
