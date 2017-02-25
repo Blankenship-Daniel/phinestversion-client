@@ -1,7 +1,7 @@
 <nav>
     <h1 routerLink="/">Phinest Version.</h1>
     <ul>
-      <li *ngIf="user !== null"><button (click)="showSubmitAVersion()" class="submit-version-btn link">Submit a version.</button></li>
+      <li *ngIf="user !== null"><button (click)="toggleSubmitAVersion()" class="submit-version-btn link">Submit a version.</button></li>
       <li routerLink="/songs">Songs</li>
       <li routerLink="/shows">Shows</li>
       <li routerLink="/years">Years</li>
@@ -15,31 +15,90 @@
         Login
     </span>
     <span id="search-box">
-        <i (click)="showSearch()" class="fa fa-search"></i>
+        <i (click)="toggleSearch()" class="fa fa-search"></i>
         <input class="{{ searchIsVisible ? 'visible' : '' }}" type="text">
     </span>
-    <div class="submit-a-version-dropdown {{ submitIsVisible ? 'visible' : '' }}">
-        <div class="box100">
-          <div class="box33">
-              <h1>Song</h1>
-              <select class="" name="songsDropdown">
-                  <option *ngFor="let song of songs" value="{{ song.slug }}">{{ song.title }}</option>
-              </select>
-          </div>
-          <div class="box33">
-              <h1>Show Date</h1>
-              <select class="" name="showsDropdown">
-                  <option *ngFor="let show of shows" value="{{ show.date }}">{{ show.date }}</option>
-              </select>
-          </div>
-          <div class="box33">
-              <h1>Description</h1>
-              <textarea name="description"></textarea>
-          </div>
-          <input
-            type="submit"
-            value="Submit"
-            class="btn blue800-bg right link">
+    <form
+      novalidate
+      [formGroup]="submitAVersionForm"
+      (ngModel)="submitAVersionForm"
+      (ngSubmit)="submitAVersion(submitAVersionForm.value, submitAVersionForm.valid)">
+        <div
+          class="submit-a-version-dropdown {{ submitIsVisible ? 'visible' : '' }}">
+            <div class="box100">
+              <div (click)="toggleSubmitAVersion()" class="close-icon link">
+                  <span><i class="fa fa-close"></i></span>
+              </div>
+              <div class="box33">
+                  <h1>Song</h1>
+                  <select
+                    [ngClass]="{
+                        'error': !submitAVersionForm.controls['songsDropdown'].valid &&
+                                  submitAVersionForm.controls['songsDropdown'].touched ||
+                                  formSubmitted && !submitAVersionForm.controls['songsDropdown'].valid
+                    }"
+                    [formControl]="submitAVersionForm.controls['songsDropdown']"
+                    formControlName="songsDropdown"
+                    name="songsDropdown"
+                    required>
+                      <option value="">Choose a song</option>
+                      <option *ngFor="let song of songs" value="{{ song.id }}">
+                          {{ song.title }}
+                      </option>
+                  </select>
+                  <div
+                    *ngIf="!submitAVersionForm.controls['songsDropdown'].valid &&
+                            submitAVersionForm.controls['songsDropdown'].touched ||
+                            formSubmitted && !submitAVersionForm.controls['songsDropdown'].valid"
+                    class="error sv-error">
+                    Please enter a song name
+                  </div>
+              </div>
+              <div class="box33">
+                  <h1>Show Date</h1>
+                  <select
+                    [ngClass]="{
+                        'error': !submitAVersionForm.controls['showsDropdown'].valid &&
+                                  submitAVersionForm.controls['showsDropdown'].touched ||
+                                  formSubmitted && !submitAVersionForm.controls['showsDropdown'].valid
+                    }"
+                    [formControl]="submitAVersionForm.controls['showsDropdown']"
+                    formControlName="showsDropdown"
+                    name="showsDropdown"
+                    required>
+                      <option value="">Choose a date</option>
+                      <option *ngFor="let show of shows" value="{{ show.id }}">{{ show.date }}</option>
+                  </select>
+                  <div
+                    *ngIf="!submitAVersionForm.controls['showsDropdown'].valid &&
+                            submitAVersionForm.controls['showsDropdown'].touched ||
+                            formSubmitted && !submitAVersionForm.controls['showsDropdown'].valid"
+                    class="error sv-error">
+                    Please enter a show date
+                  </div>
+              </div>
+              <div class="box33">
+                  <h1>Description</h1>
+                  <textarea
+                    [ngClass]="{
+                        'error': !submitAVersionForm.controls['description'].valid &&
+                                  submitAVersionForm.controls['description'].touched ||
+                                  formSubmitted && !submitAVersionForm.controls['description'].valid
+                    }"
+                    [formControl]="submitAVersionForm.controls['description']"
+                    formControlName="description"
+                    name="description"
+                    required></textarea>
+                  <div
+                    *ngIf="!submitAVersionForm.controls['description'].valid &&
+                            submitAVersionForm.controls['description'].touched ||
+                            formSubmitted && !submitAVersionForm.controls['description'].valid"
+                    class="error sv-error">
+                    Please enter a description
+                  </div>
+              </div>
+              <input type="submit"value="Submit" class="blue800-bg right link btn">
+            </div>
         </div>
-    </div>
+  </form>
 </nav>

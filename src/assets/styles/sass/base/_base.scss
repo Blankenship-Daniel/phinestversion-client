@@ -33,15 +33,18 @@ ul {
 }
 
 select {
-  -webkit-appearance: none;
-  border: none;
-  border-bottom: 1px solid material-color('grey', '300');
-  border-radius: 0;
-  background: none;
-  padding: 1em;
-  margin: 1em;
   display: block;
+  background: none;
   width: 100%;
+  border: 1px solid material-color('grey', '200');
+  height: 3em;
+  margin: 1em;
+  border-radius: 0;
+  @include transition(all .2s ease-in-out);
+
+  &.error {
+    border: 1px solid material-color('red', 'a400');
+  }
 
   &:focus {
     outline: none;
@@ -55,10 +58,14 @@ button:focus {
 textarea {
   padding: 1em;
   border: none;
-  border: 1px solid material-color('grey', '100');
+  border: 1px solid material-color('grey', '200');
   display: block;
   width: 100%;
   @include transition(all .2s ease-in-out);
+
+  &.error {
+    border: 1px solid material-color('red', 'a400');
+  }
 
   &:focus {
     outline: none;

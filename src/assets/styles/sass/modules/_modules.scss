@@ -1,8 +1,10 @@
 .page-title {
   margin: 3em .5em 1em .5em;
+
+  color: material-color('grey', '900');
+
   font-size: 3em;
   font-weight: lighter;
-  color: material-color('grey', '900');
 
   hr {
     background: material-color('grey', '300');
@@ -15,32 +17,40 @@
 
 .user-container {
     position: relative;
-    margin-left: 40px;
-    font-size: .9em;
+
     height: 100%;
+    margin-left: 40px;
+
+    font-size: .9em;
 
     .profile-pic {
+        position: absolute;
         top: -4px;
         left: -30px;
-        position: absolute;
+
         width: 20px;
+
         border-radius: 50%;
     }
 }
 
 .profile-pic {
-    border-radius: 50%;
     width: 30px;
+
+    border-radius: 50%;
 }
 
 .submit-a-version-dropdown {
     position: relative;
+
     display: block;
-    background: #fff;
+    display: none;
+
+    margin-top: 21px;
+
     border-top: 1px solid material-color('grey', '300');
     border-bottom: 1px solid material-color('grey', '300');
-    display: none;
-    margin-top: 21px;
+    background: #fff;
 }
 
 .visible {
@@ -53,4 +63,15 @@
   left: 50%;
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
+}
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5em;
+}
+
+.sv-error {
+  margin: 1em;
 }

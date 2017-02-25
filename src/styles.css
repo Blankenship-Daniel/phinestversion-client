@@ -193,15 +193,17 @@ ul {
   margin: 0; }
 
 select {
-  -webkit-appearance: none;
-  border: none;
-  border-bottom: 1px solid #e0e0e0;
-  border-radius: 0;
-  background: none;
-  padding: 1em;
-  margin: 1em;
   display: block;
-  width: 100%; }
+  background: none;
+  width: 100%;
+  border: 1px solid #eeeeee;
+  height: 3em;
+  margin: 1em;
+  border-radius: 0;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out; }
+  select.error {
+    border: 1px solid #ff1744; }
   select:focus {
     outline: none; }
 
@@ -211,11 +213,13 @@ button:focus {
 textarea {
   padding: 1em;
   border: none;
-  border: 1px solid #f5f5f5;
+  border: 1px solid #eeeeee;
   display: block;
   width: 100%;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out; }
+  textarea.error {
+    border: 1px solid #ff1744; }
   textarea:focus {
     outline: none;
     color: #424242;
@@ -430,9 +434,9 @@ input {
  *****************************************************************************/
 .page-title {
   margin: 3em .5em 1em .5em;
+  color: #212121;
   font-size: 3em;
-  font-weight: lighter;
-  color: #212121; }
+  font-weight: lighter; }
   .page-title hr {
     background: #e0e0e0; }
 
@@ -441,28 +445,28 @@ input {
 
 .user-container {
   position: relative;
+  height: 100%;
   margin-left: 40px;
-  font-size: .9em;
-  height: 100%; }
+  font-size: .9em; }
   .user-container .profile-pic {
+    position: absolute;
     top: -4px;
     left: -30px;
-    position: absolute;
     width: 20px;
     border-radius: 50%; }
 
 .profile-pic {
-  border-radius: 50%;
-  width: 30px; }
+  width: 30px;
+  border-radius: 50%; }
 
 .submit-a-version-dropdown {
   position: relative;
   display: block;
-  background: #fff;
+  display: none;
+  margin-top: 21px;
   border-top: 1px solid #e0e0e0;
   border-bottom: 1px solid #e0e0e0;
-  display: none;
-  margin-top: 21px; }
+  background: #fff; }
 
 .visible {
   display: block; }
@@ -473,6 +477,15 @@ input {
   left: 50%;
   /* bring your own prefixes */
   transform: translate(-50%, -50%); }
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5em; }
+
+.sv-error {
+  margin: 1em; }
 
 nav {
   background: #fff;

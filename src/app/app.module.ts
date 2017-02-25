@@ -1,3 +1,6 @@
+import 'hammerjs';
+import { MaterialModule } from '@angular/material';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -76,6 +79,7 @@ import { ShaderService } from './Services/shader.service';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    MaterialModule.forRoot(),
     RouterModule.forRoot(routes, {
         useHash: false,
     })

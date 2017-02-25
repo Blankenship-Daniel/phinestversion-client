@@ -1,10 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../../Models/user.model';
 import { Router } from '@angular/router';
+
 import { SongService } from '../../../Services/song.service';
-import { Song } from '../../../Models/song.model';
 import { ShowService } from '../../../Services/show.service';
+import { SubmissionService } from '../../../Services/submission.service';
+
+import { Song } from '../../../Models/song.model';
 import { Show } from '../../../Models/show.model';
+import { Submission } from '../../../Models/submission.model';
+
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
@@ -13,16 +19,25 @@ import { Show } from '../../../Models/show.model';
 })
 export class NavbarComponent implements OnInit {
 
-  private user: User;
-  private songs: Song[];
-  private shows: Show[];
+  private user  : User;
+  private songs : Song[];
+  private shows : Show[];
+  private formSubmitted       : boolean;
+  private submitAVersionForm  : FormGroup;
 
   constructor(
     private router: Router,
     private songService: SongService,
-    private showService: ShowService
+    private showService: ShowService,
+    private submissionService: SubmissionService
   ) {
     this.user = null;
+    this.formSubmitted = false;
+    this.submitAVersionForm = new FormGroup({
+        songsDropdown: new FormControl('', Validators.required),
+        showsDropdown: new FormControl('', Validators.required),
+        description:   new FormControl('', Validators.required)
+    });
   }
 
   private searchIsVisible: boolean = false;
@@ -40,11 +55,39 @@ export class NavbarComponent implements OnInit {
     location.pathname = '/users/' + username;
   }
 
-  showSubmitAVersion() {
+  submitAVersion(form, valid) {
+    this.formSubmitted = true;
+    if (valid) {
+      let song_id     = form.songsDropdown;
+      let show_id     = form.showsDropdown;
+      let description = form.description;
+      let user        = JSON.parse(localStorage.getItem('user'));
+      let user_id     = user.id;
+
+      this.submissionService.saveSubmission(
+        song_id,
+        show_id,
+        description,
+        user_id,
+        0 // score will always be 0 when it is first submitted
+      ).subscribe(
+        submissions => this.redirectToSubmissionPage(submissions),
+        err         => {
+          console.log(err);
+        }
+      );
+    }
+  }
+
+  redirectToSubmissionPage(submissions: Submission[]) {
+    location.pathname = '/users/' + submissions[0].username;
+  }
+
+  toggleSubmitAVersion() {
     this.submitIsVisible = !this.submitIsVisible;
   }
 
-  showSearch() {
+  toggleSearch() {
     this.searchIsVisible = !this.searchIsVisible;
   }
 
