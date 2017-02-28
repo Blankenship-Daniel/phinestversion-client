@@ -5,16 +5,16 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 
 import { YearsComponent } from './years/years.component';
-import { YearComponent  } from './years/year/year.component';
+import { YearComponent  } from './year/year.component';
 
 import { ShowsComponent } from './shows/shows.component';
-import { ShowComponent  } from './shows/show/show.component';
+import { ShowComponent  } from './show/show.component';
 
 import { SongsComponent } from './songs/songs.component';
-import { SongComponent  } from './songs/song/song.component';
+import { SongComponent  } from './song/song.component';
 
 import { UsersComponent } from './users/users.component';
-import { UserComponent } from './users/user/user.component';
+import { UserComponent } from './user/user.component';
 
 
 export const routes: Routes = [

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
+
 import { ShowService } from '../../Services/show.service';
 import { ShowRank } from '../../Models/showRank.model';
 
@@ -8,7 +9,7 @@ import { ShowRank } from '../../Models/showRank.model';
   styleUrls: ['./shows.component.css']
 })
 export class ShowsComponent implements OnInit {
-  
+
   @HostListener('window:scroll', ['$event']) onScroll(ev) {
     var pageHeight = document.documentElement.scrollHeight;
     var scrollPos  = document.documentElement.clientHeight + window.pageYOffset;
