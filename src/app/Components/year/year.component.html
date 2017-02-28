@@ -1,0 +1,24 @@
+<app-heading-panel>
+  <div
+    *ngFor="let year of years"
+    class="box100 blue700-bg no-margin shadow">
+    <div class="box50 title">
+      {{ year.year }}
+    </div>
+    <div class="box50 score">
+      +{{ year.year_score }}
+    </div>
+  </div>
+</app-heading-panel>
+<div class="content">
+  <div class="box">
+    <img
+      *ngIf="shows === undefined" 
+      class="centered" src="/assets/images/loading.gif" alt="Loading">
+    <app-show-box *ngFor="let show of shows; let i = index"
+      [show]="show"
+      [index]="i">
+    </app-show-box>
+  </div>
+</div>
+<app-back-to-top></app-back-to-top>
