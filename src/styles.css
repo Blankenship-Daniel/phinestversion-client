@@ -211,11 +211,12 @@ button:focus {
   outline: none; }
 
 textarea {
+  margin: 0 auto;
   padding: 1em;
   border: none;
   border: 1px solid #eeeeee;
   display: block;
-  width: 100%;
+  width: 96%;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out; }
   textarea.error {

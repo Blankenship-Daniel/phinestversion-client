@@ -48,19 +48,16 @@
   </div>
 </div>
 <div>
-  <app-comment-list
-    [showComments]="showComments"
-    [comments]="comments">
-  </app-comment-list>
   <div *ngIf="showComments === true">
     <div *ngFor="let size of commentListSize">
       <div (click)="loadComments()" *ngIf="comments?.length < size.size" class="box100">
-        <div class="box33"></div>
-        <div class="box33 load-more-btn">
-          <i class="fa fa-arrow-circle-down link"></i>
-        </div>
-        <div class="box33"></div>
+        <span class="link">Load previous comments</span>
       </div>
     </div>
   </div>
+  <app-comment-list
+    [submissionId]="submission.submission_id"
+    [showComments]="showComments"
+    [comments]="comments">
+  </app-comment-list>
 </div>

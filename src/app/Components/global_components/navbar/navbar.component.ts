@@ -64,6 +64,10 @@ export class NavbarComponent implements OnInit {
       let user        = JSON.parse(localStorage.getItem('user'));
       let user_id     = user.id;
 
+      // reset the form
+      this.submitAVersionForm.reset();
+      this.formSubmitted = false;
+
       this.submissionService.saveSubmission(
         song_id,
         show_id,

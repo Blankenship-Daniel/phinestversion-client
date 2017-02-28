@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
+
 import { Submission } from '../../../../Models/submission.model';
+
 import { ShaderService } from '../../../../Services/shader.service';
+
 import { CommentService } from '../../../../Services/comment.service';
 import { Comment } from '../../../../Models/comment.model';
 import { CommentListSize } from '../../../../Models/commentListSize.model';
@@ -20,12 +23,16 @@ export class SubmissionBoxComponent implements OnInit {
   private comments: Comment[];
   private commentListSize: CommentListSize[];
   private showComments: boolean = false;
-  private offset: number = 0;
+  private offset: number;
+  private offsetAmount: number
 
   constructor(
     private shader: ShaderService,
     private commentService: CommentService
-  ) { }
+  ) {
+    this.offset       = 0;
+    this.offsetAmount = 5;
+  }
 
   ngOnInit() {
     this.loadCommentsLength();
@@ -41,17 +48,21 @@ export class SubmissionBoxComponent implements OnInit {
   }
 
   addComments(comments: Comment[]) {
-    this.offset += 5;
-    
+    this.offset += this.offsetAmount;
+
     if (this.comments === undefined) {
       this.comments = comments;
       return;
     }
-    this.comments.push.apply(this.comments, comments);
+    this.comments = comments.concat(this.comments);
   }
 
   loadCommentsLength() {
-    this.commentService.getCommentsBySubmissionIdCount(this.submission.submission_id).subscribe(
+    this.commentService
+        .getCommentsBySubmissionIdCount(
+          this.submission.submission_id
+        )
+        .subscribe(
       commentListSize => this.commentListSize = commentListSize,
       err             => {
         console.log(err);
@@ -60,7 +71,13 @@ export class SubmissionBoxComponent implements OnInit {
   }
 
   loadComments() {
-    this.commentService.getCommentsBySubmissionId(this.submission.submission_id, 5, this.offset).subscribe(
+    this.commentService
+        .getCommentsBySubmissionId(
+          this.submission.submission_id,
+          this.offsetAmount,
+          this.offset
+        )
+        .subscribe(
       comments => this.addComments(comments),
       err      => {
         console.log(err);

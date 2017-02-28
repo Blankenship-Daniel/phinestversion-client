@@ -37,4 +37,20 @@ export class CommentService {
                 error.json().error || 'Server error'
               ));
   }
+
+  submitComment(submissionId: number, userId: number, comment: string) : Observable<Comment[]> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let request: string = this.apiEndpoint + '/comments/save';
+    let body: string = JSON.stringify({
+      submission_id: submissionId,
+      user_id: userId,
+      comment: comment
+    });
+    return this.http.post(request, body, options)
+              .map((res:Response) => res.json())
+              .catch((error:any) => Observable.throw(
+                error.json().error || 'Server error'
+              ));
+  }
 }
