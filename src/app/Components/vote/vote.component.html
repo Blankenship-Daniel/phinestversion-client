@@ -1,3 +1,16 @@
-<p>
-  vote works!
-</p>
+<div
+  [ngClass]="{ 'selected' : voteType === 'up' }"
+  (click)="upVote()" class="arrow-up grey{{ getShade() }}-bg link">
+  <i class="fa fa-chevron-up"></i>
+</div>
+<span *ngIf="score < 0">
+  {{ score }}
+</span>
+<span *ngIf="score >= 0">
+  +{{ score }}
+</span>
+<div
+  [ngClass]="{ 'selected' : voteType === 'down' }"
+  (click)="downVote()" class="arrow-down grey{{ getShade() }}-bg link">
+  <i class="fa fa-chevron-down"></i>
+</div>

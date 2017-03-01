@@ -42,6 +42,10 @@ export class CommentListComponent implements OnInit {
       return;
     }
     this.comments.push.apply(this.comments, comments);
+    
+    // Notify the parent element when a comment has been submitted.
+    //  This is for updating the comment number on the submission box.
+    this.commentSubmitted.emit(true);
   }
 
   submitComment(form, valid) {
@@ -54,10 +58,6 @@ export class CommentListComponent implements OnInit {
       // Reset the form
       this.commentForm.reset();
       this.formSubmitted = false;
-
-      // Notify the parent element when a comment has been submitted.
-      //  This is for updating the comment number on the submission box.
-      this.commentSubmitted.emit(true);
 
       this.commentService.submitComment(this.submissionId, userId, comment).subscribe(
         comments => this.addComments(comments),

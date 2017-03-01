@@ -6,13 +6,18 @@
       {{ user.username }}
     </div>
     <div class="box50 score">
-      +{{ user.score }}
+      <span *ngIf="user.score >= 0">
+        +{{ user.score }}
+      </span>
+      <span *ngIf="user.score < 0">
+        {{ user.score }}
+      </span>
     </div>
   </div>
 </app-heading-panel>
 <div class="content">
   <img
-    *ngIf="submissions === undefined" 
+    *ngIf="submissions === undefined"
     class="centered" src="/assets/images/loading.gif" alt="Loading">
   <div class="box">
     <app-submission-box

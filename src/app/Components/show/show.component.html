@@ -10,14 +10,19 @@
       </div>
     </div>
     <div class="box50 score">
-      +{{ show.score }}
+      <span *ngIf="show.score >= 0">
+        +{{ show.score }}
+      </span>
+      <span *ngIf="show.score < 0">
+        {{ show.score }}
+      </span>
     </div>
   </div>
 </app-heading-panel>
 <div class="content">
   <div class="box">
     <img
-      *ngIf="submissions === undefined" 
+      *ngIf="submissions === undefined"
       class="centered" src="/assets/images/loading.gif" alt="Loading">
     <app-submission-box
       [songTitle]="true"

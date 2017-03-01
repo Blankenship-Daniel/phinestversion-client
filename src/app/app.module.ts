@@ -49,6 +49,7 @@ import { SongService } from './Services/song.service';
 import { SubmissionService } from './Services/submission.service';
 import { CommentService } from './Services/comment.service';
 import { UserService } from './Services/user.service';
+import { VoteService } from './Services/vote.service';
 
 import { ShaderService } from './Services/shader.service';
 
@@ -94,7 +95,8 @@ import { ShaderService } from './Services/shader.service';
     SubmissionService,
     CommentService,
     ShaderService,
-    UserService
+    UserService,
+    VoteService
   ],
   bootstrap: [AppComponent]
 })

@@ -398,6 +398,9 @@ input {
 .submission-box .arrow-down {
   padding-top: 5px; }
 
+.submission-box .selected {
+  color: #00e676; }
+
 .load-more-btn {
   font-size: 30px;
   text-align: center; }

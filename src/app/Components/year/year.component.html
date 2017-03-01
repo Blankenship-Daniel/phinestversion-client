@@ -6,14 +6,19 @@
       {{ year.year }}
     </div>
     <div class="box50 score">
-      +{{ year.year_score }}
+      <span *ngIf="year.score >= 0">
+        +{{ year.score }}
+      </span>
+      <span *ngIf="year.score < 0">
+        {{ year.score }}
+      </span>
     </div>
   </div>
 </app-heading-panel>
 <div class="content">
   <div class="box">
     <img
-      *ngIf="shows === undefined" 
+      *ngIf="shows === undefined"
       class="centered" src="/assets/images/loading.gif" alt="Loading">
     <app-show-box *ngFor="let show of shows; let i = index"
       [show]="show"

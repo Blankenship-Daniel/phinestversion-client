@@ -47,7 +47,7 @@ export class SubmissionService {
   }
 
   saveSubmission(song_id: number, show_id: number, description: string, user_id: number, score: number) : Observable<Submission[]> {
-    let headers = new Headers({ 'Content-Type': 'application/json' }); 
+    let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     let request: string = this.apiEndpoint + '/submissions/save';
     let body: string = JSON.stringify({
@@ -56,6 +56,22 @@ export class SubmissionService {
       description: description,
       user_id: user_id,
       score: score
+    });
+    return this.http.post(request, body, options)
+              .map((res:Response) => res.json())
+              .catch((error:any) => Observable.throw(
+                error.json().error || 'Server error'
+              ));
+  }
+
+
+  saveSubmissionScore(submissionId: number, newScore: number) : Observable<Submission[]> {
+    let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers });
+    let request: string = this.apiEndpoint + '/submissions/save/score';
+    let body: string = JSON.stringify({
+      'submission_id' : submissionId,
+      'score'         : newScore
     });
     return this.http.post(request, body, options)
               .map((res:Response) => res.json())

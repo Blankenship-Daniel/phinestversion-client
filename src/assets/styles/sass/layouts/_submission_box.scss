@@ -24,6 +24,10 @@
   .arrow-down {
     padding-top: 5px;
   }
+
+  .selected {
+    color: material-color('green', 'a400');
+  }
 }
 
 .load-more-btn {

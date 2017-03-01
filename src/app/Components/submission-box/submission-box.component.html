@@ -36,18 +36,11 @@
     </div>
   </div>
   <div class="box33 score">
-    <div class="arrow-up grey{{ getShade() }}-bg">
-      <i class="fa fa-chevron-up"></i>
-    </div>
-    <span *ngIf="submission.submission_score < 0">
-      {{ submission.submission_score }}
-    </span>
-    <span *ngIf="submission.submission_score >= 0">
-      +{{ submission.submission_score }}
-    </span>
-    <div class="arrow-down grey{{ getShade() }}-bg">
-      <i class="fa fa-chevron-down"></i>
-    </div>
+    <app-vote
+      [index]="index"
+      [score]="submission.submission_score"
+      [submissionId]="submission.submission_id">
+    </app-vote>
     <div class="see-comments-btn grey{{ getShade() }}-bg">
     </div>
   </div>
