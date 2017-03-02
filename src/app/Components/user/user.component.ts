@@ -23,16 +23,18 @@ export class UserComponent implements OnInit {
     }
   }
 
+  private score: number;
+  private offset: number;
+  private username: string;
   private users: UserRank[];
   private submissions: Submission[];
-  private offset: number = 0;
-  private username: string;
 
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
     private submissionService: SubmissionService
   ) {
+    this.offset = 0;
   }
 
   ngOnInit() {
@@ -41,9 +43,20 @@ export class UserComponent implements OnInit {
     this.loadSubmissions(this.username);
   }
 
+  handleUserScoreChange(voteChange: Event) {
+    this.score += Number(voteChange);
+  }
+
+  handleUserRank(users: UserRank[]) {
+    this.users = users;
+    for (var i = 0; i < users.length; i++) {
+      this.score = Number(users[i].score);
+    }
+  }
+
   loadUser(username: string) {
     this.userService.getUserByUserName(username).subscribe(
-      users => this.users = users,
+      users => this.handleUserRank(users),
       err   => {
           console.log(err);
       }

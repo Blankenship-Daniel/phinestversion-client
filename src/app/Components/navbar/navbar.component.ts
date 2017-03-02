@@ -45,6 +45,7 @@ export class NavbarComponent implements OnInit {
   private submitIsVisible: boolean = false;
 
   ngOnInit() {
+    // TODO: user error handling
     if (localStorage.getItem('user') !== null) {
       this.user = JSON.parse(localStorage.getItem('user'));
     }
@@ -65,6 +66,8 @@ export class NavbarComponent implements OnInit {
       let user        = JSON.parse(localStorage.getItem('user'));
       let user_id     = user.id;
 
+      // TODO: user error handling
+
       // reset the form
       this.submitAVersionForm.reset();
       this.formSubmitted = false;
@@ -84,7 +87,7 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  redirectToSubmissionPage(submissions: Submission[]) {
+  redirectToSubmissionPage(submissions: Submission) {
     location.pathname = '/users/' + submissions[0].username;
   }
 

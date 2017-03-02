@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@angular/core';
 
 import { Submission } from '../../Models/submission.model';
 
@@ -15,10 +15,11 @@ import { CommentListSize } from '../../Models/commentListSize.model';
 })
 export class SubmissionBoxComponent implements OnInit {
 
-  @Input() index      : number;
-  @Input() songTitle  : boolean = false;
-  @Input() showTitle  : boolean = false;
-  @Input() submission : Submission;
+  @Input()  index      : number;
+  @Input()  songTitle  : boolean = false;
+  @Input()  showTitle  : boolean = false;
+  @Input()  submission : Submission;
+  @Output() voteChange : EventEmitter<number>;
 
   /**
    * Contains the comment data.
@@ -66,6 +67,7 @@ export class SubmissionBoxComponent implements OnInit {
   ) {
     this.offset       = 0;
     this.offsetAmount = 5;
+    this.voteChange   = new EventEmitter<number>();
   }
 
   ngOnInit() {
@@ -85,6 +87,14 @@ export class SubmissionBoxComponent implements OnInit {
     return this.shader.getShade(this.index);
   }
 
+  /**
+   * Prepends the comments returned from the latest request to the
+   *  beginning of the current comments array. If the current comments
+   *  array is undefined it sets it to the new request.
+   * @param  {Comment[]} comments a list of Comment models which contains all
+   *                                data necessary for the comments section of
+   *                                each submission.
+   */
   addComments(comments: Comment[]) {
     this.offset += this.offsetAmount;
 
@@ -93,6 +103,17 @@ export class SubmissionBoxComponent implements OnInit {
       return;
     }
     this.comments = comments.concat(this.comments);
+  }
+
+  /**
+   * Passes the event received from the vote component up to the parent
+   *  component. This allows the total score in the heading panel to be
+   *  affected.
+   * @param  {Event} event either 1|-1 depending on how the vote component has
+   *                                    changed.
+   */
+  emitVoteChange(event) {
+    this.voteChange.emit(event); // pass the event up to its parent component.
   }
 
   /**

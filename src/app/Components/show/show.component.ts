@@ -13,9 +13,10 @@ import { Submission } from '../../Models/submission.model';
 })
 export class ShowComponent implements OnInit {
 
-  private shows: ShowRank[];
-  private submissions: Submission[];
-  private date: string;
+  private date        : string;
+  private score       : number;
+  private shows       : ShowRank[];
+  private submissions : Submission[];
 
   constructor(
     private route: ActivatedRoute,
@@ -30,9 +31,20 @@ export class ShowComponent implements OnInit {
     this.loadSubmissions(this.date);
   }
 
+  handleShowScoreChange(voteChange: Event) {
+    this.score += Number(voteChange);
+  }
+
+  handleShowRank(shows: ShowRank[]) {
+    this.shows = shows;
+    for (var i = 0; i < shows.length; i++) {
+      this.score = Number(shows[i].score);
+    }
+  }
+
   loadShowRank(date: string) {
     this.showService.getShowRankingByDate(date).subscribe(
-      shows => this.shows = shows,
+      shows => this.handleShowRank(shows),
       err   => {
           console.log(err);
       }

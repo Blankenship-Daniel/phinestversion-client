@@ -65,7 +65,7 @@ export class SubmissionService {
   }
 
 
-  saveSubmissionScore(submissionId: number, newScore: number) : Observable<Submission[]> {
+  saveSubmissionScore(submissionId: number, newScore: number) : Observable<boolean> {
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers });
     let request: string = this.apiEndpoint + '/submissions/save/score';

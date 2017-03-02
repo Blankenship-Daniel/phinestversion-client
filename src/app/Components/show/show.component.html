@@ -10,11 +10,11 @@
       </div>
     </div>
     <div class="box50 score">
-      <span *ngIf="show.score >= 0">
-        +{{ show.score }}
+      <span *ngIf="score >= 0">
+        +{{ score }}
       </span>
-      <span *ngIf="show.score < 0">
-        {{ show.score }}
+      <span *ngIf="score < 0">
+        {{ score }}
       </span>
     </div>
   </div>
@@ -25,10 +25,11 @@
       *ngIf="submissions === undefined"
       class="centered" src="/assets/images/loading.gif" alt="Loading">
     <app-submission-box
-      [songTitle]="true"
       *ngFor="let submission of submissions; let i = index"
+      [index]="i"
+      [songTitle]="true"
       [submission]="submission"
-      [index]="i">
+      (voteChange)="handleShowScoreChange($event)">
     </app-submission-box>
   </div>
 </div>

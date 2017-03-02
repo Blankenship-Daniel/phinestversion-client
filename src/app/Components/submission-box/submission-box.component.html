@@ -39,7 +39,8 @@
     <app-vote
       [index]="index"
       [score]="submission.submission_score"
-      [submissionId]="submission.submission_id">
+      [submissionId]="submission.submission_id"
+      (voteChange)="emitVoteChange($event)">
     </app-vote>
     <div class="see-comments-btn grey{{ getShade() }}-bg">
     </div>

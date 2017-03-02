@@ -42,7 +42,7 @@ export class CommentListComponent implements OnInit {
       return;
     }
     this.comments.push.apply(this.comments, comments);
-    
+
     // Notify the parent element when a comment has been submitted.
     //  This is for updating the comment number on the submission box.
     this.commentSubmitted.emit(true);
@@ -53,6 +53,9 @@ export class CommentListComponent implements OnInit {
     if (valid) {
       let user            = JSON.parse(localStorage.getItem('user'));
       let userId: number  = user.id;
+
+      // TODO: user error handling
+
       let comment: string = form.comment;
 
       // Reset the form

@@ -23,16 +23,18 @@ export class SongComponent implements OnInit {
     }
   }
 
-  private songs: SongRank[];
-  private submissions: Submission[];
-  private offset: number = 0;
-  private slug: string;
+  private score       : number;
+  private slug        : string;
+  private offset      : number;
+  private songs       : SongRank[];
+  private submissions : Submission[];
 
   constructor(
     private route: ActivatedRoute,
     private songService: SongService,
     private submissionService: SubmissionService
   ) {
+    this.offset = 0;
   }
 
   ngOnInit() {
@@ -41,9 +43,20 @@ export class SongComponent implements OnInit {
     this.loadSubmissions(this.slug);
   }
 
+  handleSongScoreChange(voteChange: Event) {
+    this.score += Number(voteChange);
+  }
+
+  handleSongRank(songs: SongRank[]) {
+    this.songs = songs;
+    for (var i = 0; i < songs.length; i++) {
+      this.score = Number(songs[i].score);
+    }
+  }
+
   loadSongRank(slug: string) {
     this.songService.getSongRanking(slug).subscribe(
-      songs => this.songs = songs,
+      songs => this.handleSongRank(songs),
       err   => {
           console.log(err);
       }

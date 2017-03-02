@@ -1,16 +1,21 @@
-<div
-  [ngClass]="{ 'selected' : voteType === 'up' }"
-  (click)="upVote()" class="arrow-up grey{{ getShade() }}-bg link">
-  <i class="fa fa-chevron-up"></i>
+<div class="vote-loading-icon" *ngIf="voteType === undefined">
+  <i class="fa fa-spinner fa-spin grey{{ getShade() }}-bg"></i>
 </div>
-<span *ngIf="score < 0">
-  {{ score }}
-</span>
-<span *ngIf="score >= 0">
-  +{{ score }}
-</span>
-<div
-  [ngClass]="{ 'selected' : voteType === 'down' }"
-  (click)="downVote()" class="arrow-down grey{{ getShade() }}-bg link">
-  <i class="fa fa-chevron-down"></i>
+<div *ngIf="voteType !== undefined">
+  <div
+    [ngClass]="{ 'selected' : voteType === 'up' }"
+    (click)="upVote()" class="arrow-up grey{{ getShade() }}-bg link">
+    <i class="fa fa-chevron-up"></i>
+  </div>
+  <span *ngIf="score < 0">
+    {{ score }}
+  </span>
+  <span *ngIf="score >= 0">
+    +{{ score }}
+  </span>
+  <div
+    [ngClass]="{ 'selected' : voteType === 'down' }"
+    (click)="downVote()" class="arrow-down grey{{ getShade() }}-bg link">
+    <i class="fa fa-chevron-down"></i>
+  </div>
 </div>
