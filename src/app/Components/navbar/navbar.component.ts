@@ -87,7 +87,7 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  redirectToSubmissionPage(submissions: Submission) {
+  redirectToSubmissionPage(submissions: Submission[]) {
     location.pathname = '/users/' + submissions[0].username;
   }
 
