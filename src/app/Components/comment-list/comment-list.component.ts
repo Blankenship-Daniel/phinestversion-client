@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-
 import { Comment } from '../../Models/comment.model';
 import { CommentService } from '../../Services/comment.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { UserLocalStorageService } from '../../Services/userLocalStorage.service';
 
 @Component({
   selector: 'app-comment-list',
@@ -58,7 +58,13 @@ export class CommentListComponent implements OnInit {
      *  table.
      * @type {CommentService}
      */
-    private commentService: CommentService
+    private commentService: CommentService,
+
+    /**
+     * Handles interactions with the user object stored in localStorage.
+     * @type {UserLocalStorageService}
+     */
+    private userLocalStorageService: UserLocalStorageService
   ) {
     this.formSubmitted = false;
     this.commentForm = new FormGroup({
@@ -102,12 +108,12 @@ export class CommentListComponent implements OnInit {
     this.formSubmitted = true;
 
     if (valid) {
-      let user    : any     = JSON.parse(localStorage.getItem('user'));
-      let userId  : number  = user.id;
-
-      // TODO: user error handling
-
-      let comment: string = form.comment;
+      if (!this.userLocalStorageService.authUser()) {
+        this.userLocalStorageService.redirectToLogin();
+      }
+      
+      let userId  : number  = this.userLocalStorageService.getUserId();
+      let comment : string  = form.comment;
 
       // Reset the form
       this.commentForm.reset();
