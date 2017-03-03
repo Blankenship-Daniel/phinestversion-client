@@ -1,12 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
-import { Vote } from '../../Models/vote.model';
-
-import { SubmissionService } from '../../Services/submission.service';
-import { Submission } from '../../Models/submission.model';
-
 import { ShaderService } from '../../Services/shader.service';
-
+import { Submission } from '../../Models/submission.model';
+import { SubmissionService } from '../../Services/submission.service';
+import { UserLocalStorageService } from '../../Services/userLocalStorage.service';
+import { Vote } from '../../Models/vote.model';
 import { VoteService } from '../../Services/vote.service';
 
 @Component({
@@ -35,9 +32,10 @@ export class VoteComponent implements OnInit {
   private submissions : Submission[];
 
   constructor(
-    private shader            : ShaderService,
-    private voteService       : VoteService,
-    private submissionService : SubmissionService
+    private shader                  : ShaderService,
+    private voteService             : VoteService,
+    private submissionService       : SubmissionService,
+    private userLocalStorageService : UserLocalStorageService
   ) {
     this.voteChange = new EventEmitter<number>();
   }
@@ -51,6 +49,11 @@ export class VoteComponent implements OnInit {
   }
 
   upVote() {
+    if (!this.userLocalStorageService.authUser()) {
+      this.userLocalStorageService.redirectToLogin();
+      return false;
+    }
+
     switch (this.voteType) {
       case '':
         this.score++;
@@ -75,6 +78,11 @@ export class VoteComponent implements OnInit {
   }
 
   downVote() {
+    if (!this.userLocalStorageService.authUser()) {
+      this.userLocalStorageService.redirectToLogin();
+      return false;
+    }
+
     switch (this.voteType) {
       case '':
         this.score--;
@@ -113,10 +121,12 @@ export class VoteComponent implements OnInit {
   }
 
   getVoteType() {
-    let user    = JSON.parse(localStorage.getItem('user'));
-    let userId  = user.id;
+    if (!this.userLocalStorageService.authUser()) {
+      this.voteType = '';
+      return false;
+    }
 
-    // TODO: user error handling
+    let userId: number = this.userLocalStorageService.getUserId();
 
     this.voteService
         .getVoteTypeBySubmissionId(
@@ -154,10 +164,12 @@ export class VoteComponent implements OnInit {
   }
 
   submitVoteType(voteType: string) {
-    let user    = JSON.parse(localStorage.getItem('user'));
-    let userId  = user.id;
+    if (!this.userLocalStorageService.authUser()) {
+      this.userLocalStorageService.redirectToLogin();
+      return false;
+    }
 
-    // TODO: user error handling
+    let userId: number = this.userLocalStorageService.getUserId();
 
     this.voteService
         .submitVote(

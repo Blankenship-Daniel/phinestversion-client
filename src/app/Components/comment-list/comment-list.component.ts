@@ -110,8 +110,9 @@ export class CommentListComponent implements OnInit {
     if (valid) {
       if (!this.userLocalStorageService.authUser()) {
         this.userLocalStorageService.redirectToLogin();
+        return false;
       }
-      
+
       let userId  : number  = this.userLocalStorageService.getUserId();
       let comment : string  = form.comment;
 
