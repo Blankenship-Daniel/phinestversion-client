@@ -101,7 +101,6 @@ export class HomeComponent implements OnInit {
   /**
    * The userService returns an array of UserRank models and assigns them to
    *  the users variable.
-   * @return {[type]} [description]
    */
   loadUsers() {
     this.userService.getUserRankings(this.rankingsLimit, 0).subscribe(

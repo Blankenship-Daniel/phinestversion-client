@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-
-import { UserService } from '../../Services/user.service';
 import { User } from '../../Models/user.model';
+import { UserService } from '../../Services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -12,14 +10,33 @@ import { User } from '../../Models/user.model';
 })
 export class LoginComponent implements OnInit {
 
-  private users     : User[];
-  private form      : FormGroup;
-  private email     : string;
-  private password  : string;
+  /**
+   * Holds the form data, and the patterns required to validate the
+   *  data.
+   * @type {FormGroup}
+   */
+  private form: FormGroup;
+
+  /**
+   * Indicates whether the form has been submitted or not.
+   * @type {boolean} true if the form has been submitted, false otherwise.
+   */
   private formSubmitted: boolean;
 
+  /**
+   * The user data that has been validated against the user data stored in
+   *  the database.
+   * @type {User[]}
+   */
+  private users: User[];
+
   constructor(
-    private router: Router,
+
+    /**
+     * Handles interactions with the API, specifically requests regarding
+     *  the `users` table in the database.
+     * @type {UserService}
+     */
     private userService: UserService
   ) {
     this.formSubmitted = false;
@@ -33,16 +50,27 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
 
+  /**
+   * Saves the validated user data to localStorage.
+   * @param  {User[]} users the validated user data returned from
+   *                         the database.
+   */
   handleAuth(users: User[]) {
     localStorage.setItem('user', JSON.stringify(users));
     location.pathname = '/';
   }
 
-  authUser(form, valid) {
+  /**
+   * Sends the form data to the API to be validated. It then returns the
+   *  user data passes it on to be saved to localStorage.
+   * @param  {any}     form  [description]
+   * @param  {boolean} valid [description]
+   */
+  authUser(form: any, valid: boolean) {
     this.formSubmitted = true;
+
     if (valid) {
       this.userService.authUser(form.email, form.password).subscribe(
         users => this.handleAuth(users),
