@@ -28,7 +28,7 @@ export class UserLocalStorageService {
     }
 
     for (let i: number = 0; i < this.props.length; i++) {
-      if (!this.user.hasOwnProperty(this.props[i]) {
+      if (!this.user.hasOwnProperty(this.props[i])) {
         return false;
       }
     }
@@ -48,7 +48,7 @@ export class UserLocalStorageService {
     ];
   }
 
-  public authUser() {
+  authUser() {
     return this.hasProps();
   }
 
