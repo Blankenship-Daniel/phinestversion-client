@@ -52,6 +52,10 @@ export class UserLocalStorageService {
     return this.hasProps();
   }
 
+  getUser() {
+    return (this.authUser() ? this.user : null);
+  }
+
   getUserId() {
     return this.user.id;
   }
