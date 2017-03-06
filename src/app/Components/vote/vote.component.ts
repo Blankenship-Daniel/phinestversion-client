@@ -13,10 +13,31 @@ import { VoteService } from '../../Services/vote.service';
 })
 export class VoteComponent implements OnInit {
 
-  @Input()  index         : number;
-  @Input()  score         : number;
-  @Input()  submissionId  : number;
-  @Output() voteChange    : EventEmitter<number>;
+  /**
+   * Passed to the shader service. Changes the text color depending on the
+   *  index number.
+   * @type {number}
+   */
+  @Input() index : number;
+
+  /**
+   * Display's the submission score.
+   * @type {number}
+   */
+  @Input() score : number;
+
+  /**
+   * The id which corresponds to the submission_id in the database.
+   * @type {number}
+   */
+  @Input() submissionId : number;
+
+  /**
+   * Notifies the submission component when the score has changed. This allows
+   *  the total score to be updated.
+   * @type {number} -1|1
+   */
+  @Output() voteChange : EventEmitter<number>;
 
   /**
    * Tracks the type of vote submitted. up|down|<empty_string>
@@ -44,39 +65,10 @@ export class VoteComponent implements OnInit {
     this.getVoteType();
   }
 
-  getShade(): number {
-    return this.shader.getShade(this.index);
-  }
-
-  upVote() {
-    if (!this.userLocalStorageService.authUser()) {
-      this.userLocalStorageService.redirectToLogin();
-      return false;
-    }
-
-    switch (this.voteType) {
-      case '':
-        this.score++;
-        this.voteType = 'up';
-        this.voteChange.emit(1);
-        this.submitVoteType('up');
-        break;
-      case 'up':
-        this.score--;
-        this.voteType = '';
-        this.voteChange.emit(-1);
-        this.submitVoteType('down');
-        break;
-      case 'down':
-        this.score++;
-        this.voteType = '';
-        this.voteChange.emit(1);
-        this.submitVoteType('up');
-        break;
-    }
-    this.submitVote(this.score);
-  }
-
+  /**
+   * Handles the down vote functionality. Redirects the user to the login page
+   *  if they attempt to vote without being authenticated.
+   */
   downVote() {
     if (!this.userLocalStorageService.authUser()) {
       this.userLocalStorageService.redirectToLogin();
@@ -106,20 +98,18 @@ export class VoteComponent implements OnInit {
     this.submitVote(this.score);
   }
 
-  processVoteType(voteType: number) {
-    switch (voteType) {
-      case -1:
-        this.voteType = 'down';
-        break;
-      case 0:
-        this.voteType = '';
-        break;
-      case 1:
-        this.voteType = 'up';
-        break;
-    }
+  /**
+   * Gets the shade number that corresponds to a color class such as grey700-bg.
+   * @return {number} the shade number.
+   */
+  getShade(): number {
+    return this.shader.getShade(this.index);
   }
 
+  /**
+   * Requests the vote type for a given submission. This allows the user to see
+   *  how they have voted on a given submission when authenticated.
+   */
   getVoteType() {
     if (!this.userLocalStorageService.authUser()) {
       this.voteType = '';
@@ -141,15 +131,42 @@ export class VoteComponent implements OnInit {
     );
   }
 
-  handleVoteResponse(response: boolean) {
-    // TODO: error handling
+  handleVoteResponse(response: boolean) {}
+  handleVoteTypeResponse(response: boolean) {}
+
+  /**
+   * The database returns a number representing the type of vote the user has
+   *  placed on a given submission. This function converts the number into a
+   *  string which the template can process.
+   * @param  {number} voteType the number corresponding to the vote type. For
+   *                            example, -1 corresponds to 'down', 0 corresponds
+   *                            to '', 1 corresponds to 'up'.
+   */
+  processVoteType(voteType: number) {
+    switch (voteType) {
+      case -1:
+        this.voteType = 'down';
+        break;
+      case 0:
+        this.voteType = '';
+        break;
+      case 1:
+        this.voteType = 'up';
+        break;
+    }
   }
 
-  handleVoteTypeResponse(response: boolean) {
-    // TODO: error handling
-  }
-
+  /**
+   * Updates the score on a given submission in the `submissions` table in the
+   *  database.
+   * @param  {number} score the updated score after the user votes.
+   */
   submitVote(score: number) {
+    if (!this.userLocalStorageService.authUser()) {
+      this.userLocalStorageService.redirectToLogin();
+      return false;
+    }
+
     this.submissionService
         .saveSubmissionScore(
           this.submissionId,
@@ -163,6 +180,10 @@ export class VoteComponent implements OnInit {
     );
   }
 
+  /**
+   * Submits the user vote to the `votes` table in the database.
+   * @param  {string} voteType ''|up|down
+   */
   submitVoteType(voteType: string) {
     if (!this.userLocalStorageService.authUser()) {
       this.userLocalStorageService.redirectToLogin();
@@ -183,5 +204,39 @@ export class VoteComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  /**
+   * Handles the up vote functionality. Redirects the user to the login page if
+   *  they attempt to vote without being authenticated.
+   */
+  upVote() {
+    if (!this.userLocalStorageService.authUser()) {
+      this.userLocalStorageService.redirectToLogin();
+      return false;
+    }
+
+    switch (this.voteType) {
+      case '':
+        this.score++;
+        this.voteType = 'up';
+        this.voteChange.emit(1);
+        this.submitVoteType('up');
+        break;
+      case 'up':
+        this.score--;
+        this.voteType = '';
+        this.voteChange.emit(-1);
+        this.submitVoteType('down');
+        break;
+      case 'down':
+        this.score++;
+        this.voteType = '';
+        this.voteChange.emit(1);
+        this.submitVoteType('up');
+        break;
+    }
+
+    this.submitVote(this.score);
   }
 }
