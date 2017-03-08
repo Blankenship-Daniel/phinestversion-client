@@ -14,16 +14,38 @@ export class ShowsComponent implements OnInit {
     var scrollPos  = document.documentElement.clientHeight + window.pageYOffset;
 
     if (scrollPos === pageHeight) {
-      this.offset += 20;
+      this.offset += this.offsetAmount;
       this.loadShows();
     }
   }
 
+  /**
+   * Corresponds to the starting point at which to request songs from the
+   *  database.
+   * @type {number}
+   */
   private offset: number;
+
+  /**
+   * Represents how many songs request at a given time.
+   * @type {number}
+   */
   private offsetAmount: number;
+
+  /**
+   * An array of ShowRank models which contains the data necessary to
+   *  display show rankings.
+   * @type {ShowRank[]}
+   */
   private shows: ShowRank[];
 
   constructor(
+
+    /**
+     * Handles interactions with the API, specifically requests regarding
+     *  the `shows` table in the database.
+     * @type {ShowService}
+     */
     private showService: ShowService
   ) {
     this.offset = 0;
@@ -34,6 +56,11 @@ export class ShowsComponent implements OnInit {
     this.loadShows();
   }
 
+  /**
+   * Sets the shows variable if it is undefined. Otherwise, it concatenates
+   *  the requested shows onto the end of the existing shows array.
+   * @param  {ShowRank[]} songs
+   */
   addShows(shows: ShowRank[]) {
     if (this.shows === undefined) {
       this.shows = shows;
@@ -42,8 +69,12 @@ export class ShowsComponent implements OnInit {
     this.shows.push.apply(this.shows, shows);
   }
 
+  /**
+   * Requests a batch of ranked shows. The size of the batch is defined by the
+   *  offsetAmount. The offset defines where to begin the beginning of the batch.
+   */
   loadShows() {
-    this.showService.getShowRankings(20, this.offset).subscribe(
+    this.showService.getShowRankings(this.offsetAmount, this.offset).subscribe(
       shows => this.addShows(shows),
       err   => {
           console.log(err);
