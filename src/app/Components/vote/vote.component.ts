@@ -18,45 +18,67 @@ export class VoteComponent implements OnInit {
    *  index number.
    * @type {number}
    */
-  @Input() index : number;
+  @Input() index: number;
 
   /**
    * Display's the submission score.
    * @type {number}
    */
-  @Input() score : number;
+  @Input() score: number;
 
   /**
    * The id which corresponds to the submission_id in the database.
    * @type {number}
    */
-  @Input() submissionId : number;
+  @Input() submissionId: number;
 
   /**
    * Notifies the submission component when the score has changed. This allows
    *  the total score to be updated.
    * @type {number} -1|1
    */
-  @Output() voteChange : EventEmitter<number>;
+  @Output() voteChange: EventEmitter<number>;
 
   /**
    * Tracks the type of vote submitted. up|down|<empty_string>
    * @type {string}
    */
-  private voteType : string;
+  private voteType: string;
 
   /**
    * Tracks whether the total score amount on the page should be
    *  added to or subtracted from.
    * @type {number}
    */
-  private submissions : Submission[];
+  private submissions: Submission[];
 
   constructor(
-    private shader                  : ShaderService,
-    private voteService             : VoteService,
-    private submissionService       : SubmissionService,
-    private userLocalStorageService : UserLocalStorageService
+
+    /**
+     * Gets the shade number that corresponds to a color class such as grey700-bg.
+     * @type {ShaderService}
+     */
+    private shader: ShaderService,
+
+    /**
+     * Handles interactions with the API, specifically requests regarding
+     *  the `submissions` table in the database.
+     * @type {SubmissionService}
+     */
+    private submissionService: SubmissionService,
+
+    /**
+     * Handles interactions with the user object stored in localStorage.
+     * @type {UserLocalStorageService}
+     */
+    private userLocalStorageService: UserLocalStorageService,
+
+    /**
+     * Handles interactions with the API, specifically requests regarding
+     *  the `votes` table in the database.
+     * @type {VoteService}
+     */
+    private voteService: VoteService
   ) {
     this.voteChange = new EventEmitter<number>();
   }

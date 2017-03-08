@@ -88,15 +88,20 @@ export class NavbarComponent implements OnInit {
      */
     private userLocalStorageService: UserLocalStorageService
   ) {
-    this.user             = this.userLocalStorageService.getUser();
-    this.formSubmitted    = false;
-    this.searchIsVisible  = false;
-    this.submitIsVisible  = false;
+    this.formSubmitted = false;
+    this.searchIsVisible = false;
     this.submitAVersionForm = new FormGroup({
         songsDropdown: new FormControl('', Validators.required),
         showsDropdown: new FormControl('', Validators.required),
         description:   new FormControl('', Validators.required)
     });
+    this.submitIsVisible = false;
+    this.user = this.userLocalStorageService.getUser();
+  }
+
+  ngOnInit() {
+    this.loadSongs();
+    this.loadShows();
   }
 
   /**
@@ -123,11 +128,6 @@ export class NavbarComponent implements OnInit {
           console.log(err);
       }
     );
-  }
-
-  ngOnInit() {
-    this.loadSongs();
-    this.loadShows();
   }
 
   /**

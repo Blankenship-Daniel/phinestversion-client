@@ -8,11 +8,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CommentBoxComponent implements OnInit {
 
+  /**
+   * Holds the user comment.
+   * @type {Comment}
+   */
   @Input() comment: Comment;
 
   constructor() { }
 
   ngOnInit() {
   }
-
 }

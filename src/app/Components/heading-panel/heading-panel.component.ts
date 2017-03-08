@@ -11,5 +11,4 @@ export class HeadingPanelComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

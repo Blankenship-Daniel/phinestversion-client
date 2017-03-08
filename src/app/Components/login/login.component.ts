@@ -53,20 +53,11 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   * Saves the validated user data to localStorage.
-   * @param  {User[]} users the validated user data returned from
-   *                         the database.
-   */
-  handleAuth(users: User[]) {
-    localStorage.setItem('user', JSON.stringify(users));
-    location.pathname = '/';
-  }
-
-  /**
    * Sends the form data to the API to be validated. It then returns the
    *  user data passes it on to be saved to localStorage.
-   * @param  {any}     form  [description]
-   * @param  {boolean} valid [description]
+   * @param  {any}     form  a JSON representation of the form data.
+   * @param  {boolean} valid true if the form validates agains the FormControl
+   *                          Validators, false otherwise.
    */
   authUser(form: any, valid: boolean) {
     this.formSubmitted = true;
@@ -79,5 +70,15 @@ export class LoginComponent implements OnInit {
         }
       );
     }
+  }
+
+  /**
+   * Saves the validated user data to localStorage.
+   * @param  {User[]} users the validated user data returned from
+   *                         the database.
+   */
+  handleAuth(users: User[]) {
+    localStorage.setItem('user', JSON.stringify(users));
+    location.pathname = '/';
   }
 }

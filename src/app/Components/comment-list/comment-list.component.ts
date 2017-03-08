@@ -66,11 +66,11 @@ export class CommentListComponent implements OnInit {
      */
     private userLocalStorageService: UserLocalStorageService
   ) {
-    this.formSubmitted = false;
     this.commentForm = new FormGroup({
         comment: new FormControl('', Validators.required)
     });
     this.commentSubmitted = new EventEmitter<boolean>();
+    this.formSubmitted = false;
   }
 
   ngOnInit() {

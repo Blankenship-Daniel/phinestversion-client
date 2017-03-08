@@ -11,7 +11,7 @@ export class BackToTopComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  
   scrollTop() {
     window.scrollTo(0, 0);
   }

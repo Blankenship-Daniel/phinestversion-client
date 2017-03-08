@@ -1,12 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@angular/core';
-
-import { Submission } from '../../Models/submission.model';
-
-import { ShaderService } from '../../Services/shader.service';
-
 import { Comment } from '../../Models/comment.model';
-import { CommentService } from '../../Services/comment.service';
 import { CommentListSize } from '../../Models/commentListSize.model';
+import { CommentService } from '../../Services/comment.service';
+import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@angular/core';
+import { ShaderService } from '../../Services/shader.service';
+import { Submission } from '../../Models/submission.model';
 
 @Component({
   selector: 'app-submission-box',
@@ -15,11 +12,16 @@ import { CommentListSize } from '../../Models/commentListSize.model';
 })
 export class SubmissionBoxComponent implements OnInit {
 
-  @Input()  index      : number;
-  @Input()  songTitle  : boolean = false;
-  @Input()  showTitle  : boolean = false;
-  @Input()  submission : Submission;
-  @Output() voteChange : EventEmitter<number>;
+  /**
+   * Passed to the shader service. Changes the text color depending on the
+   *  index number.
+   * @type {number}
+   */
+  @Input() index: number;
+  @Input() songTitle: boolean;
+  @Input() showTitle: boolean;
+  @Input() submission: Submission;
+  @Output() voteChange: EventEmitter<number>;
 
   /**
    * Contains the comment data.
@@ -62,12 +64,26 @@ export class SubmissionBoxComponent implements OnInit {
   private showComments: boolean = false;
 
   constructor(
-    private shader          : ShaderService,
-    private commentService  : CommentService
+
+    /**
+     * Gets the shade number that corresponds to a color class such as
+     *  grey700-bg.
+     * @type {ShaderService}
+     */
+    private shader: ShaderService,
+
+    /**
+     * Handles requests to the API and returns data from the `comments`
+     *  table.
+     * @type {CommentService}
+     */
+    private commentService: CommentService
   ) {
-    this.offset       = 0;
+    this.offset = 0;
     this.offsetAmount = 5;
-    this.voteChange   = new EventEmitter<number>();
+    this.showTitle = false;
+    this.songTitle = false;
+    this.voteChange = new EventEmitter<number>();
   }
 
   ngOnInit() {
@@ -75,17 +91,6 @@ export class SubmissionBoxComponent implements OnInit {
     this.loadCommentsLength();
   }
 
-  toggleComments() {
-    this.showComments = !this.showComments;
-  }
-
-  updateNumComments() {
-    this.numComments++;
-  }
-
-  getShade(): number {
-    return this.shader.getShade(this.index);
-  }
 
   /**
    * Prepends the comments returned from the latest request to the
@@ -117,16 +122,11 @@ export class SubmissionBoxComponent implements OnInit {
   }
 
   /**
-   * Sets the numComments with the size attribute from the commentListSize
-   *  model. The numComments variable allows the total number of comments to be
-   *  updated easily.
-   * @param  {CommentListSize[]} commentListSize the model containing the
-   *                                             total number of comments.
+   * Gets the shade number that corresponds to a color class such as grey700-bg.
+   * @return {number} the shade number.
    */
-  setNumComments(commentListSize: CommentListSize[]) {
-    for (var i = 0; i < commentListSize.length; i++) {
-      this.numComments = commentListSize[i].size;
-    }
+  getShade(): number {
+    return this.shader.getShade(this.index);
   }
 
   /**
@@ -161,5 +161,26 @@ export class SubmissionBoxComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  /**
+   * Sets the numComments with the size attribute from the commentListSize
+   *  model. The numComments variable allows the total number of comments to be
+   *  updated easily.
+   * @param  {CommentListSize[]} commentListSize the model containing the
+   *                                             total number of comments.
+   */
+  setNumComments(commentListSize: CommentListSize[]) {
+    for (var i = 0; i < commentListSize.length; i++) {
+      this.numComments = commentListSize[i].size;
+    }
+  }
+
+  toggleComments() {
+    this.showComments = !this.showComments;
+  }
+
+  updateNumComments() {
+    this.numComments++;
   }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
-
-import { ShowService } from '../../Services/show.service';
 import { ShowRank } from '../../Models/showRank.model';
+import { ShowService } from '../../Services/show.service';
 
 @Component({
   selector: 'app-shows',
@@ -20,12 +19,16 @@ export class ShowsComponent implements OnInit {
     }
   }
 
+  private offset: number;
+  private offsetAmount: number;
   private shows: ShowRank[];
-  private offset: number = 0;
 
   constructor(
     private showService: ShowService
-  ) { }
+  ) {
+    this.offset = 0;
+    this.offsetAmount = 20;
+  }
 
   ngOnInit() {
     this.loadShows();
