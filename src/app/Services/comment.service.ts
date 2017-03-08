@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
-
 import { Comment } from '../Models/comment.model';
 import { CommentListSize } from '../Models/commentListSize.model';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
@@ -18,6 +17,14 @@ export class CommentService {
     private http: Http
   ) { }
 
+  /**
+   * Returns the total number of comments corresponding to a given submission.
+   * @param  {number}                        submissionId the id for a given
+   *                                                       submission in the
+   *                                                       `submissions` table
+   *                                                       in the database.
+   * @return {Observable<CommentListSize[]>}
+   */
   getCommentsBySubmissionIdCount(submissionId: number) : Observable<CommentListSize[]> {
     let request: string = this.apiEndpoint + '/comments/count/submission/'
       + submissionId;
@@ -28,6 +35,16 @@ export class CommentService {
               ));
   }
 
+  /**
+   * Returns a batch of comments corresponding to a given submission.
+   * @param  {number}                submissionId the id for a given submissionId
+   *                                               in the `submissions` table in
+   *                                               the database.
+   * @param  {number}                limit        the size of the batch to be
+   *                                               returned.
+   * @param  {number}                offset       defines the start of the batch.
+   * @return {Observable<Comment[]>}
+   */
   getCommentsBySubmissionId(submissionId: number, limit: number, offset: number) : Observable<Comment[]> {
     let request: string = this.apiEndpoint + '/comments/submission/'
       + submissionId + '?limit=' + limit + '&start=' + offset;
@@ -38,6 +55,16 @@ export class CommentService {
               ));
   }
 
+  /**
+   * Submits a comment to the `comments` table in the database.
+   * @param  {number}                submissionId the id for a given submission
+   *                                               in the `submissions` table in
+   *                                               the database.
+   * @param  {number}                userId       the id for the user that
+   *                                               submitted the comment.
+   * @param  {string}                comment      the comment string.
+   * @return {Observable<Comment[]>}
+   */
   submitComment(submissionId: number, userId: number, comment: string) : Observable<Comment[]> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });

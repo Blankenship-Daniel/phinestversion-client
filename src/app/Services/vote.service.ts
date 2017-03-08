@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
-
 import { Vote } from '../Models/vote.model';
 
 // Import RxJs required methods

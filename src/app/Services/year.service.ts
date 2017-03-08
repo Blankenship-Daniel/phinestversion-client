@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
-
 import { YearRank } from '../Models/yearRank.model';
 
 // Import RxJs required methods
