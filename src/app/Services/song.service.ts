@@ -17,6 +17,12 @@ export class SongService {
     private http: Http
   ) { }
 
+  /**
+   * Requests a batch of song rankings from the database.
+   * @param  {number}                 limit  the size of the batch requested.
+   * @param  {number}                 offset where the batch starts.
+   * @return {Observable<SongRank[]>}
+   */
   getSongRankings(limit: number, offset: number) : Observable<SongRank[]> {
     let request: string = this.apiEndpoint + '/songs/rankings?limit=' +
                           limit + '&start=' + offset;
@@ -27,6 +33,15 @@ export class SongService {
               ));
   }
 
+  /**
+   * Request a specific song ranking from the database that matches a specific
+   *  song slug.
+   * @param  {string}                 slug the URI friendly version of the
+   *                                        requested song. For example,
+   *                                        `You Enjoy Myself` would be
+   *                                        `you-enjoy-myself`
+   * @return {Observable<SongRank[]>}
+   */
   getSongRanking(slug: string) : Observable<SongRank[]> {
     return this.http.get(this.apiEndpoint + '/songs/rankings/' + slug)
               .map((res:Response) => res.json())
@@ -35,6 +50,10 @@ export class SongService {
               ));
   }
 
+  /**
+   * Requests all songs from the database.
+   * @return {Observable<Song[]>}
+   */
   getAllSongs() : Observable<Song[]> {
     return this.http.get(this.apiEndpoint + '/songs')
             .map((res:Response) => res.json())
