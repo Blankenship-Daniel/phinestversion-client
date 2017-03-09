@@ -17,6 +17,12 @@ export class ShowService {
     private http: Http
   ) { }
 
+  /**
+   * Requests a batch of show rankings.
+   * @param  {number}                 limit  the size of the batch.
+   * @param  {number}                 offset where the batch request starts.
+   * @return {Observable<ShowRank[]>}
+   */
   getShowRankings(limit: number, offset: number) : Observable<ShowRank[]> {
     let request: string = this.apiEndpoint + '/shows/rankings?limit=' +
                           limit + '&start=' + offset;
@@ -27,6 +33,12 @@ export class ShowService {
               ));
   }
 
+  /**
+   * Requests all show rankings corresponding to a given year.
+   * @param  {string}                 year the string representation of a year.
+   *                                        For example, 1997.
+   * @return {Observable<ShowRank[]>}
+   */
   getShowRankingsByYear(year: string) : Observable<ShowRank[]> {
     let request: string = this.apiEndpoint + '/shows/rankings/' + year;
     return this.http.get(request)
@@ -36,6 +48,12 @@ export class ShowService {
               ));
   }
 
+  /**
+   * Requests all show rankings corresponding to a given date.
+   * @param  {string}                 date the string representation of a given
+   *                                        show date. For example, 12/31/1995.
+   * @return {Observable<ShowRank[]>}
+   */
   getShowRankingByDate(date: string) : Observable<ShowRank[]> {
     let request: string = this.apiEndpoint + '/shows/rankings/' + date;
     return this.http.get(request)
@@ -45,6 +63,10 @@ export class ShowService {
               ));
   }
 
+  /**
+   * Requests all shows in the database.
+   * @return {Observable<Show[]>} 
+   */
   getAllShows() : Observable<Show[]> {
     let request: string = this.apiEndpoint + '/shows';
     return this.http.get(request)
