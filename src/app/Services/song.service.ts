@@ -39,7 +39,7 @@ export class SongService {
    * @param  {string}                 slug the URI friendly version of the
    *                                        requested song. For example,
    *                                        `You Enjoy Myself` would be
-   *                                        `you-enjoy-myself`
+   *                                        `you-enjoy-myself`.
    * @return {Observable<SongRank[]>}
    */
   getSongRanking(slug: string) : Observable<SongRank[]> {
