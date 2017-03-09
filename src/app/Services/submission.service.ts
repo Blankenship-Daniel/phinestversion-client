@@ -110,7 +110,7 @@ export class SubmissionService {
    * @param  {number}              submissionId the id of the submission to be
    *                                             updated.
    * @param  {number}              newScore     the updated score value.
-   * @return {Observable<boolean>}              [description]
+   * @return {Observable<boolean>}             
    */
   saveSubmissionScore(submissionId: number, newScore: number) : Observable<boolean> {
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON

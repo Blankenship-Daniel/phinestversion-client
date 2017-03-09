@@ -17,6 +17,12 @@ export class UserService {
     private http: Http
   ) { }
 
+  /**
+   * Requests a batch of user rankings.
+   * @param  {number}                 limit  the size of the requested batch.
+   * @param  {number}                 offset where the batch begins.
+   * @return {Observable<UserRank[]>}
+   */
   getUserRankings(limit: number, offset: number) : Observable<UserRank[]> {
     let request: string = this.apiEndpoint + '/users/rankings/?limit=' +
                           limit + '&start=' + offset;
@@ -27,6 +33,12 @@ export class UserService {
               ));
   }
 
+  /**
+   * Requests a user based off of a username.
+   * @param  {string}                 username the username of a given user in
+   *                                            the database.
+   * @return {Observable<UserRank[]>}
+   */
   getUserByUserName(username: string) : Observable<UserRank[]> {
     let request: string = this.apiEndpoint + '/users/' + username;
     return this.http.get(request)
@@ -36,6 +48,13 @@ export class UserService {
               ));
   }
 
+  /**
+   * Returns user data if the user is authenticated (exists) in the `users` table.
+   * @param  {string}             email the email corresponding to a given user
+   *                                     in the `users` table in the database.
+   * @param  {string}             pass  the plain text password for a given user.
+   * @return {Observable<User[]>}
+   */
   authUser(email: string, pass: string) : Observable<User[]> {
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers });
