@@ -16,6 +16,10 @@ export class YearService {
     private http: Http
   ) { }
 
+  /**
+   * Requests all year ranking in the database.
+   * @return {Observable<YearRank[]>}
+   */
   getYearRankings() : Observable<YearRank[]> {
     return this.http.get(this.apiEndpoint + '/years/rankings')
               .map((res:Response) => res.json())
@@ -24,7 +28,13 @@ export class YearService {
               ));
   }
 
-  getYearRanking(year : string) : Observable<YearRank[]> {
+  /**
+   * Request the year ranking for a given year.
+   * @param  {string}                 year a string representation of a specific
+   *                                        year. For example, `1997`.
+   * @return {Observable<YearRank[]>}    
+   */
+  getYearRanking(year: string) : Observable<YearRank[]> {
     return this.http.get(this.apiEndpoint + '/years/rankings/' + year)
               .map((res:Response) => res.json())
               .catch((error:any) => Observable.throw(
