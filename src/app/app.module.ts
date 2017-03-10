@@ -12,6 +12,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { RegisterComponent } from './Components/register/register.component';
 import { routes } from './Components/app.routes';
 import { ShaderService } from './Services/shader.service';
 import { ShowBoxComponent } from './Components/show-box/show-box.component';
@@ -46,6 +47,7 @@ import { YearService } from './Services/year.service';
     HomeComponent,
     LoginComponent,
     NavbarComponent,
+    RegisterComponent,
     ShowBoxComponent,
     ShowComponent,
     ShowsComponent,

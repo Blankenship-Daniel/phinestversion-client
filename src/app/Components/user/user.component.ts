@@ -87,9 +87,9 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.username = this.route.snapshot.params['username'];
     this.loadUser(this.username);
     this.loadSubmissions(this.username);
-    this.username = this.route.snapshot.params['username'];
   }
 
   /**

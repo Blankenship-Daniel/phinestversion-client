@@ -66,4 +66,23 @@ export class UserService {
                 error.json().error || 'Server error'
               ));
   }
+
+  /**
+   * Saves user data in the `users` table if the user data authenticates.
+   * @param  {string}             email the email corresponding to a given user
+   *                                     in the `users` table in the database.
+   * @param  {string}             pass  the plain text password for a given user.
+   * @return {Observable<User[]>}
+   */
+  registerUser(email: string, pass: string) : Observable<User[]> {
+    let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers });
+    let request: string = this.apiEndpoint + '/users/register';
+    let body: string = JSON.stringify({ 'email': email, 'password': pass });
+    return this.http.post(request, body, options)
+              .map((res:Response) => res.json())
+              .catch((error:any) => Observable.throw(
+                error.json().error || 'Server error'
+              ));
+  }
 }

@@ -88,9 +88,9 @@ export class SongComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.slug = this.route.snapshot.params['slug'];
     this.loadSongRank(this.slug);
     this.loadSubmissions(this.slug);
-    this.slug = this.route.snapshot.params['slug'];
   }
 
   /**
@@ -135,6 +135,7 @@ export class SongComponent implements OnInit {
    *                        `You Enjoy Myself` would be `you-enjoy-myself`.
    */
   loadSongRank(slug: string) {
+    console.log(slug);
     this.songService.getSongRanking(slug).subscribe(
       songs => this.handleSongRank(songs),
       err   => {
