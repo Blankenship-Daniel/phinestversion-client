@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { User } from '../../Models/user.model';
 import { UserService } from '../../Services/user.service';
@@ -34,6 +35,7 @@ export class RegisterComponent implements OnInit {
   ) {
     this.formSubmitted = false;
     this.form = new FormGroup({
+      username: new FormControl('', Validators.required),
       email: new FormControl('', [
         Validators.required,
         Validators.pattern('(.+)@(.+){2,}\.(.+){2,}')

@@ -12,6 +12,26 @@
       <div class="input-large">
         <input
           [ngClass]="{
+              'error': !form.controls['username'].valid &&
+                        form.controls['username'].touched ||
+                        !form.valid && formSubmitted && !form.controls['username'].valid
+          }"
+          [formControl]="form.controls['username']"
+          type="text"
+          name="username"
+          placeholder="Username"
+          formControlName="username"
+          required>
+          <div class="error"
+            *ngIf="!form.controls['username'].valid &&
+                    form.controls['username'].touched ||
+                    !form.valid && formSubmitted && !form.controls['username'].valid">
+              Please enter a valid username
+          </div>
+      </div>
+      <div class="input-large">
+        <input
+          [ngClass]="{
               'error': !form.controls['email'].valid &&
                         form.controls['email'].touched ||
                         !form.valid && formSubmitted && !form.controls['email'].valid
