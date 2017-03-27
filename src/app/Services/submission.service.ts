@@ -3,14 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Submission } from '../Models/submission.model';
 
+import * as api from '../../environments/api.config';
+
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class SubmissionService {
-
-  private apiEndpoint = 'http://localhost:8000';
 
   constructor(
     private http: Http
@@ -27,7 +27,7 @@ export class SubmissionService {
    * @return {Observable<Submission[]>}
    */
   getSubmissionsBySongSlug(slug: string, limit: number, offset: number) : Observable<Submission[]> {
-    let request: string = this.apiEndpoint + '/submissions/slug/' + slug + '?limit=' +
+    let request: string = api.BASE_URL + '/submissions/slug/' + slug + '?limit=' +
                           limit + '&start=' + offset;
     return this.http.get(request)
               .map((res:Response) => res.json())
@@ -43,7 +43,7 @@ export class SubmissionService {
    * @return {Observable<Submission[]>}
    */
   getSubmissionsByShowDate(date: string) : Observable<Submission[]> {
-    let request: string = this.apiEndpoint + '/submissions/rankings/' + date;
+    let request: string = api.BASE_URL + '/submissions/rankings/' + date;
     return this.http.get(request)
               .map((res:Response) => res.json())
               .catch((error:any) => Observable.throw(
@@ -60,7 +60,7 @@ export class SubmissionService {
    * @return {Observable<Submission[]>}
    */
   getSubmissionsByUserName(username: string, limit: number, offset: number) : Observable<Submission[]> {
-    let request: string = this.apiEndpoint + '/submissions/user/' + username +
+    let request: string = api.BASE_URL + '/submissions/user/' + username +
                           '?limit=' + limit + '&start=' + offset;
     return this.http.get(request)
               .map((res:Response) => res.json())
@@ -89,7 +89,7 @@ export class SubmissionService {
   saveSubmission(song_id: number, show_id: number, description: string, user_id: number, score: number) : Observable<Submission[]> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    let request: string = this.apiEndpoint + '/submissions/save';
+    let request: string = api.BASE_URL + '/submissions/save';
     let body: string = JSON.stringify({
       song_id: song_id,
       show_id: show_id,
@@ -110,12 +110,12 @@ export class SubmissionService {
    * @param  {number}              submissionId the id of the submission to be
    *                                             updated.
    * @param  {number}              newScore     the updated score value.
-   * @return {Observable<boolean>}             
+   * @return {Observable<boolean>}
    */
   saveSubmissionScore(submissionId: number, newScore: number) : Observable<boolean> {
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers });
-    let request: string = this.apiEndpoint + '/submissions/save/score';
+    let request: string = api.BASE_URL + '/submissions/save/score';
     let body: string = JSON.stringify({
       'submission_id' : submissionId,
       'score'         : newScore

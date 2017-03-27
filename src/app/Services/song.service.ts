@@ -4,14 +4,14 @@ import { Observable } from 'rxjs/Rx';
 import { Song } from '../Models/song.model';
 import { SongRank } from '../Models/songRank.model';
 
+import * as api from '../../environments/api.config';
+
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class SongService {
-
-  private apiEndpoint = 'http://localhost:8000';
 
   constructor(
     private http: Http
@@ -24,7 +24,7 @@ export class SongService {
    * @return {Observable<SongRank[]>}
    */
   getSongRankings(limit: number, offset: number) : Observable<SongRank[]> {
-    let request: string = this.apiEndpoint + '/songs/rankings?limit=' +
+    let request: string = api.BASE_URL + '/songs/rankings?limit=' +
                           limit + '&start=' + offset;
     return this.http.get(request)
               .map((res:Response) => res.json())
@@ -43,7 +43,7 @@ export class SongService {
    * @return {Observable<SongRank[]>}
    */
   getSongRanking(slug: string) : Observable<SongRank[]> {
-    return this.http.get(this.apiEndpoint + '/songs/rankings/' + slug)
+    return this.http.get(api.BASE_URL + '/songs/rankings/' + slug)
               .map((res:Response) => res.json())
               .catch((error:any) => Observable.throw(
                 error.json().error || 'Server error'
@@ -55,7 +55,7 @@ export class SongService {
    * @return {Observable<Song[]>}
    */
   getAllSongs() : Observable<Song[]> {
-    return this.http.get(this.apiEndpoint + '/songs')
+    return this.http.get(api.BASE_URL + '/songs')
             .map((res:Response) => res.json())
             .catch((error:any) => Observable.throw(
               error.json().error || 'Server error'

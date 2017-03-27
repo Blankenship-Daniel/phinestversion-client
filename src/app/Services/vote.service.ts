@@ -3,14 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Vote } from '../Models/vote.model';
 
+import * as api from '../../environments/api.config';
+
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class VoteService {
-
-  private apiEndpoint = 'http://localhost:8000';
 
   constructor(
     private http: Http
@@ -24,7 +24,7 @@ export class VoteService {
    * @return {Observable<Vote[]>}
    */
   getVotesBySubmissionId(submissionId: number) : Observable<Vote[]> {
-    let request: string = this.apiEndpoint + '/votes/submission/' +
+    let request: string = api.BASE_URL + '/votes/submission/' +
                           submissionId;
     return this.http.get(request)
               .map((res:Response) => res.json())
@@ -45,7 +45,7 @@ export class VoteService {
    *                                            an `up` vote.
    */
   getVoteTypeBySubmissionId(submissionId: number, userId: number) : Observable<number> {
-    let request: string = this.apiEndpoint + '/votes/type?submission_id=' +
+    let request: string = api.BASE_URL + '/votes/type?submission_id=' +
                           submissionId + '&user_id=' + userId;
     return this.http.get(request)
               .map((res:Response) => res.json())
@@ -70,7 +70,7 @@ export class VoteService {
   submitVote(submissionId: number, userId: number, voteType: string) : Observable<boolean> {
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers });
-    let request: string = this.apiEndpoint + '/votes/save';
+    let request: string = api.BASE_URL + '/votes/save';
     let body: string = JSON.stringify({
       'submission_id' : submissionId,
       'user_id'       : userId,

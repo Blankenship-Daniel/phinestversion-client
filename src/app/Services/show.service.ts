@@ -4,14 +4,14 @@ import { Observable } from 'rxjs/Rx';
 import { Show } from '../Models/show.model';
 import { ShowRank } from '../Models/showRank.model';
 
+import * as api from '../../environments/api.config';
+
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ShowService {
-
-  private apiEndpoint = 'http://localhost:8000';
 
   constructor(
     private http: Http
@@ -24,7 +24,7 @@ export class ShowService {
    * @return {Observable<ShowRank[]>}
    */
   getShowRankings(limit: number, offset: number) : Observable<ShowRank[]> {
-    let request: string = this.apiEndpoint + '/shows/rankings?limit=' +
+    let request: string = api.BASE_URL + '/shows/rankings?limit=' +
                           limit + '&start=' + offset;
     return this.http.get(request)
               .map((res:Response) => res.json())
@@ -40,7 +40,7 @@ export class ShowService {
    * @return {Observable<ShowRank[]>}
    */
   getShowRankingsByYear(year: string) : Observable<ShowRank[]> {
-    let request: string = this.apiEndpoint + '/shows/rankings/' + year;
+    let request: string = api.BASE_URL + '/shows/rankings/' + year;
     return this.http.get(request)
               .map((res:Response) => res.json())
               .catch((error:any) => Observable.throw(
@@ -55,7 +55,7 @@ export class ShowService {
    * @return {Observable<ShowRank[]>}
    */
   getShowRankingByDate(date: string) : Observable<ShowRank[]> {
-    let request: string = this.apiEndpoint + '/shows/rankings/' + date;
+    let request: string = api.BASE_URL + '/shows/rankings/' + date;
     return this.http.get(request)
               .map((res:Response) => res.json())
               .catch((error:any) => Observable.throw(
@@ -65,10 +65,10 @@ export class ShowService {
 
   /**
    * Requests all shows in the database.
-   * @return {Observable<Show[]>} 
+   * @return {Observable<Show[]>}
    */
   getAllShows() : Observable<Show[]> {
-    let request: string = this.apiEndpoint + '/shows';
+    let request: string = api.BASE_URL + '/shows';
     return this.http.get(request)
               .map((res:Response) => res.json())
               .catch((error:any) => Observable.throw(

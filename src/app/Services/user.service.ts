@@ -4,14 +4,14 @@ import { Observable } from 'rxjs/Rx';
 import { User } from '../Models/user.model';
 import { UserRank } from '../Models/userRank.model';
 
+import * as api from '../../environments/api.config';
+
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class UserService {
-
-  private apiEndpoint = 'http://localhost:8000';
 
   constructor(
     private http: Http
@@ -24,7 +24,7 @@ export class UserService {
    * @return {Observable<UserRank[]>}
    */
   getUserRankings(limit: number, offset: number) : Observable<UserRank[]> {
-    let request: string = this.apiEndpoint + '/users/rankings/?limit=' +
+    let request: string = api.BASE_URL + '/users/rankings/?limit=' +
                           limit + '&start=' + offset;
     return this.http.get(request)
               .map((res:Response) => res.json())
@@ -40,7 +40,7 @@ export class UserService {
    * @return {Observable<UserRank[]>}
    */
   getUserByUserName(username: string) : Observable<UserRank[]> {
-    let request: string = this.apiEndpoint + '/users/' + username;
+    let request: string = api.BASE_URL + '/users/' + username;
     return this.http.get(request)
               .map((res:Response) => res.json())
               .catch((error:any) => Observable.throw(
@@ -58,7 +58,7 @@ export class UserService {
   authUser(email: string, pass: string) : Observable<User[]> {
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers });
-    let request: string = this.apiEndpoint + '/users/auth';
+    let request: string = api.BASE_URL + '/users/auth';
     let body: string = JSON.stringify({ 'email': email, 'password': pass });
     return this.http.post(request, body, options)
               .map((res:Response) => res.json())
@@ -77,7 +77,7 @@ export class UserService {
   registerUser(email: string, pass: string) : Observable<User[]> {
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers });
-    let request: string = this.apiEndpoint + '/users/register';
+    let request: string = api.BASE_URL + '/users/register';
     let body: string = JSON.stringify({ 'email': email, 'password': pass });
     return this.http.post(request, body, options)
               .map((res:Response) => res.json())
