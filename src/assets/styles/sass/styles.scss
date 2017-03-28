@@ -25,36 +25,8 @@
 // Mixins
 @import 'base/mixins';
 
-/******************************************************************************
- * Base
- *
- * Base rules are the defaults. They are almost exclusively single element
- *  selectors but it could include attribute selectors, pseudo-class selectors,
- *  child selectors. Essentially, a base style says that wherever this element
- *  is on the page, it should look like this.
- *
- * Examples of Base Styles:
- *  html, body, form { margin: 0; padding: 0; }
- *  input[type=text] { border: 1px solid #999; }
- *  a { color: #039; }
- *  a:hover { color: #03C; }
- *****************************************************************************/
 @import 'base/base_index';
-
-/******************************************************************************
- * Layout
- *
- * Layout rules divide the page into sections. Layouts hold one or more
- *  modules together.
- *
- * These rules are prefixed with lyt- for clarity.
- *****************************************************************************/
 @import 'layouts/layouts_index';
-
-/******************************************************************************
- * Module
- *
- * Modules are the reusable, modular parts of our design. They are the
- *  callouts, the sidebar sections, the products lists and so on.
- *****************************************************************************/
 @import 'modules/modules_index';
+
+@import 'mobile/media_queries';

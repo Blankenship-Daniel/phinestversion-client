@@ -1,0 +1,29 @@
+@media (max-width: 1250px) {
+  nav {
+    ul,
+    #search-box,
+    .user-container {
+      display: none;
+    }
+  }
+}
+@media (max-width: 950px) {
+  .box50, .box33 {
+    width: 90%;
+    display: block;
+    float: none;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+  }
+  .heading-panel {
+    button.btn {
+      margin: 0 auto;
+    }
+  }
+}
+@media (max-width: 800px) {
+  textarea {
+    width: 85%;
+  }
+}

@@ -13,6 +13,12 @@ import { YearService } from '../../Services/year.service';
 export class YearComponent implements OnInit {
 
   /**
+   * The score for a given year.
+   * @type {number}
+   */
+  private score: number;
+
+  /**
    * An array of ShowRank models which contains the data necessary to
    *  display show rankings.
    * @type {ShowRank[]}
@@ -57,12 +63,24 @@ export class YearComponent implements OnInit {
   }
 
   /**
+   * Parses the year score from the YearRank model.
+   * @param  {YearRank[]} shows the model containing metadata concerning a years
+   *                             rank.
+   */
+  handleYearRank(years: YearRank[]) {
+    this.years = years;
+    for (var i = 0; i < years.length; i++) {
+      this.score = Number(years[i].year_score);
+    }
+  }
+
+  /**
    * Returns the metadata for a given year including the score for a given year.
    * @param  {string} year a string representing a given year. For example, 1997.
    */
   loadYearRank(year: string) {
     this.yearService.getYearRanking(year).subscribe(
-      years => this.years = years,
+      years => this.handleYearRank(years),
       err   => {
           console.log(err);
       }

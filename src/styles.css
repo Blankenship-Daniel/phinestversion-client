@@ -24,20 +24,6 @@
  * @param {string} [color-variant='500']  - quoted, lowercase color variant (e.g.
  *                                          '200', 'a100')
  */
-/******************************************************************************
- * Base
- *
- * Base rules are the defaults. They are almost exclusively single element
- *  selectors but it could include attribute selectors, pseudo-class selectors,
- *  child selectors. Essentially, a base style says that wherever this element
- *  is on the page, it should look like this.
- *
- * Examples of Base Styles:
- *  html, body, form { margin: 0; padding: 0; }
- *  input[type=text] { border: 1px solid #999; }
- *  a { color: #039; }
- *  a:hover { color: #03C; }
- *****************************************************************************/
 /**
  * WHITE
  */
@@ -304,14 +290,6 @@ input {
     height: 50px;
     width: 100%; }
 
-/******************************************************************************
- * Layout
- *
- * Layout rules divide the page into sections. Layouts hold one or more
- *  modules together.
- *
- * These rules are prefixed with lyt- for clarity.
- *****************************************************************************/
 .site-title {
   display: inline-block;
   margin-left: 15px;
@@ -430,12 +408,6 @@ input {
   margin-top: 10px;
   font-style: italic; }
 
-/******************************************************************************
- * Module
- *
- * Modules are the reusable, modular parts of our design. They are the
- *  callouts, the sidebar sections, the products lists and so on.
- *****************************************************************************/
 .page-title {
   margin: 3em .5em 1em .5em;
   color: #212121;
@@ -583,3 +555,24 @@ input.btn {
 
 #back-to-top-widget:hover {
   cursor: pointer; }
+
+@media (max-width: 1250px) {
+  nav ul,
+  nav #search-box,
+  nav .user-container {
+    display: none; } }
+
+@media (max-width: 950px) {
+  .box50, .box33 {
+    width: 90%;
+    display: block;
+    float: none;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center; }
+  .heading-panel button.btn {
+    margin: 0 auto; } }
+
+@media (max-width: 800px) {
+  textarea {
+    width: 85%; } }
