@@ -54,6 +54,12 @@ export class NavbarComponent implements OnInit {
   private submitIsVisible: boolean;
 
   /**
+   * Indicates whether whether the dropdown menu is visible or not.
+   * @type {boolean}
+   */
+  private dropdownMenuIsVisible: boolean;
+
+  /**
    * Contains the user data returned from localStorage.
    * @type {any}
    */
@@ -95,6 +101,7 @@ export class NavbarComponent implements OnInit {
         showsDropdown: new FormControl('', Validators.required),
         description:   new FormControl('', Validators.required)
     });
+    this.dropdownMenuIsVisible = false;
     this.submitIsVisible = false;
     this.user = this.userLocalStorageService.getUser();
   }
@@ -187,6 +194,10 @@ export class NavbarComponent implements OnInit {
         }
       );
     }
+  }
+
+  toggleDropdownMenu() {
+    this.dropdownMenuIsVisible = !this.dropdownMenuIsVisible;
   }
 
   toggleSearch() {

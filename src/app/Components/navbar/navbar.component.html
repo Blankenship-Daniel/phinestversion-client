@@ -18,13 +18,15 @@
         <i (click)="toggleSearch()" class="fa fa-search"></i>
         <input class="{{ searchIsVisible ? 'visible' : '' }}" type="text">
     </span>
+    <span class="hamburger-menu">
+      <i (click)="toggleDropdownMenu()" class="fa fa-bars"></i>
+    </span>
     <form
       novalidate
       [formGroup]="submitAVersionForm"
       (ngModel)="submitAVersionForm"
       (ngSubmit)="submitAVersion(submitAVersionForm.value, submitAVersionForm.valid)">
-        <div
-          class="submit-a-version-dropdown {{ submitIsVisible ? 'visible' : '' }}">
+        <div class="submit-a-version-dropdown {{ submitIsVisible ? 'visible' : '' }}">
             <div class="box100">
               <div (click)="toggleSubmitAVersion()" class="close-icon link">
                   <span><i class="fa fa-close"></i></span>
@@ -102,3 +104,18 @@
         </div>
   </form>
 </nav>
+<div class="dropdown-menu {{ dropdownMenuIsVisible ? 'visible' : '' }}">
+  <ul>
+    <li>
+      <span (click)="navigateToUser(user.username)" routerLink="/users/{{ user.username }}" class="user-container link" *ngIf="user !== null">
+          <img class="profile-pic" src="/assets/images/users{{ user.image }}" alt="{{ user.username }}'s profile picture'">
+          {{ user.username }}
+      </span>
+    </li>
+    <li *ngIf="user !== null"><button (click)="toggleSubmitAVersion()" class="submit-version-btn link">Submit a version.</button></li>
+    <li routerLink="/songs">Songs</li>
+    <li routerLink="/shows">Shows</li>
+    <li routerLink="/years">Years</li>
+    <li routerLink="/users">Leaderboard</li>
+  </ul>
+</div>

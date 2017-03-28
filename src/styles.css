@@ -473,18 +473,6 @@ nav {
   left: 0;
   width: 100%;
   max-height: 65px; }
-  nav .submit-version-btn {
-    border: 2px solid #424242;
-    color: #424242;
-    border-radius: 5px;
-    padding: 10px 20px;
-    background: transparent;
-    display: block;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out; }
-    nav .submit-version-btn:hover {
-      background: #424242;
-      color: #fff; }
   nav h1 {
     display: inline-block;
     margin-left: 15px;
@@ -514,8 +502,40 @@ nav {
       margin-right: 10px;
       margin-top: 10px;
       font-size: 1.2em; }
-      nav #search-box i:hover {
-        cursor: pointer; }
+  nav .hamburger-menu {
+    display: none;
+    float: right; }
+    nav .hamburger-menu i {
+      font-size: 1.5em;
+      padding: 15px 30px; }
+  nav i:hover {
+    cursor: pointer; }
+
+.submit-version-btn {
+  border: 2px solid #424242;
+  color: #424242;
+  border-radius: 5px;
+  padding: 10px 20px;
+  background: transparent;
+  display: block;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
+  .submit-version-btn:hover {
+    background: #424242;
+    color: #fff; }
+
+.dropdown-menu {
+  display: none;
+  margin-top: 75px;
+  background: #fff; }
+  .dropdown-menu.visible {
+    display: block; }
+  .dropdown-menu ul {
+    padding-left: 0;
+    list-style-type: none; }
+    .dropdown-menu ul li {
+      padding: 25px;
+      border-bottom: 1px solid #eeeeee; }
 
 input.btn {
   font-size: .9em;
@@ -560,7 +580,9 @@ input.btn {
   nav ul,
   nav #search-box,
   nav .user-container {
-    display: none; } }
+    display: none; }
+  nav .hamburger-menu {
+    display: inline-block; } }
 
 @media (max-width: 950px) {
   .box50, .box33 {
