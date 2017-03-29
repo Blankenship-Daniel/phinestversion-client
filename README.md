@@ -13,6 +13,8 @@ You can access Phinest Version 1.0 here: http://phinestversion.com
 Beyond being a good way to learn Angular 2. This project aims to improve upon
 the first iteration through a complete style redesign.
 
+# How to run the project locally
+
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
 
 ## Development server
