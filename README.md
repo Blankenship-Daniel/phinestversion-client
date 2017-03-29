@@ -4,11 +4,13 @@
 
 Over the past 32 years Phish has played 596 versions of “You Enjoy Myself,” 498 versions of “Mike’s Song,” 465 “David Bowies,” 442 versions of “Run Like An Antelope” and 374 versions of “Reba.” For a new fan getting into the band, figuring out where to start can be a tough slog. A new site called Phinest Version aims to figure out the best of the best by crowd sourcing rankings for both songs and shows.
 
-Phinest Version allows fans to submit their favorite versions of songs and shows, vote up and down and comment on other submissions. The key to the success of the site relies on Phish fans participating and using Phinest Version as intended. As such, we suggest you register and login to Phinest Version to share your thoughts. -https://www.jambase.com/article/phinest-version-aims-to-crowd-source-phish-ratings
+Phinest Version allows fans to submit their favorite versions of songs and shows, vote up and down and comment on other submissions. The key to the success of the site relies on Phish fans participating and using Phinest Version as intended. As such, we suggest you register and login to Phinest Version to share your thoughts.
+
+-https://www.jambase.com/article/phinest-version-aims-to-crowd-source-phish-ratings
 
 You can access Phinest Version 1.0 here: http://phinestversion.com
 
-# Running the project locally
+***
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
 
