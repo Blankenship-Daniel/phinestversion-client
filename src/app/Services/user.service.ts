@@ -74,11 +74,11 @@ export class UserService {
    * @param  {string}             pass  the plain text password for a given user.
    * @return {Observable<User[]>}
    */
-  registerUser(email: string, pass: string) : Observable<User[]> {
+  registerUser(image: string, username: string, email: string, pass: string) : Observable<User[]> {
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers });
     let request: string = api.BASE_URL + '/users/register';
-    let body: string = JSON.stringify({ 'email': email, 'password': pass });
+    let body: string = JSON.stringify({ 'image': image, 'username': username, 'email': email, 'password': pass });
     return this.http.post(request, body, options)
               .map((res:Response) => res.json())
               .catch((error:any) => Observable.throw(

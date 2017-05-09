@@ -10,6 +10,22 @@
     (ngSubmit)="registerUser(form.value, form.valid)">
     <div class="box100 grey100-bg shadow">
       <div class="input-large">
+        <div class="image-upload-wrapper">
+          <image-upload
+            [max]="1"
+            [buttonCaption]="'Select Image'"
+            [dropBoxMessage]="'Drop your profile pic here!'"
+            [maxFileSize]="1048576"
+            (onFileUploadFinish)="imageUploaded($event)"
+            (isPending)="showSpinner($event)"
+            (onRemove)="imageRemoved($event)"></image-upload>
+        </div>
+        <div class="error"
+          *ngIf="formSubmitted && !imageReady">
+            Please upload a profile picture
+        </div>
+      </div>
+      <div class="input-large">
         <input
           [ngClass]="{
               'error': !form.controls['username'].valid &&
@@ -68,7 +84,10 @@
             *ngIf="!form.controls['password'].valid &&
                     form.controls['password'].touched ||
                     !form.valid && formSubmitted && !form.controls['password'].valid">
-              Please enter a valid password
+              Please enter a valid password (at least 8 characters long)
+          </div>
+          <div class="error">
+            {{ serverError }}
           </div>
       </div>
       <div class="box33"></div>
@@ -81,5 +100,4 @@
       </div>
     </div>
   </form>
-
 </div>

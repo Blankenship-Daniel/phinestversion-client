@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeadingPanelComponent } from './Components/heading-panel/heading-panel.component';
 import { HomeComponent } from './Components/home/home.component';
 import { HttpModule } from '@angular/http';
+import { ImageUploadModule } from 'angular2-image-upload';
 import { LoginComponent } from './Components/login/login.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { NgModule } from '@angular/core';
@@ -67,6 +68,7 @@ import { YearService } from './Services/year.service';
     BrowserModule,
     FormsModule,
     HttpModule,
+    ImageUploadModule.forRoot(),
     ReactiveFormsModule,
     RouterModule.forRoot(routes, {
         useHash: false,
