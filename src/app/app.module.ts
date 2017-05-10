@@ -15,6 +15,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { RegisterComponent } from './Components/register/register.component';
 import { routes } from './Components/app.routes';
+import { SearchService } from './Services/search.service';
 import { ShaderService } from './Services/shader.service';
 import { ShowBoxComponent } from './Components/show-box/show-box.component';
 import { ShowComponent } from './Components/show/show.component';
@@ -37,6 +38,7 @@ import { YearBoxComponent } from './Components/year-box/year-box.component';
 import { YearComponent } from './Components/year/year.component';
 import { YearsComponent } from './Components/years/years.component';
 import { YearService } from './Services/year.service';
+import { SearchComponent } from './Components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,8 @@ import { YearService } from './Services/year.service';
     VoteComponent,
     YearBoxComponent,
     YearComponent,
-    YearsComponent
+    YearsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -76,6 +79,7 @@ import { YearService } from './Services/year.service';
   ],
   providers: [
     CommentService,
+    SearchService,
     ShaderService,
     ShowService,
     SongService,

@@ -8,15 +8,11 @@
       <li routerLink="/users">Leaderboard</li>
     </ul>
     <span (click)="navigateToUser(user.username)" routerLink="/users/{{ user.username }}" class="user-container link" *ngIf="user !== null">
-        <img class="profile-pic" src="/assets/images/users{{ user.image }}" alt="{{ user.username }}'s profile picture'">
+        <img class="profile-pic" src="{{ imageApi }}{{ user.image }}" alt="{{ user.username }}'s profile picture'">
         {{ user.username }}
     </span>
     <span routerLink="/login" class="link" *ngIf="user === null">
         Login
-    </span>
-    <span id="search-box">
-        <i (click)="toggleSearch()" class="fa fa-search"></i>
-        <input class="{{ searchIsVisible ? 'visible' : '' }}" type="text">
     </span>
     <span class="hamburger-menu">
       <i (click)="toggleDropdownMenu()" class="fa fa-bars"></i>
@@ -108,7 +104,7 @@
   <ul>
     <li>
       <span (click)="navigateToUser(user.username)" routerLink="/users/{{ user.username }}" class="user-container link" *ngIf="user !== null">
-          <img class="profile-pic" src="/assets/images/users{{ user.image }}" alt="{{ user.username }}'s profile picture'">
+          <img class="profile-pic" src="{{ imageApi }}{{ user.image }}" alt="{{ user.username }}'s profile picture'">
           {{ user.username }}
       </span>
     </li>

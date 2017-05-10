@@ -8,6 +8,8 @@ import { Submission } from '../../Models/submission.model';
 import { SubmissionService } from '../../Services/submission.service';
 import { User } from '../../Models/user.model';
 import { UserLocalStorageService } from '../../Services/userLocalStorage.service';
+import * as api from '../../../environments/api.config';
+
 
 @Component({
   selector: 'app-navbar',
@@ -65,6 +67,8 @@ export class NavbarComponent implements OnInit {
    */
   private user: any;
 
+  private imageApi: string;
+
   constructor(
 
     /**
@@ -104,6 +108,7 @@ export class NavbarComponent implements OnInit {
     this.dropdownMenuIsVisible = false;
     this.submitIsVisible = false;
     this.user = this.userLocalStorageService.getUser();
+    this.imageApi = api.BASE_URL;
   }
 
   ngOnInit() {
@@ -198,10 +203,6 @@ export class NavbarComponent implements OnInit {
 
   toggleDropdownMenu() {
     this.dropdownMenuIsVisible = !this.dropdownMenuIsVisible;
-  }
-
-  toggleSearch() {
-    this.searchIsVisible = !this.searchIsVisible;
   }
 
   toggleSubmitAVersion() {

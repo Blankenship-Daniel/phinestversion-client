@@ -1,8 +1,9 @@
 <div class="content">
   <div class="box">
     <img
-      *ngIf="shows === undefined" 
+      *ngIf="shows === undefined"
       class="centered" src="/assets/images/loading.gif" alt="Loading">
+    <app-search (searchResults)="shows = $event" [searchType]="'Shows'"></app-search>
     <app-show-box *ngFor="let show of shows; let i = index"
       [show]="show"
       [index]="i">

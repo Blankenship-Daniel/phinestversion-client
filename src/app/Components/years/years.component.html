@@ -3,6 +3,7 @@
     <img
       *ngIf="years === undefined"
       class="centered" src="/assets/images/loading.gif" alt="Loading">
+    <app-search (searchResults)="years = $event" [searchType]="'Years'"></app-search>
     <app-year-box *ngFor="let year of years; let i = index"
       [year]="year"
       [index]="i">
