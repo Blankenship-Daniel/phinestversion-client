@@ -10,12 +10,14 @@ import { UserService } from '../../Services/user.service';
 export class UsersComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event']) onScroll(ev) {
-    var pageHeight = document.documentElement.scrollHeight;
-    var scrollPos  = document.documentElement.clientHeight + window.pageYOffset;
+    if (!this.preventScroll) {
+      var pageHeight = document.documentElement.scrollHeight;
+      var scrollPos  = document.documentElement.clientHeight + window.pageYOffset;
 
-    if (scrollPos === pageHeight) {
-      this.offset += this.offsetAmount;
-      this.loadUsers();
+      if (scrollPos === pageHeight) {
+        this.offset += this.offsetAmount;
+        this.loadUsers();
+      }
     }
   }
 
@@ -39,6 +41,8 @@ export class UsersComponent implements OnInit {
    */
   private users: UserRank[];
 
+  private preventScroll: boolean;
+
   constructor(
 
     /**
@@ -50,6 +54,7 @@ export class UsersComponent implements OnInit {
   ) {
     this.offset = 0;
     this.offsetAmount = 20;
+    this.preventScroll = false;
   }
 
   ngOnInit() {

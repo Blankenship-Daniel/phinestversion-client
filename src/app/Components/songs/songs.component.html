@@ -3,7 +3,10 @@
     <img
       *ngIf="songs === undefined"
       class="centered" src="/assets/images/loading.gif" alt="Loading">
-    <app-search (searchResults)="songs = $event" [searchType]="'Songs'"></app-search>
+    <app-search
+      (preventLoadingOnScroll)="preventScroll = $event"
+      (searchResults)="songs = $event"
+      [searchType]="'Songs'"></app-search>
     <app-song-box *ngFor="let song of songs; let i = index"
       [song]="song"
       [index]="i">

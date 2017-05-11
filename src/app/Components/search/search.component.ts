@@ -16,17 +16,27 @@ export class SearchComponent implements OnInit {
 
   @Output() searchResults: EventEmitter<any>;
 
+  @Output() preventLoadingOnScroll: EventEmitter<boolean>;
+
   constructor(
     private searchService: SearchService
   ) {
     this.searchResults = new EventEmitter();
+    this.preventLoadingOnScroll = new EventEmitter();
   }
 
   ngOnInit() {
+    this.preventLoadingOnScroll.emit(false);
   }
 
   search(event: any) {
     let val: string = event.target.value;
+    if (val === '') {
+      this.preventLoadingOnScroll.emit(false);
+    } else {
+      this.preventLoadingOnScroll.emit(true);
+    }
+
     switch (this.searchType.toLowerCase()) {
       case 'songs':
         this.searchService.searchSongs(val).subscribe(
@@ -61,6 +71,5 @@ export class SearchComponent implements OnInit {
         );
         break;
     }
-    console.log(event.target.value);
   }
 }

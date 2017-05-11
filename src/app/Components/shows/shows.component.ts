@@ -10,12 +10,14 @@ import { ShowService } from '../../Services/show.service';
 export class ShowsComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event']) onScroll(ev) {
-    var pageHeight = document.documentElement.scrollHeight;
-    var scrollPos  = document.documentElement.clientHeight + window.pageYOffset;
+    if (!this.preventScroll) {
+      var pageHeight = document.documentElement.scrollHeight;
+      var scrollPos  = document.documentElement.clientHeight + window.pageYOffset;
 
-    if (scrollPos === pageHeight) {
-      this.offset += this.offsetAmount;
-      this.loadShows();
+      if (scrollPos === pageHeight) {
+        this.offset += this.offsetAmount;
+        this.loadShows();
+      }
     }
   }
 
@@ -39,6 +41,8 @@ export class ShowsComponent implements OnInit {
    */
   private shows: ShowRank[];
 
+  private preventScroll: boolean;
+
   constructor(
 
     /**
@@ -50,6 +54,7 @@ export class ShowsComponent implements OnInit {
   ) {
     this.offset = 0;
     this.offsetAmount = 20;
+    this.preventScroll = false;
   }
 
   ngOnInit() {

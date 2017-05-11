@@ -3,7 +3,10 @@
       <img
         *ngIf="users === undefined"
         class="centered" src="/assets/images/loading.gif" alt="Loading">
-      <app-search (searchResults)="users = $event" [searchType]="'Users'"></app-search>
+      <app-search
+        (preventLoadingOnScroll)="preventScroll = $event"
+        (searchResults)="users = $event"
+        [searchType]="'Users'"></app-search>
       <app-user-box
         *ngFor="let user of users; let i = index"
         [index]="i"
