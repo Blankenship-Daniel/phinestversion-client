@@ -78,7 +78,7 @@ export class LoginComponent implements OnInit {
    *                         the database.
    */
   handleAuth(users: User[]) {
-    localStorage.setItem('user', JSON.stringify(users));
+    localStorage.setItem('pv-user', JSON.stringify(users));
     location.pathname = '/';
   }
 }

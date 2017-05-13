@@ -70,28 +70,37 @@ nav {
 }
 
 .submit-version-btn {
-    border: 2px solid material-color('grey', '800');
-    color: material-color('grey', '800');
-    border-radius: 5px;
-    padding: 10px 20px;
-    background: transparent;
-    display: block;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+  border: 2px solid material-color('grey', '800');
+  color: material-color('grey', '800');
+  border-radius: 5px;
+  padding: 10px 20px;
+  background: transparent;
+  display: block;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 
-    &:hover {
-      background: material-color('grey', '800');
-      color: #fff;
-    }
+  &:hover {
+    background: material-color('grey', '800');
+    color: #fff;
+  }
 }
 
 .dropdown-menu {
-  display: none;
-  margin-top: 75px;
-  background: #fff;
+  visibility: hidden;
+  opacity: 0;
+  height: 100vh;
+  max-width: 1px;
+  position: fixed;
+  top: 75px;
+  right: 0;
+  width: 80%;
+  @include transition(all 0.1s ease);
 
   &.visible {
-    display: block;
+    visibility: visible;
+    opacity: 1;
+    max-width: 500px;
+    z-index: 1;
   }
 
   ul {
@@ -101,6 +110,10 @@ nav {
     li {
       padding: 25px;
       border-bottom: 1px solid $border-color;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

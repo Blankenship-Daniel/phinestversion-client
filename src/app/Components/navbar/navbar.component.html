@@ -1,117 +1,40 @@
 <nav>
-    <h1 routerLink="/">Phinest Version.</h1>
+    <h1 (click)="toggleHamburgerMenu()" routerLink="/">Phinest Version.</h1>
     <ul>
-      <li *ngIf="user !== null"><button (click)="toggleSubmitAVersion()" class="submit-version-btn link">Submit a version.</button></li>
+      <li *ngIf="user !== null"><button routerLink="/submit" class="submit-version-btn link">Submit a version.</button></li>
       <li routerLink="/songs">Songs</li>
       <li routerLink="/shows">Shows</li>
       <li routerLink="/years">Years</li>
       <li routerLink="/users">Leaderboard</li>
+      <li *ngIf="user !== null">
+        <span (click)="navigateToUser(user.username)" routerLink="/users/{{ user.username }}" class="user-container link">
+          <span class="helper"></span>
+          <img class="profile-pic" src="{{ imageApi }}{{ user.image }}" alt="{{ user.username }}'s profile picture'">
+          {{ user.username }}
+        </span>
+      </li>
+      <li routerLink="/login" class="link" *ngIf="user === null">Login</li>
+      <li (click)="logout()" class="link" *ngIf="user !== null">Logout</li>
     </ul>
-    <span (click)="navigateToUser(user.username)" routerLink="/users/{{ user.username }}" class="user-container link" *ngIf="user !== null">
-        <img class="profile-pic" src="{{ imageApi }}{{ user.image }}" alt="{{ user.username }}'s profile picture'">
-        {{ user.username }}
-    </span>
-    <span routerLink="/login" class="link" *ngIf="user === null">
-        Login
-    </span>
     <span class="hamburger-menu">
-      <i (click)="toggleDropdownMenu()" class="fa fa-bars"></i>
+      <i (click)="toggleHamburgerMenu()" class="fa fa-bars"></i>
     </span>
-    <form
-      novalidate
-      [formGroup]="submitAVersionForm"
-      (ngModel)="submitAVersionForm"
-      (ngSubmit)="submitAVersion(submitAVersionForm.value, submitAVersionForm.valid)">
-        <div class="submit-a-version-dropdown {{ submitIsVisible ? 'visible' : '' }}">
-            <div class="box100">
-              <div (click)="toggleSubmitAVersion()" class="close-icon link">
-                  <span><i class="fa fa-close"></i></span>
-              </div>
-              <div class="box33">
-                  <h1>Song</h1>
-                  <select
-                    [ngClass]="{
-                        'error': !submitAVersionForm.controls['songsDropdown'].valid &&
-                                  submitAVersionForm.controls['songsDropdown'].touched ||
-                                  formSubmitted && !submitAVersionForm.controls['songsDropdown'].valid
-                    }"
-                    [formControl]="submitAVersionForm.controls['songsDropdown']"
-                    formControlName="songsDropdown"
-                    name="songsDropdown"
-                    required>
-                      <option value="">Choose a song</option>
-                      <option *ngFor="let song of songs" value="{{ song.id }}">
-                          {{ song.title }}
-                      </option>
-                  </select>
-                  <div
-                    *ngIf="!submitAVersionForm.controls['songsDropdown'].valid &&
-                            submitAVersionForm.controls['songsDropdown'].touched ||
-                            formSubmitted && !submitAVersionForm.controls['songsDropdown'].valid"
-                    class="error sv-error">
-                    Please enter a song name
-                  </div>
-              </div>
-              <div class="box33">
-                  <h1>Show Date</h1>
-                  <select
-                    [ngClass]="{
-                        'error': !submitAVersionForm.controls['showsDropdown'].valid &&
-                                  submitAVersionForm.controls['showsDropdown'].touched ||
-                                  formSubmitted && !submitAVersionForm.controls['showsDropdown'].valid
-                    }"
-                    [formControl]="submitAVersionForm.controls['showsDropdown']"
-                    formControlName="showsDropdown"
-                    name="showsDropdown"
-                    required>
-                      <option value="">Choose a date</option>
-                      <option *ngFor="let show of shows" value="{{ show.id }}">{{ show.date }}</option>
-                  </select>
-                  <div
-                    *ngIf="!submitAVersionForm.controls['showsDropdown'].valid &&
-                            submitAVersionForm.controls['showsDropdown'].touched ||
-                            formSubmitted && !submitAVersionForm.controls['showsDropdown'].valid"
-                    class="error sv-error">
-                    Please enter a show date
-                  </div>
-              </div>
-              <div class="box33">
-                  <h1>Description</h1>
-                  <textarea
-                    [ngClass]="{
-                        'error': !submitAVersionForm.controls['description'].valid &&
-                                  submitAVersionForm.controls['description'].touched ||
-                                  formSubmitted && !submitAVersionForm.controls['description'].valid
-                    }"
-                    [formControl]="submitAVersionForm.controls['description']"
-                    formControlName="description"
-                    name="description"
-                    required></textarea>
-                  <div
-                    *ngIf="!submitAVersionForm.controls['description'].valid &&
-                            submitAVersionForm.controls['description'].touched ||
-                            formSubmitted && !submitAVersionForm.controls['description'].valid"
-                    class="error sv-error">
-                    Please enter a description
-                  </div>
-              </div>
-              <input type="submit"value="Submit" class="blue800-bg right link btn">
-            </div>
-        </div>
-  </form>
 </nav>
-<div class="dropdown-menu {{ dropdownMenuIsVisible ? 'visible' : '' }}">
+<div class="dropdown-menu grey100-bg shadow {{ dropdownMenuIsVisible ? 'visible' : '' }}">
   <ul>
-    <li>
-      <span (click)="navigateToUser(user.username)" routerLink="/users/{{ user.username }}" class="user-container link" *ngIf="user !== null">
+    <li *ngIf="user !== null">
+      <span (click)="navigateToUser(user.username)" routerLink="/users/{{ user.username }}" class="user-container link">
+          <span class="helper"></span>
           <img class="profile-pic" src="{{ imageApi }}{{ user.image }}" alt="{{ user.username }}'s profile picture'">
           {{ user.username }}
       </span>
     </li>
-    <li *ngIf="user !== null"><button (click)="toggleSubmitAVersion()" class="submit-version-btn link">Submit a version.</button></li>
-    <li routerLink="/songs">Songs</li>
-    <li routerLink="/shows">Shows</li>
-    <li routerLink="/years">Years</li>
-    <li routerLink="/users">Leaderboard</li>
+    <li *ngIf="user !== null"><button (click)="toggleHamburgerMenu()" routerLink="/submit" class="submit-version-btn link">Submit a version.</button></li>
+    <li (click)="toggleHamburgerMenu()" routerLink="/songs">Songs</li>
+    <li (click)="toggleHamburgerMenu()" routerLink="/shows">Shows</li>
+    <li (click)="toggleHamburgerMenu()" routerLink="/years">Years</li>
+    <li (click)="toggleHamburgerMenu()" routerLink="/users">Leaderboard</li>
+    <li (click)="toggleHamburgerMenu()" routerLink="/login" class="link" *ngIf="user === null">Login</li>
+    <li (click)="logout()" class="link" *ngIf="user !== null">Logout</li>
   </ul>
 </div>

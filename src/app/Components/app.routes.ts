@@ -6,6 +6,7 @@ import { ShowComponent  } from './show/show.component';
 import { ShowsComponent } from './shows/shows.component';
 import { SongComponent  } from './song/song.component';
 import { SongsComponent } from './songs/songs.component';
+import { SubmitVersionComponent } from './submit-version/submit-version.component';
 import { UserComponent } from './user/user.component';
 import { UsersComponent } from './users/users.component';
 import { YearComponent  } from './year/year.component';
@@ -20,6 +21,7 @@ export const routes: Routes = [
   { path: 'shows/:date',      component: ShowComponent      },
   { path: 'songs',            component: SongsComponent     },
   { path: 'songs/:slug',      component: SongComponent      },
+  { path: 'submit',           component: SubmitVersionComponent },
   { path: 'users',            component: UsersComponent     },
   { path: 'users/:username',  component: UserComponent      },
   { path: 'years',            component: YearsComponent     },

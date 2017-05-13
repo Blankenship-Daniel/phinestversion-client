@@ -39,6 +39,7 @@ import { YearComponent } from './Components/year/year.component';
 import { YearsComponent } from './Components/years/years.component';
 import { YearService } from './Services/year.service';
 import { SearchComponent } from './Components/search/search.component';
+import { SubmitVersionComponent } from './Components/submit-version/submit-version.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { SearchComponent } from './Components/search/search.component';
     YearBoxComponent,
     YearComponent,
     YearsComponent,
-    SearchComponent
+    SearchComponent,
+    SubmitVersionComponent
   ],
   imports: [
     BrowserModule,

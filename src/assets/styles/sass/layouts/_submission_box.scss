@@ -36,23 +36,23 @@
 }
 
 .title {
-    margin-top: 20px;
-    font-size: 2em;
-    font-weight: bold;
+  margin-top: 20px;
+  font-size: 2em;
+  font-weight: bold;
 }
 
 .show-location {
-    margin-top: 25px;
-    font-size: 1.5em;
-    font-weight: bold;
+  margin-top: 25px;
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
 .score {
-    margin-top: 25px;
-    font-size: 1.5em;
-    text-align: right;
-    color: material-color('green', 'a400');
-    font-weight: bold;
+  margin-top: 25px;
+  font-size: 1.5em;
+  text-align: right;
+  color: material-color('green', 'a400');
+  font-weight: bold;
 }
 
 .venue-description {
@@ -63,4 +63,5 @@
 .username {
   margin-top: 10px;
   font-style: italic;
+  text-transform: uppercase;
 }

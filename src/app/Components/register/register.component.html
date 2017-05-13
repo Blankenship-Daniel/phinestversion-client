@@ -15,7 +15,7 @@
             [max]="1"
             [buttonCaption]="'Select Image'"
             [dropBoxMessage]="'Drop your profile pic here!'"
-            [maxFileSize]="1048576"
+            [maxFileSize]="4000000"
             (onFileUploadFinish)="imageUploaded($event)"
             (isPending)="showSpinner($event)"
             (onRemove)="imageRemoved($event)"></image-upload>

@@ -37,7 +37,7 @@ export class UserLocalStorageService {
   }
 
   constructor() {
-    this.user   = JSON.parse(localStorage.getItem('user'));
+    this.user   = JSON.parse(localStorage.getItem('pv-user'));
     this.props  = [
       'id',
       'image',

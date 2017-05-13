@@ -12,49 +12,11 @@
 }
 
 .error {
-    color: material-color('red', 'a400');
-}
-
-.user-container {
-    position: relative;
-
-    height: 100%;
-    margin-left: 40px;
-
-    font-size: .9em;
-
-    .profile-pic {
-        position: absolute;
-        top: -4px;
-        left: -30px;
-
-        width: 20px;
-
-        border-radius: 50%;
-    }
-}
-
-.profile-pic {
-    width: 30px;
-
-    border-radius: 50%;
-}
-
-.submit-a-version-dropdown {
-    position: relative;
-
-    display: block;
-    display: none;
-
-    margin-top: 21px;
-
-    border-top: 1px solid material-color('grey', '300');
-    border-bottom: 1px solid material-color('grey', '300');
-    background: #fff;
+  color: material-color('red', 'a400');
 }
 
 .visible {
-    display: block;
+  display: block;
 }
 
 .centered {
@@ -74,4 +36,27 @@
 
 .sv-error {
   margin: 1em;
+}
+
+.user-container {
+  height: 25px;      /* equals max image height */
+  width: 160px;
+  white-space: nowrap;
+  text-align: center;
+  margin: 1em 0;
+  text-transform: uppercase;
+  font-style: italic;
+
+  img {
+    border-radius: 2px;
+    vertical-align: middle;
+    max-height: 25px;
+    max-width: 160px;
+  }
+}
+
+.helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
 }

@@ -406,7 +406,8 @@ input {
 
 .username {
   margin-top: 10px;
-  font-style: italic; }
+  font-style: italic;
+  text-transform: uppercase; }
 
 .page-title {
   margin: 3em .5em 1em .5em;
@@ -418,31 +419,6 @@ input {
 
 .error {
   color: #ff1744; }
-
-.user-container {
-  position: relative;
-  height: 100%;
-  margin-left: 40px;
-  font-size: .9em; }
-  .user-container .profile-pic {
-    position: absolute;
-    top: -4px;
-    left: -30px;
-    width: 20px;
-    border-radius: 50%; }
-
-.profile-pic {
-  width: 30px;
-  border-radius: 50%; }
-
-.submit-a-version-dropdown {
-  position: relative;
-  display: block;
-  display: none;
-  margin-top: 21px;
-  border-top: 1px solid #e0e0e0;
-  border-bottom: 1px solid #e0e0e0;
-  background: #fff; }
 
 .visible {
   display: block; }
@@ -462,6 +438,26 @@ input {
 
 .sv-error {
   margin: 1em; }
+
+.user-container {
+  height: 25px;
+  /* equals max image height */
+  width: 160px;
+  white-space: nowrap;
+  text-align: center;
+  margin: 1em 0;
+  text-transform: uppercase;
+  font-style: italic; }
+  .user-container img {
+    border-radius: 2px;
+    vertical-align: middle;
+    max-height: 25px;
+    max-width: 160px; }
+
+.helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle; }
 
 nav {
   background: #fff;
@@ -525,17 +521,29 @@ nav {
     color: #fff; }
 
 .dropdown-menu {
-  display: none;
-  margin-top: 75px;
-  background: #fff; }
+  visibility: hidden;
+  opacity: 0;
+  height: 100vh;
+  max-width: 1px;
+  position: fixed;
+  top: 75px;
+  right: 0;
+  width: 80%;
+  -webkit-transition: all 0.1s ease;
+  transition: all 0.1s ease; }
   .dropdown-menu.visible {
-    display: block; }
+    visibility: visible;
+    opacity: 1;
+    max-width: 500px;
+    z-index: 1; }
   .dropdown-menu ul {
     padding-left: 0;
     list-style-type: none; }
     .dropdown-menu ul li {
       padding: 25px;
       border-bottom: 1px solid #eeeeee; }
+      .dropdown-menu ul li:hover {
+        cursor: pointer; }
 
 input.btn {
   font-size: .9em;
@@ -598,3 +606,9 @@ input.btn {
 @media (max-width: 800px) {
   textarea {
     width: 85%; } }
+
+@media (min-width: 1250px) {
+  .dropdown-menu.visible {
+    visibility: hidden;
+    max-width: 1px;
+    opacity: 0; } }

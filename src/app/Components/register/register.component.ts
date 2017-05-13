@@ -118,7 +118,7 @@ export class RegisterComponent implements OnInit {
         form.email,
         form.password
       ).subscribe(
-        user => this.userResponse(user),
+        user => this.userResponse(user, form.email, form.password),
         err  => {
           console.log(err);
         }
@@ -126,9 +126,27 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  userResponse(user: any) {
+  userResponse(user: any, email: string, password: string) {
     if (user.error) {
       this.serverError = user.error;
     }
+    else {
+      this.userService.authUser(email, password).subscribe(
+        users => this.handleAuth(users),
+        err   => {
+          console.log(err);
+        }
+      );
+    }
+  }
+
+  /**
+   * Saves the validated user data to localStorage.
+   * @param  {User[]} users the validated user data returned from
+   *                         the database.
+   */
+  handleAuth(users: User[]) {
+    localStorage.setItem('pv-user', JSON.stringify(users));
+    location.pathname = '/';
   }
 }
