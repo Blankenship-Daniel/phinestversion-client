@@ -1,0 +1,82 @@
+<div class="content">
+  <div class="page-title">
+    Submit A Version
+  </div>
+  <form
+    novalidate
+    [formGroup]="submitAVersionForm"
+    (ngModel)="submitAVersionForm"
+    (ngSubmit)="submitAVersion(submitAVersionForm.value, submitAVersionForm.valid)">
+        <div class="box100 grey100-bg shadow">
+          <div class="box33">
+              <h1>Song</h1>
+              <select
+                [ngClass]="{
+                    'error': !submitAVersionForm.controls['songsDropdown'].valid &&
+                              submitAVersionForm.controls['songsDropdown'].touched ||
+                              formSubmitted && !submitAVersionForm.controls['songsDropdown'].valid
+                }"
+                [formControl]="submitAVersionForm.controls['songsDropdown']"
+                formControlName="songsDropdown"
+                name="songsDropdown"
+                required>
+                  <option value="">Choose a song</option>
+                  <option *ngFor="let song of songs" value="{{ song.id }}">
+                      {{ song.title }}
+                  </option>
+              </select>
+              <div
+                *ngIf="!submitAVersionForm.controls['songsDropdown'].valid &&
+                        submitAVersionForm.controls['songsDropdown'].touched ||
+                        formSubmitted && !submitAVersionForm.controls['songsDropdown'].valid"
+                class="error sv-error">
+                Please enter a song name
+              </div>
+          </div>
+          <div class="box33">
+              <h1>Show Date</h1>
+              <select
+                [ngClass]="{
+                    'error': !submitAVersionForm.controls['showsDropdown'].valid &&
+                              submitAVersionForm.controls['showsDropdown'].touched ||
+                              formSubmitted && !submitAVersionForm.controls['showsDropdown'].valid
+                }"
+                [formControl]="submitAVersionForm.controls['showsDropdown']"
+                formControlName="showsDropdown"
+                name="showsDropdown"
+                required>
+                  <option value="">Choose a date</option>
+                  <option *ngFor="let show of shows" value="{{ show.id }}">{{ show.date }}</option>
+              </select>
+              <div
+                *ngIf="!submitAVersionForm.controls['showsDropdown'].valid &&
+                        submitAVersionForm.controls['showsDropdown'].touched ||
+                        formSubmitted && !submitAVersionForm.controls['showsDropdown'].valid"
+                class="error sv-error">
+                Please enter a show date
+              </div>
+          </div>
+          <div class="box33">
+              <h1>Description</h1>
+              <textarea
+                [ngClass]="{
+                    'error': !submitAVersionForm.controls['description'].valid &&
+                              submitAVersionForm.controls['description'].touched ||
+                              formSubmitted && !submitAVersionForm.controls['description'].valid
+                }"
+                [formControl]="submitAVersionForm.controls['description']"
+                formControlName="description"
+                name="description"
+                required></textarea>
+              <div
+                *ngIf="!submitAVersionForm.controls['description'].valid &&
+                        submitAVersionForm.controls['description'].touched ||
+                        formSubmitted && !submitAVersionForm.controls['description'].valid"
+                class="error sv-error">
+                Please enter a description
+              </div>
+          </div>
+          <input type="submit"value="Submit" class="blue800-bg right link btn">
+      </div>
+  </form>
+</div>
