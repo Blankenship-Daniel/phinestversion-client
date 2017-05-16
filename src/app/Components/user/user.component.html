@@ -20,6 +20,7 @@
     *ngIf="submissions === undefined"
     class="centered" src="/assets/images/loading.gif" alt="Loading">
   <div class="box">
+    <p class="text-center" *ngIf="noSubmissionsFound">You haven't made any submissions :(</p>
     <app-submission-box
       *ngFor="let submission of submissions; let i = index"
       [index]="i"

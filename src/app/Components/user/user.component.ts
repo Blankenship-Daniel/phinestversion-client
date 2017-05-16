@@ -60,6 +60,8 @@ export class UserComponent implements OnInit {
    */
   private users: UserRank[];
 
+  private noSubmissionsFound: boolean;
+
   constructor(
 
     /**
@@ -84,6 +86,7 @@ export class UserComponent implements OnInit {
   ) {
     this.offset = 0;
     this.offsetAmount = 20;
+    this.noSubmissionsFound = false;
   }
 
   ngOnInit() {
@@ -121,8 +124,16 @@ export class UserComponent implements OnInit {
    *  array.
    * @param  {UserRank[]} users the model returned containing the user score.
    */
-  handleUserRank(users: UserRank[]) {
+  handleUserRank(users: any) {
     this.users = users;
+    if (this.users.length === 0) {
+      this.noSubmissionsFound = true;
+      let user: any = {
+        username: this.username,
+        score: 0
+      };
+      this.users.push(user);
+    }
     for (var i = 0; i < users.length; i++) {
       this.score = Number(users[i].score);
     }

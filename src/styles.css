@@ -459,6 +459,9 @@ input {
   height: 100%;
   vertical-align: middle; }
 
+.text-center {
+  text-align: center; }
+
 nav {
   background: #fff;
   border-bottom: 1px solid #eeeeee;

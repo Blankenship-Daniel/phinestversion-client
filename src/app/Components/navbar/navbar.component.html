@@ -1,5 +1,5 @@
 <nav>
-    <h1 (click)="toggleHamburgerMenu()" routerLink="/">Phinest Version.</h1>
+    <h1 (click)="dropdownMenuIsVisible = false" routerLink="/">Phinest Version.</h1>
     <ul>
       <li *ngIf="user !== null"><button routerLink="/submit" class="submit-version-btn link">Submit a version.</button></li>
       <li routerLink="/songs">Songs</li>
@@ -29,12 +29,12 @@
           {{ user.username }}
       </span>
     </li>
-    <li *ngIf="user !== null"><button (click)="toggleHamburgerMenu()" routerLink="/submit" class="submit-version-btn link">Submit a version.</button></li>
-    <li (click)="toggleHamburgerMenu()" routerLink="/songs">Songs</li>
-    <li (click)="toggleHamburgerMenu()" routerLink="/shows">Shows</li>
-    <li (click)="toggleHamburgerMenu()" routerLink="/years">Years</li>
-    <li (click)="toggleHamburgerMenu()" routerLink="/users">Leaderboard</li>
-    <li (click)="toggleHamburgerMenu()" routerLink="/login" class="link" *ngIf="user === null">Login</li>
-    <li (click)="logout()" class="link" *ngIf="user !== null">Logout</li>
+    <li *ngIf="user !== null"><button (click)="dropdownMenuIsVisible = false" routerLink="/submit" class="submit-version-btn link">Submit a version.</button></li>
+    <li (click)="dropdownMenuIsVisible = false" routerLink="/songs">Songs</li>
+    <li (click)="dropdownMenuIsVisible = false" routerLink="/shows">Shows</li>
+    <li (click)="dropdownMenuIsVisible = false" routerLink="/years">Years</li>
+    <li (click)="dropdownMenuIsVisible = false" routerLink="/users">Leaderboard</li>
+    <li (click)="dropdownMenuIsVisible = false" routerLink="/login" class="link" *ngIf="user === null">Login</li>
+    <li (click)="dropdownMenuIsVisible = false" class="link" *ngIf="user !== null">Logout</li>
   </ul>
 </div>
