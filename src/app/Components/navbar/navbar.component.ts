@@ -44,6 +44,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
+    this.dropdownMenuIsVisible = false;
     localStorage.removeItem('pv-user');
     location.pathname = '/';
   }

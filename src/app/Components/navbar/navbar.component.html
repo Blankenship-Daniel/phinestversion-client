@@ -35,6 +35,6 @@
     <li (click)="dropdownMenuIsVisible = false" routerLink="/years">Years</li>
     <li (click)="dropdownMenuIsVisible = false" routerLink="/users">Leaderboard</li>
     <li (click)="dropdownMenuIsVisible = false" routerLink="/login" class="link" *ngIf="user === null">Login</li>
-    <li (click)="dropdownMenuIsVisible = false" class="link" *ngIf="user !== null">Logout</li>
+    <li (click)="logout()" class="link" *ngIf="user !== null">Logout</li>
   </ul>
 </div>
