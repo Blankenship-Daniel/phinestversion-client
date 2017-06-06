@@ -11,7 +11,7 @@
         </div>
     </div>
 </div>
-<div class="content">
+<div class="content dashboard">
   <div class="box">
       <div class="box50 grey100-bg min-height350 shadow">
           <h1>
@@ -87,5 +87,52 @@
               </tr>
           </table>
       </div>
+      <div class="box50 grey100-bg min-height350 shadow">
+          <h1>
+              New Submissions
+              <span *ngIf="submissions === undefined">
+                <i class="fa fa-spinner fa-spin"></i>
+              </span>
+          </h1>
+          <hr>
+          <table class="recent-table">
+              <tr>
+                  <th>Song</th>
+                  <th>Date</th>
+                  <th>Description</th>
+              </tr>
+
+              <tr class="link" *ngFor="let submission of submissions; let i = index">
+                  <td routerLink="/songs/{{ submission.slug }}"class="focus">{{ submission.title }}</td>
+                  <td routerLink="/shows/{{ submission.date }}">{{ submission.date }}</td>
+                  <td>{{ submission.description }}</td>
+              </tr>
+          </table>
+      </div>
+  </div>
+  <div class="box">
+
+    <div class="box50 grey100-bg min-height350 shadow">
+        <h1>
+            Recent Comments
+            <span *ngIf="comments === undefined">
+              <i class="fa fa-spinner fa-spin"></i>
+            </span>
+        </h1>
+        <hr>
+        <table class="recent-table">
+            <tr>
+                <th>Song</th>
+                <th>Date</th>
+                <th>Comment</th>
+            </tr>
+
+            <tr class="link" *ngFor="let comment of comments; let i = index">
+                <td routerLink="/songs/{{ comment.slug }}">{{ comment.title }}</td>
+                <td routerLink="/shows/{{ comment.date }}">{{ comment.date }}</td>
+                <td>{{ comment.comment }}</td>
+            </tr>
+        </table>
+    </div>
   </div>
 </div>

@@ -242,26 +242,31 @@ table {
     table th.right {
       text-align: right; }
   table td {
-    padding: 5px; }
+    padding: 20px 10px; }
 
-.top-rankings-table td:nth-child(2) {
+.top-rankings-table td:nth-child(2), .recent-table td:nth-child(2) {
   font-weight: bold;
   font-size: 1.1em;
   min-width: 100px; }
 
-.top-rankings-table td:nth-child(3) {
+.top-rankings-table td:nth-child(3), .recent-table td:nth-child(3) {
   font-size: .9em; }
 
-.top-rankings-table td:nth-child(4) {
+.top-rankings-table td:nth-child(4), .recent-table td:nth-child(4) {
   color: #00e676;
   font-weight: bold;
   font-size: 1.1em; }
 
-.top-rankings-table tr:hover {
+.top-rankings-table tr:hover, .recent-table tr:hover {
   cursor: pointer;
   color: #212121; }
-  .top-rankings-table tr:hover td {
+  .top-rankings-table tr:hover td, .recent-table tr:hover td {
     border-bottom: 1px solid #bdbdbd; }
+
+.recent-table td:nth-child(4) {
+  color: inherit;
+  font-weight: normal;
+  font-size: 1em; }
 
 input {
   box-sizing: border-box;
@@ -604,7 +609,9 @@ input.btn {
     margin: 20px 0;
     text-align: center; }
   .heading-panel button.btn {
-    margin: 0 auto; } }
+    margin: 0 auto; }
+  .dashboard .box, .dashboard .box33, .dashboard .box50, .dashboard .box100, .dashboard .box50 {
+    text-align: left; } }
 
 @media (max-width: 800px) {
   textarea {

@@ -5,6 +5,11 @@ import { SongRank } from '../../Models/songRank.model';
 import { SongService } from '../../Services/song.service';
 import { UserRank } from '../../Models/userRank.model';
 import { UserService } from '../../Services/user.service';
+import { CommentRecent } from '../../Models/commentRecent.model';
+import { CommentService } from '../../Services/comment.service';
+import { SubmissionRecent } from '../../Models/submissionRecent.model';
+import { SubmissionService } from '../../Services/submission.service';
+import { ShaderService } from '../../Services/shader.service';
 
 @Component({
   selector: 'app-home',
@@ -35,6 +40,18 @@ export class HomeComponent implements OnInit {
   private users: UserRank[];
 
   /**
+   * Gets the most recent comments from the database.
+   * @type {CommentRecent[]}
+   */
+  private comments: CommentRecent[];
+
+  /**
+   * Gets the most recent submission from the database.
+   * @type {SubmissionRecent[]}
+   */
+  private submissions: SubmissionRecent[];
+
+  /**
    * The number of rankings to load on the home page for each category.
    * @type {number}
    */
@@ -61,52 +78,86 @@ export class HomeComponent implements OnInit {
      *  the `users` table in the database.
      * @type {UserService}
      */
-    private userService: UserService
+    private userService: UserService,
+
+    /**
+     * Handles requests to the API and returns data from the `comments`
+     *  table.
+     * @type {CommentService}
+     */
+    private commentService: CommentService,
+
+    /**
+     * Handles interactions with the API, specifically requests regarding
+     *  the `submissions` table in the database.
+     * @type {SubmissionService}
+     */
+    private submissionService: SubmissionService,
+
+    /**
+     * Gets the shade number that corresponds to a color class such as
+     *  grey700-bg.
+     * @type {ShaderService}
+     */
+    private shader: ShaderService
   ) {
-    this.rankingsLimit = 10;
+    this.rankingsLimit = 5;
   }
 
   ngOnInit() {
+    this.loadComments();
     this.loadShows();
     this.loadSongs();
+    this.loadSubmissions();
     this.loadUsers();
   }
 
-  /**
-   * The showService returns an array of ShowRank models and assigns them to
-   *  the shows variable.
-   */
+  getShade(index: number) : number {
+    console.log(index);
+    return this.shader.getShade(index);
+  }
+
+  loadComments() {
+    this.commentService.getRecentComments().subscribe(
+      comments => this.comments = comments,
+      err      => {
+        console.log(err);
+      }
+    );
+  }
+
   loadShows() {
     this.showService.getShowRankings(this.rankingsLimit, 0).subscribe(
       shows => this.shows = shows,
       err   => {
-          console.log(err);
+        console.log(err);
       }
     );
   }
 
-  /**
-   * The songService returns an array of SongRank models and assigns them to
-   *  the songs variable.
-   */
   loadSongs() {
     this.songService.getSongRankings(this.rankingsLimit, 0).subscribe(
       songs => this.songs = songs,
       err   => {
-          console.log(err);
+        console.log(err);
       }
     );
   }
 
-  /**
-   * The userService returns an array of UserRank models and assigns them to
-   *  the users variable.
-   */
+  loadSubmissions() {
+    this.submissionService.getRecentSubmissions().subscribe(
+      submissions => this.submissions = submissions,
+      err         => {
+        console.log(err);
+      }
+    )
+  }
+
   loadUsers() {
     this.userService.getUserRankings(this.rankingsLimit, 0).subscribe(
       users => this.users = users,
       err   => {
-          console.log(err);
+        console.log(err);
       }
     );
   }

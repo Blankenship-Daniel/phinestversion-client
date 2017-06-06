@@ -2,6 +2,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Submission } from '../Models/submission.model';
+import { SubmissionRecent } from '../Models/submissionRecent.model';
 
 import { environment } from '../../environments/environment';
 
@@ -62,6 +63,19 @@ export class SubmissionService {
   getSubmissionsByUserName(username: string, limit: number, offset: number) : Observable<Submission[]> {
     let request: string = environment.api + '/submissions/user/' + username +
                           '?limit=' + limit + '&start=' + offset;
+    return this.http.get(request)
+              .map((res:Response) => res.json())
+              .catch((error:any) => Observable.throw(
+                error.json().error || 'Server error'
+              ));
+  }
+
+  /**
+   * Gets the most recent submissions from the database.
+   * @return {Observable<SubmissionRecent[]>}
+   */
+  getRecentSubmissions() : Observable<SubmissionRecent[]> {
+    let request: string = environment.api + '/submissions/recent';
     return this.http.get(request)
               .map((res:Response) => res.json())
               .catch((error:any) => Observable.throw(

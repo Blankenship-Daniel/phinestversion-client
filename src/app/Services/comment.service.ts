@@ -1,4 +1,5 @@
 import { Comment } from '../Models/comment.model';
+import { CommentRecent } from '../Models/commentRecent.model';
 import { CommentListSize } from '../Models/commentListSize.model';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Injectable } from '@angular/core';
@@ -48,6 +49,19 @@ export class CommentService {
   getCommentsBySubmissionId(submissionId: number, limit: number, offset: number) : Observable<Comment[]> {
     let request: string = environment.api + '/comments/submission/'
       + submissionId + '?limit=' + limit + '&start=' + offset;
+    return this.http.get(request)
+              .map((res:Response) => res.json())
+              .catch((error:any) => Observable.throw(
+                error.json().error || 'Server error'
+              ));
+  }
+
+  /**
+   * Get the most recent comments in the database.
+   * @return {Observable<CommentRecent[]>}
+   */
+  getRecentComments() : Observable<CommentRecent[]> {
+    let request: string = environment.api + '/comments/recent';
     return this.http.get(request)
               .map((res:Response) => res.json())
               .catch((error:any) => Observable.throw(

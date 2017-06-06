@@ -24,6 +24,11 @@
       margin: 0 auto;
     }
   }
+  .dashboard {
+    .box, .box50 {
+      text-align: left;
+    }
+  }
 }
 @media (max-width: 800px) {
   textarea {
