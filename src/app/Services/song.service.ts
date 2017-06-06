@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Rx';
 import { Song } from '../Models/song.model';
 import { SongRank } from '../Models/songRank.model';
 
-import * as api from '../../environments/api.config';
+import { environment } from '../../environments/environment';
 
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
@@ -15,7 +15,8 @@ export class SongService {
 
   constructor(
     private http: Http
-  ) { }
+  ) {
+  }
 
   /**
    * Requests a batch of song rankings from the database.
@@ -24,7 +25,7 @@ export class SongService {
    * @return {Observable<SongRank[]>}
    */
   getSongRankings(limit: number, offset: number) : Observable<SongRank[]> {
-    let request: string = api.BASE_URL + '/songs/rankings?limit=' +
+    let request: string = environment.api + '/songs/rankings?limit=' +
                           limit + '&start=' + offset;
     return this.http.get(request)
               .map((res:Response) => res.json())
@@ -43,7 +44,7 @@ export class SongService {
    * @return {Observable<SongRank[]>}
    */
   getSongRanking(slug: string) : Observable<SongRank[]> {
-    return this.http.get(api.BASE_URL + '/songs/rankings/' + slug)
+    return this.http.get(environment.api + '/songs/rankings/' + slug)
               .map((res:Response) => res.json())
               .catch((error:any) => Observable.throw(
                 error.json().error || 'Server error'
@@ -55,7 +56,7 @@ export class SongService {
    * @return {Observable<Song[]>}
    */
   getAllSongs() : Observable<Song[]> {
-    return this.http.get(api.BASE_URL + '/songs')
+    return this.http.get(environment.api + '/songs')
             .map((res:Response) => res.json())
             .catch((error:any) => Observable.throw(
               error.json().error || 'Server error'

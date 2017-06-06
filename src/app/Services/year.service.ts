@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { YearRank } from '../Models/yearRank.model';
 
-import * as api from '../../environments/api.config';
+import { environment } from '../../environments/environment';
 
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
@@ -21,7 +21,7 @@ export class YearService {
    * @return {Observable<YearRank[]>}
    */
   getYearRankings() : Observable<YearRank[]> {
-    return this.http.get(api.BASE_URL + '/years/rankings')
+    return this.http.get(environment.api + '/years/rankings')
               .map((res:Response) => res.json())
               .catch((error:any) => Observable.throw(
                 error.json().error || 'Server error'
@@ -35,7 +35,7 @@ export class YearService {
    * @return {Observable<YearRank[]>}
    */
   getYearRanking(year: string) : Observable<YearRank[]> {
-    return this.http.get(api.BASE_URL + '/years/rankings/' + year)
+    return this.http.get(environment.api + '/years/rankings/' + year)
               .map((res:Response) => res.json())
               .catch((error:any) => Observable.throw(
                 error.json().error || 'Server error'

@@ -6,7 +6,7 @@ import { ShowRank } from '../Models/showRank.model';
 import { YearRank } from '../Models/yearRank.model';
 import { UserRank } from '../Models/userRank.model';
 
-import * as api from '../../environments/api.config';
+import { environment } from '../../environments/environment';
 
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
@@ -20,7 +20,7 @@ export class SearchService {
   ) { }
 
   searchSongs(songName: string) : Observable<SongRank[]> {
-    let request: string = api.BASE_URL + '/songs/search/' + songName;
+    let request: string = environment.api + '/songs/search/' + songName;
     return this.http.get(request)
               .map((res:Response) => res.json())
               .catch((error:any) => Observable.throw(
@@ -29,7 +29,7 @@ export class SearchService {
   }
 
   searchShows(showDate: string) : Observable<ShowRank[]> {
-    let request: string = api.BASE_URL + '/shows/search/' + showDate;
+    let request: string = environment.api + '/shows/search/' + showDate;
     return this.http.get(request)
               .map((res:Response) => res.json())
               .catch((error:any) => Observable.throw(
@@ -38,7 +38,7 @@ export class SearchService {
   }
 
   searchYears(year: string) : Observable<YearRank[]> {
-    let request: string = api.BASE_URL + '/years/search/' + year;
+    let request: string = environment.api + '/years/search/' + year;
     return this.http.get(request)
               .map((res:Response) => res.json())
               .catch((error:any) => Observable.throw(
@@ -47,7 +47,7 @@ export class SearchService {
   }
 
   searchUsers(username: string) : Observable<UserRank[]> {
-    let request: string = api.BASE_URL + '/users/search/' + username;
+    let request: string = environment.api + '/users/search/' + username;
     return this.http.get(request)
               .map((res:Response) => res.json())
               .catch((error:any) => Observable.throw(

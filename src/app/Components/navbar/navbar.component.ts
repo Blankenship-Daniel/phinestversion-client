@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as api from '../../../environments/api.config';
+import { environment } from '../../../environments/environment';
 import { UserLocalStorageService } from '../../Services/userLocalStorage.service';
 
 @Component({
@@ -36,7 +36,7 @@ export class NavbarComponent implements OnInit {
     private userLocalStorageService: UserLocalStorageService
   ) {
     this.dropdownMenuIsVisible = false;
-    this.imageApi = api.BASE_URL;
+    this.imageApi = environment.api;
     this.user = this.userLocalStorageService.getUser();
   }
 

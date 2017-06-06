@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Submission } from '../Models/submission.model';
 
-import * as api from '../../environments/api.config';
+import { environment } from '../../environments/environment';
 
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
@@ -27,7 +27,7 @@ export class SubmissionService {
    * @return {Observable<Submission[]>}
    */
   getSubmissionsBySongSlug(slug: string, limit: number, offset: number) : Observable<Submission[]> {
-    let request: string = api.BASE_URL + '/submissions/slug/' + slug + '?limit=' +
+    let request: string = environment.api + '/submissions/slug/' + slug + '?limit=' +
                           limit + '&start=' + offset;
     return this.http.get(request)
               .map((res:Response) => res.json())
@@ -43,7 +43,7 @@ export class SubmissionService {
    * @return {Observable<Submission[]>}
    */
   getSubmissionsByShowDate(date: string) : Observable<Submission[]> {
-    let request: string = api.BASE_URL + '/submissions/rankings/' + date;
+    let request: string = environment.api + '/submissions/rankings/' + date;
     return this.http.get(request)
               .map((res:Response) => res.json())
               .catch((error:any) => Observable.throw(
@@ -60,7 +60,7 @@ export class SubmissionService {
    * @return {Observable<Submission[]>}
    */
   getSubmissionsByUserName(username: string, limit: number, offset: number) : Observable<Submission[]> {
-    let request: string = api.BASE_URL + '/submissions/user/' + username +
+    let request: string = environment.api + '/submissions/user/' + username +
                           '?limit=' + limit + '&start=' + offset;
     return this.http.get(request)
               .map((res:Response) => res.json())
@@ -89,7 +89,7 @@ export class SubmissionService {
   saveSubmission(song_id: number, show_id: number, description: string, user_id: number, score: number) : Observable<Submission[]> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    let request: string = api.BASE_URL + '/submissions/save';
+    let request: string = environment.api + '/submissions/save';
     let body: string = JSON.stringify({
       song_id: song_id,
       show_id: show_id,
@@ -115,7 +115,7 @@ export class SubmissionService {
   saveSubmissionScore(submissionId: number, newScore: number) : Observable<boolean> {
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers });
-    let request: string = api.BASE_URL + '/submissions/save/score';
+    let request: string = environment.api + '/submissions/save/score';
     let body: string = JSON.stringify({
       'submission_id' : submissionId,
       'score'         : newScore

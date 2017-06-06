@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Rx';
 import { Show } from '../Models/show.model';
 import { ShowRank } from '../Models/showRank.model';
 
-import * as api from '../../environments/api.config';
+import { environment } from '../../environments/environment';
 
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
@@ -24,7 +24,7 @@ export class ShowService {
    * @return {Observable<ShowRank[]>}
    */
   getShowRankings(limit: number, offset: number) : Observable<ShowRank[]> {
-    let request: string = api.BASE_URL + '/shows/rankings?limit=' +
+    let request: string = environment.api + '/shows/rankings?limit=' +
                           limit + '&start=' + offset;
     return this.http.get(request)
               .map((res:Response) => res.json())
@@ -40,7 +40,7 @@ export class ShowService {
    * @return {Observable<ShowRank[]>}
    */
   getShowRankingsByYear(year: string) : Observable<ShowRank[]> {
-    let request: string = api.BASE_URL + '/shows/rankings/' + year;
+    let request: string = environment.api + '/shows/rankings/' + year;
     return this.http.get(request)
               .map((res:Response) => res.json())
               .catch((error:any) => Observable.throw(
@@ -55,7 +55,7 @@ export class ShowService {
    * @return {Observable<ShowRank[]>}
    */
   getShowRankingByDate(date: string) : Observable<ShowRank[]> {
-    let request: string = api.BASE_URL + '/shows/rankings/' + date;
+    let request: string = environment.api + '/shows/rankings/' + date;
     return this.http.get(request)
               .map((res:Response) => res.json())
               .catch((error:any) => Observable.throw(
@@ -68,7 +68,7 @@ export class ShowService {
    * @return {Observable<Show[]>}
    */
   getAllShows() : Observable<Show[]> {
-    let request: string = api.BASE_URL + '/shows';
+    let request: string = environment.api + '/shows';
     return this.http.get(request)
               .map((res:Response) => res.json())
               .catch((error:any) => Observable.throw(

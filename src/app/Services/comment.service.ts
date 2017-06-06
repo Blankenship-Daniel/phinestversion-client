@@ -4,7 +4,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 
-import * as api from '../../environments/api.config';
+import { environment } from '../../environments/environment';
 
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
@@ -26,7 +26,7 @@ export class CommentService {
    * @return {Observable<CommentListSize[]>}
    */
   getCommentsBySubmissionIdCount(submissionId: number) : Observable<CommentListSize[]> {
-    let request: string = api.BASE_URL + '/comments/count/submission/'
+    let request: string = environment.api + '/comments/count/submission/'
       + submissionId;
     return this.http.get(request)
               .map((res:Response) => res.json())
@@ -46,7 +46,7 @@ export class CommentService {
    * @return {Observable<Comment[]>}
    */
   getCommentsBySubmissionId(submissionId: number, limit: number, offset: number) : Observable<Comment[]> {
-    let request: string = api.BASE_URL + '/comments/submission/'
+    let request: string = environment.api + '/comments/submission/'
       + submissionId + '?limit=' + limit + '&start=' + offset;
     return this.http.get(request)
               .map((res:Response) => res.json())
@@ -68,7 +68,7 @@ export class CommentService {
   submitComment(submissionId: number, userId: number, comment: string) : Observable<Comment[]> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    let request: string = api.BASE_URL + '/comments/save';
+    let request: string = environment.api + '/comments/save';
     let body: string = JSON.stringify({
       submission_id: submissionId,
       user_id: userId,
