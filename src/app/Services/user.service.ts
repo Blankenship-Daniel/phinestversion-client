@@ -24,7 +24,7 @@ export class UserService {
    * @return {Observable<UserRank[]>}
    */
   getUserRankings(limit: number, offset: number) : Observable<UserRank[]> {
-    let request: string = api.BASE_URL + '/users/rankings/?limit=' +
+    let request: string = api.BASE_URL + '/users/rankings?limit=' +
                           limit + '&start=' + offset;
     return this.http.get(request)
               .map((res:Response) => res.json())
